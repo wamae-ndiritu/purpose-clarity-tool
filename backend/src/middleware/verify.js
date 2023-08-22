@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
 const secrete_key = process.env.JWT_SECRET;
 
-exports.verify = (req, res, next) => {
+exports.verify = async (req, res, next) => {
   let token;
   if (
     req.headers.authorization &&
@@ -11,7 +11,7 @@ exports.verify = (req, res, next) => {
 
     try {
       const decoded = jwt.verify(token, secrete_key);
-      req.user = decoded._id;
+      req.user = await User.findById(decoded.id);
       next();
     } catch (error) {
       return res.status(401).json({ message: "Not authorized, token failed!" });
