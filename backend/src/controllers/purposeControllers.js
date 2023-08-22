@@ -39,8 +39,44 @@ const getUserPurposeItem = async (req, res) => {
   }
 };
 
-const updatePuposeItem = async (req, res) => {};
-const deletePuposeItem = async (req, res) => {};
+const updatePuposeItem = async (req, res) => {
+  const {
+    identity,
+    strengths,
+    passions,
+    target_audience,
+    beneficiary_needs,
+    impact,
+    revenue_sources,
+    purpose_statement,
+  } = req.body;
+
+  const purpose = await Purpose.findById(req.params.id);
+  if (purpose) {
+    purpose.identity = identity || product.identity;
+    purpose.strengths = strengths || product.strengths;
+    purpose.passions = passions || product.passions;
+    purpose.target_audience = target_audience || product.target_audience;
+    purpose.beneficiary_needs = beneficiary_needs || product.beneficiary_needs;
+    purpose.impact = impact || product.impact;
+    purpose.revenue_sources = revenue_sources || product.revenue_sources;
+    purpose.purpose_statement = purpose_statement || product.purpose_statement;
+
+    const updatedPurpose = await purpose.save();
+    res.json(updatedPurpose);
+  } else {
+    res.status(404).json({ message: "Purpose Item not found!" });
+  }
+};
+const deletePuposeItem = async (req, res) => {
+  const purpose = await Purpose.findById(req.params.id);
+  if (purpose) {
+    await purpose.remove();
+    res.json({ message: "Purpose Item deleted" });
+  } else {
+    res.status(404).json({ message: "Purpose Item not found!" });
+  }
+};
 
 module.exports = {
   createPurposeItem,
