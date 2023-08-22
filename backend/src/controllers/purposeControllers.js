@@ -1,5 +1,6 @@
 const Purpose = require("../models/Purpose");
 
+// CREATE PURPOSE ITEM
 const createPurposeItem = async (req, res) => {
   const {
     identity,
@@ -26,6 +27,8 @@ const createPurposeItem = async (req, res) => {
   await purpose.save();
   res.status(201).json(purpose);
 };
+
+// GET PURPOSE ITEM
 const getUserPurposeItem = async (req, res) => {
   const purpose = await Purpose.findById(req.params.id).populate(
     "user",
@@ -39,6 +42,7 @@ const getUserPurposeItem = async (req, res) => {
   }
 };
 
+// UPDATE PURPOSE ITEM
 const updatePuposeItem = async (req, res) => {
   const {
     identity,
@@ -68,6 +72,8 @@ const updatePuposeItem = async (req, res) => {
     res.status(404).json({ message: "Purpose Item not found!" });
   }
 };
+
+// DELETE PURPOSE ITEM
 const deletePuposeItem = async (req, res) => {
   const purpose = await Purpose.findById(req.params.id);
   if (purpose) {

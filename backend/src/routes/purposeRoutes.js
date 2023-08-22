@@ -1,5 +1,5 @@
 const express = require("express");
-const { verify } = require("../middleware/verify");
+const { verify } = require("../middleware/AuthMiddleware");
 const {
   createPurposeItem,
   getUserPurposeItem,
@@ -13,3 +13,5 @@ purposeRouter.post("/create", verify, createPurposeItem);
 purposeRouter.get("/:id", verify, getUserPurposeItem);
 purposeRouter.put("/:id", verify, updatePuposeItem);
 purposeRouter.delete("/:id", verify, deletePuposeItem);
+
+module.exports = purposeRouter;
