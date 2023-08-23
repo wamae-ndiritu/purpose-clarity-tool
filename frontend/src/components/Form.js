@@ -33,43 +33,8 @@ const Form = ({ token }) => {
   //get the form answers if already entered. set page to last
 
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const getProfile = () => {
-    fetch("http://localhost:4000/profile", {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    }).then((r) => {
-      if (r.ok) {
-        r.json().then((data) => {
-          if (data.profile) {
-            setFomData(data.profile);
-            setPage(6);
-            setIsSubmitted(true);
-          }
-        });
-      }
-    });
-  };
 
-  useEffect(() => {
-    getProfile();
-  }, []);
-
-  const handleSubmit = () => {
-    fetch("http://localhost:4000/profile/edit", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify(fomData),
-    }).then((r) => {
-      if (r.ok) {
-        alert("Responses saved!!");
-      }
-    });
-  };
+  const handleSubmit = () => {};
 
   const FormTitles = [
     "Who are you?",

@@ -52,21 +52,25 @@ function App() {
   return (
     <div className='App'>
       {<NavBar setToken={setToken} />}
-
-      <Routes>
-        <Route exact path='/navbar' element={<NavBar setToken={setToken} />} />
-        <Route exact path='/about' element={<About />} />
-        <Route exact path='/login' element={<Login setToken={setToken} />} />
-        <Route exact path='/form' element={<Form token={token} />} />
-        <Route path='/firststep' element={<Firststep />} />
-        <Route
-          exact
-          path='/register'
-          element={<Register setToken={setToken} />}
-        />
-        <Route exact path='/answers' element={<Answers fomData={fomData} />} />
-        <Route exact path='/' element={<Home />} />
-      </Routes>
+      <div className='main-cont'>
+        <Routes>
+          <Route exact path='/about' element={<About />} />
+          <Route exact path='/login' element={<Login setToken={setToken} />} />
+          <Route exact path='/form' element={<Form token={token} />} />
+          <Route path='/firststep' element={<Firststep />} />
+          <Route
+            exact
+            path='/register'
+            element={<Register setToken={setToken} />}
+          />
+          <Route
+            exact
+            path='/answers'
+            element={<Answers fomData={fomData} />}
+          />
+          <Route exact path='/' element={<Home />} />
+        </Routes>
+      </div>
     </div>
   );
 }

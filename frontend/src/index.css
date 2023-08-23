@@ -1,0 +1,83 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css");
+
+.App {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: aliceblue;
+}
+
+.nav-cont{
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+    color: #9bc2e4;
+}
+
+.main-cont{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.home-wrapper{
+    width: 80%;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
+}
+
+.home-wrapper p{
+    font-size: 16px;
+    max-width: 700px;
+    padding: 3px;
+    text-align: center;
+}
+.home h1 {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.home-wrapper h3{
+    font-size: 20px;
+}
+
+.home-wrapper h4{
+    font-size: 18px;
+}
+
+
+.home button {
+    margin-left: 250px;
+}
+
+/* .App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+} */
+
+.list {
+    margin-top: 0px;
+}
+
+
+.progressbar {
+    width: 400px;
+    height: 10px;
+    background-color: rgb(194, 12, 48);
+    /* margin-bottom: 50px; */
+    margin-top: 100px;
+}
+
+.progressbar div {
+    width: 33%;
+    height: 100%;
+    background-color: rgb(98, 0, 255);
+}
