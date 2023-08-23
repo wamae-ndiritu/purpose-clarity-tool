@@ -2,6 +2,7 @@ import {
   loginFail,
   loginStart,
   loginSuccess,
+  logoutUser,
   registerFail,
   registerStart,
   registerSuccess,
@@ -33,6 +34,7 @@ export const login = async (details, dispatch) => {
   }
 };
 
-export const logout = () => {
+export const logout = () => (dispatch) => {
   localStorage.removeItem("userInfo");
+  dispatch(logoutUser());
 };
