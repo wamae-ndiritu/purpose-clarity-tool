@@ -32,3 +32,7 @@ export const login = async (details, dispatch) => {
     dispatch(loginFail(err.response ? err.response.data.message : err.message));
   }
 };
+
+export const logout = () => {
+  localStorage.removeItem("userInfo");
+};
