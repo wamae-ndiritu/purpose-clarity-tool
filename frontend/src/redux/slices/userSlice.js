@@ -32,11 +32,11 @@ export const userSlice = createSlice({
     },
     registerStart: (state) => {
       state.loading = true;
-      state.register_success = false;
+      state.error = false;
     },
-    registerSuccess: (state) => {
+    registerSuccess: (state, action) => {
       state.loading = false;
-      state.register_success = true;
+      state.userInfo = action.payload;
     },
     registerFail: (state, action) => {
       state.loading = false;
