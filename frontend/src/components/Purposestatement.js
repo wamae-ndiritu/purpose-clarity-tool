@@ -8,7 +8,6 @@ function Purposestatement() {
   const purpose = useSelector((state) => state.purpose);
   const { loading, error, success, item } = purpose;
   const { state } = useLocation();
-  console.log(state);
 
   const [purposeData, setPurposeData] = useState({
     purposestatement: "",
@@ -32,11 +31,11 @@ function Purposestatement() {
   useEffect(() => {
     if (success) {
       console.log("Item created successfully!");
-      // console.log(item)
+      console.log(item);
       // Navigate to a new page to show the user what he answered
       // Everything is in the item object
     }
-  }, [item]);
+  }, [success, item]);
 
   return (
     <div>
