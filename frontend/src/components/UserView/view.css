@@ -1,0 +1,53 @@
+.view-cont{
+    padding: 30px !important;
+    display: flex;
+    justify-content: center;
+}
+
+.view-cont h2{
+    margin: 0;
+    padding: 3px;
+}
+
+.view-cont p{
+    font-size: 14px;
+    padding: 0;
+    margin: 0;
+}
+
+.float-right{
+    text-align: right;
+}
+
+.view-wrapper{
+    padding: 10px;
+}
+
+
+.item-wrapper, .purpose-cont{
+    padding: 10px;
+    border-radius: 10px;
+
+}
+
+.item-wrapper{
+    margin: 10px 0;
+}
+
+.item-wrapper h6{
+    font-size: 18px;
+    color: #000;
+    margin: 0;
+
+}
+
+.item-wrapper p, .purpose-cont p{
+    font-size: 16px;
+    letter-spacing: 1px;
+    padding: 3px;
+    margin: 0;
+}
+
+.purpose-cont h6{
+    font-size: 24px;
+}

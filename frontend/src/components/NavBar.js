@@ -1,5 +1,7 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
+import { logout } from "../redux/actions/userActions";
 
 const linkStyles = {
   width: "100px",
@@ -11,11 +13,11 @@ const linkStyles = {
 };
 
 const NavBar = ({ setToken }) => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   function handleLogout() {
-    setToken("");
-    navigate("/login");
+    dispatch(logout());
   }
   return (
     <div class='nav-cont p-3 rounded'>
