@@ -13,6 +13,8 @@ const createPurposeItem = async (req, res) => {
     purpose_statement,
   } = req.body;
 
+  console.log(req.body);
+
   const purpose = new Purpose({
     identity,
     strengths,
@@ -22,6 +24,7 @@ const createPurposeItem = async (req, res) => {
     impact,
     revenue_sources,
     purpose_statement,
+    user: req.user._id,
   });
 
   await purpose.save();

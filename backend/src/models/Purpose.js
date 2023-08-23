@@ -12,11 +12,11 @@ const PurposeSchema = new mongoose.Schema(
       required: true,
     },
     strengths: {
-      type: Array,
+      type: String,
       required: true,
     },
     passions: {
-      type: Array,
+      type: String,
       required: true,
     },
     target_audience: {
@@ -24,15 +24,15 @@ const PurposeSchema = new mongoose.Schema(
       required: true,
     },
     beneficiary_needs: {
-      type: Array,
+      type: String,
       required: true,
     },
     impact: {
       type: String,
       required: true,
     },
-    revenue_resources: {
-      type: Array,
+    revenue_sources: {
+      type: String,
       required: true,
     },
     purpose_statement: {
