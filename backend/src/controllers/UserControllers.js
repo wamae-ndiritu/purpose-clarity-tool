@@ -13,7 +13,7 @@ const register = async (req, res) => {
   } else {
     const salt = 10;
     const hashPassword = bcrypt.hashSync(password, salt);
-    const user = new User({
+    const user = await new User({
       firstName,
       lastName,
       email,
