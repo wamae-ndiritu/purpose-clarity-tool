@@ -4,7 +4,8 @@ function Thirdstep({fomData, setFomData}) {
   return (
     <div>
         
-     <p>These are the loves of your life. You must see yourself as lucky or blessed<br/>
+     <p style={{color:"maroon"}}>
+      These are the loves of your life. You must see yourself as lucky or blessed<br/>
       to work on those pursuits. It is the kind of work you enjoy. I have concluded that<br/>
       sustainable good success is built on the path of less resistance internally.<br/>
       However, externally, this is not guaranteed; in most cases, it is the opposite.<br/>
@@ -16,29 +17,34 @@ function Thirdstep({fomData, setFomData}) {
        things you love but were discouraged from doing or lacked opportunities to do.<br/>
         Include activities that get you into the flow.
 </p>
-
-           <div style={{color:"maroon"}}>
-           <p>To help in answering the question, respond to the following questions:</p>
-           <li  style={{border:"none",listStyle:"none"}}>You can be good at several things, but what do you love to do?</li> 
-           <li  style={{border:"none",listStyle:"none"}}>What are your passions?</li> 
-           <li style={{border:"none",listStyle:"none"}}>What do you have great interest and pleasure in doing?</li> 
-           <li  style={{border:"none",listStyle:"none"}}>What are the things that you have the inner energy to pursue?</li> 
-           
-           </div>
-
-           <div class="mb-3" style={{width:"800px",marginLeft:"500px"}}>
+<div class="mb-3" style={{width:"700px",marginLeft:"0px"}}>
             
              <textarea
               class="form-control" 
               placeholder='thirdAnswer' 
-              rows="6" 
+              rows="8" 
               value={fomData.love}
               onChange={(e) => {setFomData({ ...fomData, love: e.target.value });}}>
                 
               </textarea>
             </div>
+
+         
+           <div class="card text-bg-primary mb-3" style={{maxWidth: "30rem",marginLeft:"1200px",marginRight:"5px",marginTop:"-490px",color:"white",backgroundColor:"maroon",height:"500px"}}>
+  <div class="card-header">Use these questions as a guide</div>
+  <div class="card-body">
+    <h5 class="card-title">You can be good at several things, but what do you love to do?</h5>
+    <h5 class="card-title">What are your passions?</h5>
+    <h5 class="card-title">What do you have great interest and pleasure in doing?</h5>
+    <h5 class="card-title">What are the things that you have the inner energy to pursue?</h5>
+    
+  </div>
+</div>
+
+           
     </div>
   )
 }
 
 export default Thirdstep;
+

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { createItem } from "../redux/actions/purposeActions";
 
@@ -8,34 +8,39 @@ function Purposestatement() {
   const purpose = useSelector((state) => state.purpose);
   const { loading, error, success, item } = purpose;
   const { state } = useLocation();
+  const navigate = useNavigate();
 
   const [purposeData, setPurposeData] = useState({
     purposestatement: "",
   });
+  console.log(state);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const details = {
-      identity: state.fomData.you,
-      strengths: state.fomData.what,
-      passions: state.fomData.love,
-      target_audience: state.fomData.serve,
-      beneficiary_needs: state.fomData.beneficiaries,
-      impact: state.fomData.transform,
-      revenue_sources: state.fomData.income,
+      identity: state?.fomData.you,
+      strengths: state?.fomData.what,
+      passions: state?.fomData.love,
+      target_audience: state?.fomData.serve,
+      beneficiary_needs: state?.fomData.beneficiaries,
+      impact: state?.fomData.transform,
+      revenue_sources: state?.fomData.income,
       purpose_statement: purposeData.purposestatement,
     };
     dispatch(createItem(details));
   };
 
+
   useEffect(() => {
     if (success) {
       console.log("Item created successfully!");
-      console.log(item);
+      navigate('/purpose-clarity-item')
+
+
       // Navigate to a new page to show the user what he answered
       // Everything is in the item object
     }
-  }, [success, item]);
+  }, [success, navigate]);
 
   return (
     <div>
@@ -77,12 +82,12 @@ function Purposestatement() {
 
       <div
         class='mb-3'
-        style={{ width: "500px", marginLeft: "10px", marginTop: "50px" }}
+        style={{ width: "700px", marginLeft: "10px", marginTop: "50px" }}
       >
         <textarea
           class='form-control'
           placeholder='purposestatement'
-          rows='6'
+          rows='8'
           value={purposeData.purposestatement}
           onChange={(e) => {
             setPurposeData({
@@ -98,8 +103,9 @@ function Purposestatement() {
         )}
         <button
           type='button'
-          class='btn btn-outline-secondary mt-4'
+          class= "btn btn-secondary mt-4"
           onClick={handleSubmit}
+          style={{backgroundColor:"grey",color:"white"}}
         >
           Submit
         </button>
