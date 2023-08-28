@@ -1,9 +1,14 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
+import { useDispatch, useSelector } from "react-redux";
+import { getItem } from "../../redux/actions/purposeActions";
 
 const Statement = () => {
   const contentRef = useRef(null);
+  const dispatch = useDispatch();
+  const purpose = useSelector((state) => state.purpose);
+  const { item } = purpose;
 
   const handleDownload = () => {
     const content = contentRef.current;
@@ -20,6 +25,10 @@ const Statement = () => {
       pdf.save("purpose-statement.pdf");
     });
   };
+
+  useEffect(() => {
+    dispatch(getItem());
+  }, [dispatch]);
   return (
     <div className='container'>
       <div className='row d-flex justify-content-center'>
@@ -30,19 +39,7 @@ const Statement = () => {
             </div>
             <div className='cert-info'>
               <h4 className='h4'>You Purpose Statement</h4>
-              <p>
-                Jelly sweet roll jelly beans biscuit pie macaroon chocolate
-                donut. Carrot cake caramels pie sweet apple pie tiramisu carrot
-                cake. Marzipan marshmallow croissant tootsie roll lollipop.
-                Cupcake lemon drops bear claw gummies. Jelly bear claw gummi
-                bears lollipop cotton candy gummi bears chocolate bar cake
-                cookie. Cupcake muffin danish muffin cookie gummies. Jelly beans
-                tiramisu pudding. Toffee soufflé chocolate cake pastry brownie.
-                Oat cake halvah sweet roll cotton candy croissant lollipop.
-                Macaroon tiramisu chocolate bar candy candy carrot cake jelly
-                sweet. Gummies croissant macaroon dessert. Chocolate cake dragée
-                pie.
-              </p>
+              <p>{item.purpose_statement}</p>
             </div>
           </div>
         </div>
