@@ -51,3 +51,41 @@
 .purpose-cont h6{
     font-size: 24px;
 }
+
+/* statement */
+
+.cert-wrapper{
+    padding: 20px 50px;
+}
+
+.logo img{
+    width: 100px;
+    height: 40px;
+    margin: 10px 0;
+}
+
+.cert-info h4{
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+
+.cert-info p{
+    text-align: center;
+}
+
+.btn-cont{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.btn-cont button{
+    background: maroon;
+    color: #fff;
+    border: 1px solid gray;
+    padding: 5px 10px;
+    text-transform: uppercase;
+    margin: 0 auto;
+}

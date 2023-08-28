@@ -12,6 +12,7 @@ import { useLocalStorage } from "./useLocalStorage";
 import Answers from "./components/Answers";
 import { useSelector } from "react-redux";
 import View from "./components/UserView/View";
+import Statement from "./components/UserView/Statement";
 
 function App() {
   // const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -61,6 +62,11 @@ function App() {
             />
             <Route exact path='/' element={<Home />} />
             <Route exact path='/purpose-clarity-item' element={<View />} />
+            <Route
+              exact
+              path='/purpose-clarity-item/download'
+              element={<Statement />}
+            />
           </Route>
         </Routes>
       </div>
