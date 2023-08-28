@@ -1,11 +1,17 @@
 import React from "react";
 
+const Description = ({ desc }) => {
+  return (
+    <p style={{ color: "maroon" }} dangerouslySetInnerHTML={{ __html: desc }} />
+  );
+};
+
 export default function Question({ stepItem, fomData, setFomData }) {
   const { desc, inputName, guideItems } = stepItem;
   return (
     <div className='input-wrapper'>
       <div className='input-left'>
-        <p style={{ color: "maroon" }}>{desc}</p>
+        <Description desc={desc} />
         <div class='mb-3 mt-4'>
           <textarea
             class='form-control'
