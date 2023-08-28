@@ -1,11 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Firststep from "./Firststep";
-import Secondstep from "./Secondstep";
-import Thirdstep from "./Thirdstep";
-import Forthstep from "./Forthstep";
-import Fifthstep from "./Fifthstep";
-import Sixthstep from "./Sixthstep";
-import Seventhstep from "./Seventhstep";
 import Answers from "./Answers";
 import { useLocation, useNavigate } from "react-router-dom";
 import Question from "./Question";

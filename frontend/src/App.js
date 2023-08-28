@@ -5,7 +5,6 @@ import About from "./components/About";
 import Login from "./components/Login";
 import NavBar from "./components/NavBar";
 import Form from "./components/Form";
-import Firststep from "./components/Firststep";
 import "./index.css";
 import Register from "./components/Register";
 import { useLocalStorage } from "./useLocalStorage";
@@ -54,7 +53,6 @@ function App() {
           <Route element={<AuthLayout />}>
             <Route exact path='/about' element={<About />} />
             <Route exact path='/form' element={<Form token={token} />} />
-            <Route path='/firststep' element={<Firststep />} />
             <Route
               exact
               path='/answers'
