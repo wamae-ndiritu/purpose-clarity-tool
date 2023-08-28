@@ -84,3 +84,40 @@
     height: 100%;
     background-color: rgb(98, 0, 255);
 }
+
+.input-wrapper{
+    width: 100%;
+    display: flex;
+    gap: 20px;
+}
+
+.input-wrapper .input-left{
+    flex: 70%;
+}
+
+.input-wrapper .input-right{
+    flex: 30%;
+}
+
+.btns{
+    margin-bottom: 5px;
+}
+
+.pages-cont{
+    display: flex;
+    margin-top: 0;
+    padding: 20px;
+}
+
+.pages-cont span{
+    padding: 10px;
+    height: 20px;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 2px;
+    background-color: gray;
+    color: #fff;
+    cursor: pointer;
+}
