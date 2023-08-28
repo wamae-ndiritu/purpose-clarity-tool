@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { logout } from "../redux/actions/userActions";
 
 const linkStyles = {
@@ -12,9 +12,8 @@ const linkStyles = {
   color: "white",
 };
 
-const NavBar = ({ setToken }) => {
+const NavBar = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   function handleLogout() {
     dispatch(logout());

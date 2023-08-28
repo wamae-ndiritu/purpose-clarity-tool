@@ -6,8 +6,9 @@ function Answers() {
   const { state } = useLocation();
 
   return (
-    <div style={{backgroundColor:"aliceblue"}}>
-      <h2>Here are your answers</h2><br/>
+    <div style={{ backgroundColor: "aliceblue" }}>
+      <h2>Here are your answers</h2>
+      <br />
       <h2>Who are you?</h2>
       <p>{state?.fomData.you}</p>
       <h2>What do you do well?</h2>
@@ -23,14 +24,23 @@ function Answers() {
       <h2>What activities can generate income for you?</h2>
       <p>{state?.fomData.income}</p>
 
-      <div class="card text-bg-primary mb-3" style={{maxWidth: "60rem",marginLeft:"1000px",marginRight:"0px",marginTop:"-420px",color:"white",backgroundColor:"maroon",height:"750px"}}>
-      <div class="card-header">Write your purpose-statement</div>
-      <div class="card-body">{<Purposestatement />}</div>
-        </div>
+      <div
+        class='card text-bg-primary mb-3'
+        style={{
+          maxWidth: "60rem",
+          marginLeft: "1000px",
+          marginRight: "0px",
+          marginTop: "-420px",
+          color: "white",
+          backgroundColor: "maroon",
+          height: "750px",
+        }}
+      >
+        <div class='card-header'>Write your purpose-statement</div>
+        <div class='card-body'>{<Purposestatement />}</div>
+      </div>
     </div>
   );
 }
 
 export default Answers;
-
-

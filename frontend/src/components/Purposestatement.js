@@ -6,14 +6,13 @@ import { createItem } from "../redux/actions/purposeActions";
 function Purposestatement() {
   const dispatch = useDispatch();
   const purpose = useSelector((state) => state.purpose);
-  const { loading, error, success, item } = purpose;
+  const { loading, error, success } = purpose;
   const { state } = useLocation();
   const navigate = useNavigate();
 
   const [purposeData, setPurposeData] = useState({
     purposestatement: "",
   });
-  console.log(state);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -30,15 +29,9 @@ function Purposestatement() {
     dispatch(createItem(details));
   };
 
-
   useEffect(() => {
     if (success) {
-      console.log("Item created successfully!");
-      navigate('/purpose-clarity-item')
-
-
-      // Navigate to a new page to show the user what he answered
-      // Everything is in the item object
+      navigate("/purpose-clarity-item/download");
     }
   }, [success, navigate]);
 
@@ -103,9 +96,9 @@ function Purposestatement() {
         )}
         <button
           type='button'
-          class= "btn btn-secondary mt-4"
+          class='btn btn-secondary mt-4'
           onClick={handleSubmit}
-          style={{backgroundColor:"grey",color:"white"}}
+          style={{ backgroundColor: "grey", color: "white" }}
         >
           Submit
         </button>
