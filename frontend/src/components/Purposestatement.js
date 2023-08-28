@@ -31,7 +31,7 @@ function Purposestatement() {
 
   useEffect(() => {
     if (success) {
-      navigate("/purpose-clarity-item");
+      navigate("/purpose-clarity-item/download");
     }
   }, [success, navigate]);
 

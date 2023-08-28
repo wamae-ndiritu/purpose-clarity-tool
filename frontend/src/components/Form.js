@@ -53,7 +53,9 @@ const Form = () => {
         </div>
         <div className='fomcontainer'>
           <div className='header'>
-            <h1>{stepItem.title}</h1>
+            <h1>
+              {stepItem.id}. {stepItem.title}
+            </h1>
           </div>
           <div className='body'>
             <Question
