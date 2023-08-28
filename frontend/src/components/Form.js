@@ -12,6 +12,8 @@ const Form = () => {
   const navigate = useNavigate();
 
   const handlenav = () => {
+    dispatch(addState({ name: stepItem.inputName, value: input }));
+    setInput("");
     navigate("/answers", {
       state: {
         fomData,

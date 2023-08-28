@@ -8,6 +8,8 @@ function Answers() {
   const { you, what, love, serve, beneficiaries, transform, income } = form;
   const { state } = useLocation();
 
+  console.log(form);
+
   return (
     <div style={{ backgroundColor: "aliceblue" }}>
       <h2>Here are your answers</h2>
