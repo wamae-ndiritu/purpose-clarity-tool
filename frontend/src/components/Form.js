@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from "react";
-import Answers from "./Answers";
-import { useLocation, useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Question from "./Question";
 import { steps } from "./formStepData";
 
-//container of all the steps
-const Form = ({ token }) => {
+const Form = () => {
   const navigate = useNavigate();
 
   const handlenav = () => {
@@ -15,7 +13,6 @@ const Form = ({ token }) => {
       },
     });
   };
-  const [page, setPage] = useState(0); //keeps track of which step/page we're in
   const [fomData, setFomData] = useState({
     you: "",
     what: "",
@@ -26,11 +23,6 @@ const Form = ({ token }) => {
     income: "",
   });
   const [stepItem, setStepItem] = useState(steps[0]);
-  console.log(steps[0]);
-
-  const [isSubmitted, setIsSubmitted] = useState(false);
-
-  const handleSubmit = () => {};
 
   const handleToggleQuestion = (id, type) => {
     let itemId;
@@ -90,7 +82,6 @@ const Form = ({ token }) => {
               class='btn btn-secondary'
               onClick={() => {
                 if (stepItem.id === steps.length - 1) {
-                  setIsSubmitted(true);
                   setFomData(fomData);
                   handlenav();
                 } else {
@@ -112,7 +103,6 @@ const Form = ({ token }) => {
             })}
           </div>
         </div>
-        {/* {isSubmitted && <Answers />} */}
       </div>
     </div>
   );
