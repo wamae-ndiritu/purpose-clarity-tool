@@ -66,9 +66,6 @@ const Form = () => {
             <button
               class='btn btn-secondary'
               disabled={stepItem.id === 1}
-              style={{
-                backgroundColor: "maroon",
-              }}
               onClick={() => {
                 handleToggleQuestion(stepItem.id, "prev");
               }}
@@ -76,9 +73,6 @@ const Form = () => {
               Prev
             </button>
             <button
-              style={{
-                backgroundColor: "maroon",
-              }}
               class='btn btn-secondary'
               onClick={() => {
                 if (stepItem.id === steps.length - 1) {
@@ -95,8 +89,13 @@ const Form = () => {
           <div className='pages-cont'>
             {steps.map((step) => {
               const { id } = step;
+              console.log(stepItem.id, id);
               return (
-                <span key={id} onClick={() => handleQuestion(id)}>
+                <span
+                  className={`${stepItem.id === id && "active-span"}`}
+                  key={id}
+                  onClick={() => handleQuestion(id)}
+                >
                   {id}
                 </span>
               );

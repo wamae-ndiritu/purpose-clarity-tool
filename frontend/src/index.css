@@ -101,12 +101,19 @@
 
 .btns{
     margin-bottom: 5px;
+    display: flex;
+    gap: 20px;
+}
+
+.btns button{
+    width: 200px;
+    background-color: maroon;
 }
 
 .pages-cont{
     display: flex;
     margin-top: 0;
-    padding: 20px;
+    margin-bottom: 20px;
 }
 
 .pages-cont span{
@@ -120,4 +127,8 @@
     background-color: gray;
     color: #fff;
     cursor: pointer;
+}
+
+.pages-cont .active-span{
+    background-color: maroon;
 }
