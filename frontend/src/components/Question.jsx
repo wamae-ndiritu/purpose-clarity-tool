@@ -6,8 +6,9 @@ const Description = ({ desc }) => {
   );
 };
 
-export default function Question({ stepItem, fomData, setFomData }) {
+export default function Question({ val, stepItem, fomData, setFomData }) {
   const { desc, inputName, guideItems } = stepItem;
+
   return (
     <div className='input-wrapper'>
       <div className='input-left'>
@@ -18,9 +19,9 @@ export default function Question({ stepItem, fomData, setFomData }) {
             placeholder='firstAnswer'
             rows='10'
             name={inputName}
-            value={fomData.inputName}
+            value={val}
             onChange={(e) => {
-              setFomData({ ...fomData, [e.target.name]: e.target.value });
+              setFomData(e.target.value);
             }}
           ></textarea>
         </div>

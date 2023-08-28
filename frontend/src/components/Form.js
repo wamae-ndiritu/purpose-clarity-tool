@@ -2,8 +2,13 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Question from "./Question";
 import { steps } from "./formStepData";
+import { useSelector, useDispatch } from "react-redux";
+import { addState } from "../redux/slices/formSlice";
 
 const Form = () => {
+  const dispatch = useDispatch();
+  const form = useSelector((state) => state.form);
+  console.log(form);
   const navigate = useNavigate();
 
   const handlenav = () => {
@@ -22,9 +27,12 @@ const Form = () => {
     transform: "",
     income: "",
   });
+  const [input, setInput] = useState("");
   const [stepItem, setStepItem] = useState(steps[0]);
 
   const handleToggleQuestion = (id, type) => {
+    dispatch(addState({ name: stepItem.inputName, value: input }));
+    setInput("");
     let itemId;
     if (type === "next") {
       itemId = id + 1;
@@ -36,6 +44,8 @@ const Form = () => {
   };
 
   const handleQuestion = (id) => {
+    dispatch(addState({ name: stepItem.inputName, value: input }));
+    setInput("");
     const item = steps.find((step) => step.id === id);
     setStepItem(item);
   };
@@ -60,8 +70,9 @@ const Form = () => {
           <div className='body'>
             <Question
               fomData={fomData}
-              setFomData={setFomData}
+              setFomData={setInput}
               stepItem={stepItem}
+              val={input}
             />
           </div>
           <div className='btns'>
@@ -77,15 +88,14 @@ const Form = () => {
             <button
               class='btn btn-secondary'
               onClick={() => {
-                if (stepItem.id === steps.length - 1) {
-                  setFomData(fomData);
+                if (stepItem.id === steps.length) {
                   handlenav();
                 } else {
                   handleToggleQuestion(stepItem.id, "next");
                 }
               }}
             >
-              {setStepItem.id === steps.length - 1 ? "Submit" : "Next"}
+              {stepItem.id === steps.length ? "Submit" : "Next"}
             </button>
           </div>
           <div className='pages-cont'>
