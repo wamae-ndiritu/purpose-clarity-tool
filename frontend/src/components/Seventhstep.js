@@ -8,26 +8,32 @@ function Seventhstep({fomData, setFomData}) {
       this ques- tion, you may end up as an unfulfilled ruthless money-making machine.<br/>
       This question gives you a vocation and multiplies the impact you can make.</p>
 
-           <div style={{color:"maroon"}}>
-           <p>To help in answering the question, respond to the following questions:</p>
-           <li  style={{border:"none",listStyle:"none"}}> What are the beneficiaries willing and able to pay for, and how much?</li> 
-           <li  style={{border:"none",listStyle:"none"}}>Are the payments enough to maintain a going concern?</li> 
-          
-           </div>
-
-           <div class="mb-3" style={{width:"800px",marginLeft:"500px"}}>
+      <div class="mb-3 mt-4" style={{width:"700px",marginLeft:"0px"}}>
             
              <textarea 
              class="form-control" 
              placeholder='seventhAnswer' 
-             rows="6" 
+             rows="8" 
              value={fomData.income}
              onChange={(e) => {setFomData({ ...fomData, income: e.target.value });}}>
                 
              </textarea>
             </div>
+
+           
+<div class="card text-bg-primary mb-3" style={{maxWidth: "30rem",marginLeft:"1200px",marginRight:"5px",marginTop:"-320px",color:"white",backgroundColor:"maroon",height:"350px"}}>
+      <div class="card-header">Use these questions as a guide</div>
+      <div class="card-body">
+
+        <h5 class="card-title">What are the beneficiaries willing and able to pay for, and how much?</h5>
+        <h5 class="card-title">Are the payments enough to maintain a going concern?</h5>
+
+        </div>
+        </div>
+           
     </div>
   )
 }
 
 export default Seventhstep;
+

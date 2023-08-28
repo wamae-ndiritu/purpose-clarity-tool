@@ -54,8 +54,8 @@ const View = () => {
     <div className='container bg-white'>
       <div className='row view-cont'>
         <h2 className='text-center h2'>Purpose Clarity Tool</h2>
-        <p className='text-center'>This are your responses</p>
-        <span className='float-right'>Hi, {item?.user.firstName}</span>
+        <p className='text-center'>These are your responses</p>
+        <span className='float-right'>Hi, {item?.user?.firstName}</span>
         <div className='col-8 view-wrapper'>
           {items.map((itemData) => {
             const { id, title, value } = itemData;

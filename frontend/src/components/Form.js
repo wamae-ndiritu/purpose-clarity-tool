@@ -83,7 +83,7 @@ const Form = ({ token }) => {
         <button
           class='btn btn-secondary'
           disabled={page == 0}
-          style={{ width: "200px", marginBottom: "5rem" }}
+          style={{ width: "200px", marginBottom: "5rem",backgroundColor:"maroon" }}
           onClick={() => {
             setPage((currPage) => currPage - 1);
           }}
@@ -91,7 +91,7 @@ const Form = ({ token }) => {
           Prev
         </button>
         <button
-          style={{ width: "200px", marginBottom: "5rem", marginLeft: "10px" }}
+          style={{ width: "200px", marginBottom: "5rem", marginLeft: "10px",backgroundColor:"maroon" }}
           class='btn btn-secondary'
           onClick={() => {
             if (page === FormTitles.length - 1) {
