@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { createItem } from "../redux/actions/purposeActions";
+import UtilComponent from "./UtilComponent";
 
 function Purposestatement() {
   const dispatch = useDispatch();
@@ -128,18 +129,16 @@ function Purposestatement() {
               });
             }}
           ></textarea>
-          {loading ? (
-            <span className='text-warning'>Loading...</span>
-          ) : (
-            error && <span className='text-danger'>{error}</span>
-          )}
-          <button
-            type='button'
-            class='btn btn-secondary mt-4'
-            onClick={handleSubmit}
-          >
-            Submit
-          </button>
+          <div className='btn-wrapper'>
+            <button
+              type='button'
+              class='btn-submit mt-4'
+              onClick={handleSubmit}
+            >
+              Submit
+            </button>
+            <UtilComponent loading={loading} error={error} />
+          </div>
         </div>
       </div>
     </div>

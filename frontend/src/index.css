@@ -478,8 +478,33 @@ body{
     color: var(--color-orange);
  }
 
+ .btn-wrapper{
+    height: 100px;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+ }
+
  .purpose-guide-p{
     font-size: 16px !important;
     color: var(--maroon-text);
  }
+
+ .util-cont{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto 0;
+ }
+
+ .btn-submit{
+    background-color: var(--color-main);
+    width: 200px;
+    border: none;
+    color: #fff;
+    padding: 10px;
+    text-transform: uppercase;
+    font-size: 16px;
+ }
+
  /* Answers component */
