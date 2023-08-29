@@ -54,6 +54,11 @@ const Form = () => {
 
   return (
     <div className='container form-container'>
+      <div className='header-row'>
+        <div className='logo-img'>
+          <img src='/kome-logo.png' alt='' />
+        </div>
+      </div>
       <div className='row progress-row'>
         <div className='progressbar'>
           <div
@@ -65,14 +70,12 @@ const Form = () => {
         </div>
       </div>
       <div className='row fom'>
-        <div className='body'>
-          <Question
-            fomData={fomData}
-            setFomData={setInput}
-            stepItem={stepItem}
-            val={input}
-          />
-        </div>
+        <Question
+          fomData={fomData}
+          setFomData={setInput}
+          stepItem={stepItem}
+          val={input}
+        />
         <div className='btns'>
           <button
             class='btn btn-secondary'
@@ -96,10 +99,11 @@ const Form = () => {
             {stepItem.id === steps.length ? "Submit" : "Next"}
           </button>
         </div>
+      </div>
+      <div className='row'>
         <div className='pages-cont'>
           {steps.map((step) => {
             const { id } = step;
-            console.log(stepItem.id, id);
             return (
               <span
                 className={`${stepItem.id === id && "active-span"}`}

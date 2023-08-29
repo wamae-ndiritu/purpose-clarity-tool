@@ -12,14 +12,14 @@ export default function Question({ val, stepItem, fomData, setFomData }) {
   return (
     <div className='input-wrapper'>
       <div className='input-left'>
-        <h6 className='h6'>
-          {stepItem.id}. {stepItem.title}
+        <h6 className='h6 form-title'>
+          <span>{stepItem.id}.</span> {stepItem.title}
         </h6>
         <Description desc={desc} />
         <div class='mb-3 mt-4'>
           <textarea
             class='form-control'
-            placeholder='firstAnswer'
+            placeholder={`Write your answer to question ${stepItem.id} here...`}
             rows='10'
             name={inputName}
             value={val}
@@ -29,23 +29,20 @@ export default function Question({ val, stepItem, fomData, setFomData }) {
           ></textarea>
         </div>
       </div>
-      <div
-        className='input-right card text-bg-primary mb-3'
-        style={{
-          maxWidth: "30rem",
-          color: "white",
-          backgroundColor: "maroon",
-        }}
-      >
-        <div class='card-header'>Use this questions as a guide</div>
+      <div className='input-right card text-bg-primary mb-3'>
+        <div class='card-header h5 text-center'>
+          Use this questions as a guide
+        </div>
         <div class='card-body'>
-          {guideItems.map((item, index) => {
-            return (
-              <h5 class='card-title' key={index}>
-                {item}
-              </h5>
-            );
-          })}
+          <ul>
+            {guideItems.map((item, index) => {
+              return (
+                <li class='card-title' key={index}>
+                  {item}
+                </li>
+              );
+            })}
+          </ul>
         </div>
       </div>
     </div>

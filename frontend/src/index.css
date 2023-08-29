@@ -93,25 +93,34 @@ body{
 }
 
 .btns{
+    width: 70%;
     margin-bottom: 5px;
     display: flex;
-    gap: 20px;
+    justify-content: space-between;
 }
 
 .btns button{
     width: 200px;
-    background-color: maroon;
+    background-color: var(--color-main);
+    text-transform: uppercase;
+    font-weight: 700;
+    transition: 0.4s ease-out;
+}
+
+.btns button:hover{
+    background-color: var(--color-main);
 }
 
 .pages-cont{
+    width: 70%;
     display: flex;
-    margin-top: 0;
+    margin-top: 20px;
     margin-bottom: 20px;
 }
 
 .pages-cont span{
     padding: 10px;
-    height: 20px;
+    height: 30px;
     width: 50px;
     display: flex;
     justify-content: center;
@@ -331,5 +340,30 @@ body{
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+.form-title{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin: 20px 0;
+    font-size: 24px;
+}
+.form-title span{
+        width: 50px;
+            height: 50px;
+            border: 2px solid var(--color-main);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 24px;
+            color: #000;
+}
+
+.input-right{
+    background-color: var(--maroon-text);
+    color: #fff;
 }
  /* Form  */

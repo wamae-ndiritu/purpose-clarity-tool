@@ -1,9 +1,11 @@
 import React from "react-router-dom";
 import { Link } from "react-router-dom";
+import NavBar from "./NavBar";
 
 const Home = () => {
   return (
     <div className='container'>
+      <NavBar />
       <div className='hero-info'>
         <p>
           The purpose clarity tool is meant to guide you on the journey of

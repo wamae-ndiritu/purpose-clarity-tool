@@ -3,7 +3,6 @@ import { Routes, Route, Outlet, Navigate } from "react-router-dom";
 import Home from "./components/Home";
 import About from "./components/About";
 import Login from "./components/Login";
-import NavBar from "./components/NavBar";
 import Form from "./components/Form";
 import "./index.css";
 import Register from "./components/Register";
@@ -25,7 +24,6 @@ function App() {
 
   return (
     <div className='App'>
-      {<NavBar />}
       <div className='main-cont'>
         <Routes>
           <Route exact path='/register' element={<Register />} />
