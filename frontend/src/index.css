@@ -8,8 +8,6 @@
     --color-orange: #EF8F42;
 }
 
-
-
 body{
     background-color: var(--bg-color);
 }
@@ -78,24 +76,6 @@ body{
 
 .list {
     margin-top: 0px;
-}
-
-
-.progressbar {
-   
-    width: 400px;
-    height: 10px;
-    background-color: rgb(194, 12, 48);
-    
-    margin-top: 100px;
-    
-}
-
-.progressbar div {
-    
-    width: 33%;
-    height: 100%;
-    background-color: rgb(98, 0, 255);
 }
 
 .input-wrapper{
@@ -210,7 +190,6 @@ body{
 
 .questions-wrapper{
     display: flex;
-    flex-wrap: wrap;
     align-items: center;
     gap: 20px;
 }
@@ -265,7 +244,7 @@ body{
     margin-bottom: 20px;
 }
 
-.hero-btns button{
+.hero-btns .button{
     background-color: #d20722;
     color: var(--color-orange);
     text-transform: capitalize;
@@ -277,7 +256,7 @@ body{
     width: 300px;
 }
 
-.hero-btns button:hover{
+.hero-btns .button:hover{
     color: var(--color-orange);
 }
 
@@ -309,6 +288,7 @@ body{
     }
 
     .questions-wrapper{
+        flex-wrap: wrap;
         padding: 0 20px;
     }
 
@@ -316,8 +296,40 @@ body{
         flex-direction: row-reverse;
     }
 
-    .hero-btns button{
+    .hero-btns .button{
         margin: 5px 0;
     }
 }
 /* Header */
+
+/* Form  */
+.form-container{
+    padding: 0;
+}
+
+.progress-row{
+    display: flex;
+    margin: 5px 0;
+}
+
+.progressbar {
+    width: 300px;
+    height: 7px;
+    background-color: grey;
+    padding: 0;
+}
+
+.progressbar div {
+
+    width: 33%;
+    margin: 0;
+    height: 100%;
+    background-color: rgb(98, 0, 255);
+}
+
+.form-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+ /* Form  */

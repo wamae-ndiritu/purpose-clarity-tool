@@ -1,18 +1,9 @@
-import React, { Navigate } from "react-router-dom";
+import React from "react-router-dom";
 import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
     <div className='container'>
-      <div className='header-row'>
-        <div className='logo-img'>
-          <img src='/kome-logo.png' alt='' />
-        </div>
-        <div className='header-content'>
-          <h1 className='h1'>Purpose Clarity Tool</h1>
-          <div className='title-hr'></div>
-        </div>
-      </div>
       <div className='hero-info'>
         <p>
           The purpose clarity tool is meant to guide you on the journey of
@@ -85,8 +76,10 @@ const Home = () => {
           </div>
         </div>
         <div className='hero-btns'>
-          <button className='btn'>See Previous Answers</button>
-          <button className='btn btn-start'>Start Here</button>
+          <button className='btn button'>See Previous Answers</button>
+          <Link to='/form' className='btn button btn-start'>
+            Start Here
+          </Link>
         </div>
       </div>
     </div>

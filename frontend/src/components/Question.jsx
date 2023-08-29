@@ -12,6 +12,9 @@ export default function Question({ val, stepItem, fomData, setFomData }) {
   return (
     <div className='input-wrapper'>
       <div className='input-left'>
+        <h6 className='h6'>
+          {stepItem.id}. {stepItem.title}
+        </h6>
         <Description desc={desc} />
         <div class='mb-3 mt-4'>
           <textarea

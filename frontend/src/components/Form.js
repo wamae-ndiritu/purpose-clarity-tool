@@ -53,68 +53,63 @@ const Form = () => {
   };
 
   return (
-    <div className='container'>
-      <div className='row fom'>
-        <div className='progressbar' style={{ marginLeft: "50rem" }}>
+    <div className='container form-container'>
+      <div className='row progress-row'>
+        <div className='progressbar'>
           <div
             style={{
-              width: `${(100 / steps.length) * (stepItem.id + 1)}%`,
-              backgroundColor: "grey",
+              width: `${(100 / steps.length) * stepItem.id + 1}%`,
+              backgroundColor: "#9F2232",
             }}
           ></div>
         </div>
-        <div className='fomcontainer'>
-          <div className='header'>
-            <h1>
-              {stepItem.id}. {stepItem.title}
-            </h1>
-          </div>
-          <div className='body'>
-            <Question
-              fomData={fomData}
-              setFomData={setInput}
-              stepItem={stepItem}
-              val={input}
-            />
-          </div>
-          <div className='btns'>
-            <button
-              class='btn btn-secondary'
-              disabled={stepItem.id === 1}
-              onClick={() => {
-                handleToggleQuestion(stepItem.id, "prev");
-              }}
-            >
-              Prev
-            </button>
-            <button
-              class='btn btn-secondary'
-              onClick={() => {
-                if (stepItem.id === steps.length) {
-                  handlenav();
-                } else {
-                  handleToggleQuestion(stepItem.id, "next");
-                }
-              }}
-            >
-              {stepItem.id === steps.length ? "Submit" : "Next"}
-            </button>
-          </div>
-          <div className='pages-cont'>
-            {steps.map((step) => {
-              const { id } = step;
-              console.log(stepItem.id, id);
-              return (
-                <span
-                  className={`${stepItem.id === id && "active-span"}`}
-                  key={id}
-                  onClick={() => handleQuestion(id)}
-                >
-                  {id}
-                </span>
-              );
-            })}
-          </div>
+      </div>
+      <div className='row fom'>
+        <div className='body'>
+          <Question
+            fomData={fomData}
+            setFomData={setInput}
+            stepItem={stepItem}
+            val={input}
+          />
+        </div>
+        <div className='btns'>
+          <button
+            class='btn btn-secondary'
+            disabled={stepItem.id === 1}
+            onClick={() => {
+              handleToggleQuestion(stepItem.id, "prev");
+            }}
+          >
+            Prev
+          </button>
+          <button
+            class='btn btn-secondary'
+            onClick={() => {
+              if (stepItem.id === steps.length) {
+                handlenav();
+              } else {
+                handleToggleQuestion(stepItem.id, "next");
+              }
+            }}
+          >
+            {stepItem.id === steps.length ? "Submit" : "Next"}
+          </button>
+        </div>
+        <div className='pages-cont'>
+          {steps.map((step) => {
+            const { id } = step;
+            console.log(stepItem.id, id);
+            return (
+              <span
+                className={`${stepItem.id === id && "active-span"}`}
+                key={id}
+                onClick={() => handleQuestion(id)}
+              >
+                {id}
+              </span>
+            );
+          })}
         </div>
       </div>
     </div>

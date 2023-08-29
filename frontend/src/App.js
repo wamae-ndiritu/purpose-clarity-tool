@@ -25,7 +25,7 @@ function App() {
 
   return (
     <div className='App'>
-      {/* {<NavBar />} */}
+      {<NavBar />}
       <div className='main-cont'>
         <Routes>
           <Route exact path='/register' element={<Register />} />
