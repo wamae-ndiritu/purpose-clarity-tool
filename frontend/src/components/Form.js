@@ -4,6 +4,7 @@ import Question from "./Question";
 import { steps } from "./formStepData";
 import { useDispatch, useSelector } from "react-redux";
 import { addState } from "../redux/slices/formSlice";
+import NavBar from "./NavBar";
 
 const Form = () => {
   const dispatch = useDispatch();
@@ -71,70 +72,68 @@ const Form = () => {
   }, [quizNo]);
 
   return (
-    <div className='container form-container'>
-      <div className='header-row'>
-        <div className='logo-img'>
-          <img src='/kome-logo.png' alt='' />
+    <>
+      <NavBar />
+      <div className='container form-container mt-3'>
+        <div className='row progress-row'>
+          <div className='progressbar'>
+            <div
+              style={{
+                width: `${(100 / steps.length) * stepItem.id + 1}%`,
+                backgroundColor: "#9F2232",
+              }}
+            ></div>
+          </div>
+        </div>
+        <div className='row fom'>
+          <Question
+            setInput={setInput}
+            stepItem={stepItem}
+            val={input}
+            edit={quizNo}
+          />
+          <div className='btns'>
+            <button
+              className='btn btn-secondary'
+              disabled={stepItem.id === 1}
+              onClick={() => {
+                handleToggleQuestion(stepItem.id, "prev");
+              }}
+            >
+              Prev
+            </button>
+            <button
+              className='btn btn-secondary'
+              onClick={() => {
+                if (stepItem.id === steps.length) {
+                  handlenav();
+                } else {
+                  handleToggleQuestion(stepItem.id, "next");
+                }
+              }}
+            >
+              {stepItem.id === steps.length ? "Submit" : "Next"}
+            </button>
+          </div>
+        </div>
+        <div className='row'>
+          <div className='pages-cont'>
+            {steps.map((step) => {
+              const { id } = step;
+              return (
+                <span
+                  className={`${stepItem.id === id && "active-span"}`}
+                  key={id}
+                  onClick={() => handleQuestion(id)}
+                >
+                  {id}
+                </span>
+              );
+            })}
+          </div>
         </div>
       </div>
-      <div className='row progress-row'>
-        <div className='progressbar'>
-          <div
-            style={{
-              width: `${(100 / steps.length) * stepItem.id + 1}%`,
-              backgroundColor: "#9F2232",
-            }}
-          ></div>
-        </div>
-      </div>
-      <div className='row fom'>
-        <Question
-          setInput={setInput}
-          stepItem={stepItem}
-          val={input}
-          edit={quizNo}
-        />
-        <div className='btns'>
-          <button
-            className='btn btn-secondary'
-            disabled={stepItem.id === 1}
-            onClick={() => {
-              handleToggleQuestion(stepItem.id, "prev");
-            }}
-          >
-            Prev
-          </button>
-          <button
-            className='btn btn-secondary'
-            onClick={() => {
-              if (stepItem.id === steps.length) {
-                handlenav();
-              } else {
-                handleToggleQuestion(stepItem.id, "next");
-              }
-            }}
-          >
-            {stepItem.id === steps.length ? "Submit" : "Next"}
-          </button>
-        </div>
-      </div>
-      <div className='row'>
-        <div className='pages-cont'>
-          {steps.map((step) => {
-            const { id } = step;
-            return (
-              <span
-                className={`${stepItem.id === id && "active-span"}`}
-                key={id}
-                onClick={() => handleQuestion(id)}
-              >
-                {id}
-              </span>
-            );
-          })}
-        </div>
-      </div>
-    </div>
+    </>
   );
 };
 

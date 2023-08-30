@@ -31,26 +31,22 @@ function App() {
   }, [dispatch, path]);
 
   return (
-    <div className='App'>
-      <div className='main-cont'>
-        <Routes>
-          <Route exact path='/register' element={<Register />} />
-          <Route exact path='/login' element={<Login />} />
-          <Route element={<AuthLayout />}>
-            <Route exact path='/about' element={<About />} />
-            <Route exact path='/form' element={<Form />} />
-            <Route exact path='/answers' element={<Answers />} />
-            <Route exact path='/' element={<Home />} />
-            <Route exact path='/purpose-clarity-item' element={<View />} />
-            <Route
-              exact
-              path='/purpose-clarity-item/download'
-              element={<Statement />}
-            />
-          </Route>
-        </Routes>
-      </div>
-    </div>
+    <Routes>
+      <Route exact path='/register' element={<Register />} />
+      <Route exact path='/login' element={<Login />} />
+      <Route element={<AuthLayout />}>
+        <Route exact path='/about' element={<About />} />
+        <Route exact path='/form' element={<Form />} />
+        <Route exact path='/answers' element={<Answers />} />
+        <Route exact path='/' element={<Home />} />
+        <Route exact path='/view/purpose-clarity-item' element={<View />} />
+        <Route
+          exact
+          path='/purpose-clarity-item/download'
+          element={<Statement />}
+        />
+      </Route>
+    </Routes>
   );
 }
 

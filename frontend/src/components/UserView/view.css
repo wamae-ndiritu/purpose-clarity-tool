@@ -38,7 +38,6 @@
     font-size: 18px;
     color: #000;
     margin: 0;
-
 }
 
 .item-wrapper p, .purpose-cont p{
@@ -56,6 +55,7 @@
 
 .cert-wrapper{
     padding: 20px 50px;
+    background-color: #fff;
 }
 
 .logo img{
@@ -88,4 +88,17 @@
     padding: 5px 10px;
     text-transform: uppercase;
     margin: 0 auto;
+}
+
+@media (max-width: 599px){
+    .cert-wrapper{
+        padding: 20px;
+    }
+    .cert-info h4{
+        font-size: 18px;
+    }
+
+    .cert-info p{
+        font-size: 14px;
+    }
 }

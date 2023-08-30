@@ -2,6 +2,7 @@ import React from "react";
 import Purposestatement from "./Purposestatement";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import NavBar from "./NavBar";
 
 function Answers() {
   const form = useSelector((state) => state.form);
@@ -46,40 +47,43 @@ function Answers() {
   ];
 
   return (
-    <div className='container'>
-      <div className='answers-row'>
-        <div className='answers-left'>
-          <Purposestatement />
-        </div>
-        <div class='card answers-right text-bg-primary mb-3'>
-          <div class='card-header answers-header'>
-            Here are your answers to the 7 key questions, you can click at any
-            of them to edit.
+    <>
+      <NavBar />
+      <div className='container'>
+        <div className='answers-row'>
+          <div className='answers-left'>
+            <Purposestatement />
           </div>
-          <div class='card-body'>
-            <ul className='answers-ul'>
-              {data.map((item) => {
-                const { id, question, answer } = item;
-                return (
-                  <li key={id}>
-                    <h6>
-                      <Link to={`/form?question=${id}`}>
-                        {id}. {question}
-                      </Link>
-                    </h6>
-                    {answer === "" ? (
-                      <p>Please fill your answer</p>
-                    ) : (
-                      <p>a. {answer}</p>
-                    )}
-                  </li>
-                );
-              })}
-            </ul>
+          <div class='card answers-right text-bg-primary mb-3'>
+            <div class='card-header answers-header'>
+              Here are your answers to the 7 key questions, you can click at any
+              of them to edit.
+            </div>
+            <div class='card-body'>
+              <ul className='answers-ul'>
+                {data.map((item) => {
+                  const { id, question, answer } = item;
+                  return (
+                    <li key={id}>
+                      <h6>
+                        <Link to={`/form?question=${id}`}>
+                          {id}. {question}
+                        </Link>
+                      </h6>
+                      {answer === "" ? (
+                        <p>Please fill your answer</p>
+                      ) : (
+                        <p>a. {answer}</p>
+                      )}
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

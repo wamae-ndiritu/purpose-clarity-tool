@@ -1,5 +1,9 @@
 @import url("https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css");
 
+*{
+    padding: 0;
+    margin: 0;
+}
 
 :root{
     --bg-color: #E8ECF5;
@@ -38,11 +42,6 @@ body{
     color: #9bc2e4;
 }
 
-.main-cont{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
 
 .home-wrapper{
     width: 80%;
@@ -149,11 +148,16 @@ body{
 }
 
 /* Header */
+.cont{
+    width: 100%;
+    padding: 0 30px;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+}
 .header-row{
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    padding: 30px 0;
+    padding: 20px 0;
 }
 
 .logo-img{
@@ -186,8 +190,36 @@ body{
 
 
 .logo-img img{
-    width: 180px;
-    height: 80px;
+    width: 140px;
+    height: 50px;
+}
+
+.nav-menu{
+    display: flex;
+    align-items: center;
+}
+
+.title{
+    font-size: 24px;
+}
+
+.nav-menu ul{
+    list-style-type: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-menu ul li, .nav-link-item{
+    padding: 0 10px;
+    margin: auto 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--color-main);
+    /* font-weight: 500; */
+    font-size: 18px;
+    cursor: pointer;
 }
 
 .hero-info p{
