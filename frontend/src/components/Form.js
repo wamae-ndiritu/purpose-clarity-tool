@@ -1,40 +1,40 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import Question from "./Question";
 import { steps } from "./formStepData";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addState } from "../redux/slices/formSlice";
+import NavBar from "./NavBar";
 
 const Form = () => {
   const dispatch = useDispatch();
-  const form = useSelector((state) => state.form);
-  console.log(form);
   const navigate = useNavigate();
 
+  const form = useSelector((state) => state.form);
+
+  const location = useLocation();
+  const quizNo = location.search ? Number(location.search.split("=")[1]) : null;
+
   const handlenav = () => {
-    dispatch(addState({ name: stepItem.inputName, value: input }));
+    dispatch(
+      addState({
+        name: stepItem.inputName,
+        value: input,
+      })
+    );
     setInput("");
-    navigate("/answers", {
-      state: {
-        fomData,
-      },
-    });
+    navigate("/answers");
   };
-  const [fomData, setFomData] = useState({
-    you: "",
-    what: "",
-    love: "",
-    serve: "",
-    beneficiaries: "",
-    transform: "",
-    income: "",
-  });
   const [input, setInput] = useState("");
   const [stepItem, setStepItem] = useState(steps[0]);
 
   const handleToggleQuestion = (id, type) => {
-    dispatch(addState({ name: stepItem.inputName, value: input }));
-    setInput("");
+    dispatch(
+      addState({
+        name: stepItem.inputName,
+        value: input || form[stepItem.inputName],
+      })
+    );
     let itemId;
     if (type === "next") {
       itemId = id + 1;
@@ -43,52 +43,84 @@ const Form = () => {
     }
     const nextItem = steps.find((step) => step.id === itemId);
     setStepItem(nextItem);
+    setInput(() => {
+      return form[nextItem.inputName];
+    });
   };
 
   const handleQuestion = (id) => {
-    dispatch(addState({ name: stepItem.inputName, value: input }));
-    setInput("");
+    dispatch(
+      addState({
+        name: stepItem.inputName,
+        value: input || form[stepItem.inputName],
+      })
+    );
     const item = steps.find((step) => step.id === id);
     setStepItem(item);
+    setInput(() => {
+      return form[item.inputName];
+    });
   };
 
+  useEffect(() => {
+    if (quizNo) {
+      setStepItem(steps[quizNo - 1]);
+      setInput(() => {
+        return form[steps[quizNo - 1].inputName];
+      });
+    }
+  }, [quizNo]);
+
   return (
-    <div className='container'>
-      <div className='row fom'>
-        <div className='progressbar' style={{ marginLeft: "50rem" }}>
-          <div
-            style={{
-              width: `${(100 / steps.length) * (stepItem.id + 1)}%`,
-              backgroundColor: "grey",
-            }}
-          ></div>
+    <>
+      <NavBar />
+      <div className='container form-container mt-3'>
+        <div className='row progress-row'>
+          <div className='progressbar'>
+            <div
+              style={{
+                width: `${(100 / steps.length) * stepItem.id + 1}%`,
+                backgroundColor: "#9F2232",
+              }}
+            ></div>
+          </div>
         </div>
-        <div className='fomcontainer'>
-          <div className='header'>
-            <h1>
-              {stepItem.id}. {stepItem.title}
-            </h1>
-          </div>
-          <div className='body'>
-            <Question
-              fomData={fomData}
-              setFomData={setInput}
-              stepItem={stepItem}
-              val={input}
-            />
-          </div>
+        <div className='row fom'>
+          <Question
+            setInput={setInput}
+            stepItem={stepItem}
+            val={input}
+            edit={quizNo}
+          />
           <div className='btns'>
-            <button
-              class='btn btn-secondary'
+            <div
+              className='btn-submit btn-div'
               disabled={stepItem.id === 1}
               onClick={() => {
                 handleToggleQuestion(stepItem.id, "prev");
               }}
             >
-              Prev
-            </button>
-            <button
-              class='btn btn-secondary'
+              <span>
+                <i class='fa fa-angle-left' aria-hidden='true'></i>
+                <h6>Prev</h6>
+              </span>
+            </div>
+            <div className='pages-cont'>
+              {steps.map((step) => {
+                const { id } = step;
+                return (
+                  <span
+                    className={`${stepItem.id === id && "active-span"}`}
+                    key={id}
+                    onClick={() => handleQuestion(id)}
+                  >
+                    {id}
+                  </span>
+                );
+              })}
+            </div>
+            <div
+              className='btn-submit btn-div'
               onClick={() => {
                 if (stepItem.id === steps.length) {
                   handlenav();
@@ -96,28 +128,17 @@ const Form = () => {
                   handleToggleQuestion(stepItem.id, "next");
                 }
               }}
+              disabled={stepItem.id === steps.length + 1}
             >
-              {stepItem.id === steps.length ? "Submit" : "Next"}
-            </button>
-          </div>
-          <div className='pages-cont'>
-            {steps.map((step) => {
-              const { id } = step;
-              console.log(stepItem.id, id);
-              return (
-                <span
-                  className={`${stepItem.id === id && "active-span"}`}
-                  key={id}
-                  onClick={() => handleQuestion(id)}
-                >
-                  {id}
-                </span>
-              );
-            })}
+              <span>
+                <h6>Next </h6>
+                <i class='fa fa-angle-right' aria-hidden='true'></i>
+              </span>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

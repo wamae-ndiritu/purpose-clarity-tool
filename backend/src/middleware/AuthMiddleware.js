@@ -15,11 +15,20 @@ exports.verify = async (req, res, next) => {
       req.user = await User.findById(decoded.id);
       next();
     } catch (error) {
-      console.log(error);
       return res.status(401).json({ message: "Not authorized, token failed!" });
     }
   }
   if (!token) {
     return res.status(401).json({ message: "Not authorized, no token!" });
+  }
+};
+
+exports.verifyToken = (req, res) => {
+  const token = req.body.token;
+  try {
+    const decoded = jwt.verify(token, secrete_key);
+    res.status(200).json({ verified: true });
+  } catch (error) {
+    return res.status(401).json({ message: "Not authorized, token failed!" });
   }
 };

@@ -1,48 +1,46 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const Description = ({ desc }) => {
-  return (
-    <p style={{ color: "maroon" }} dangerouslySetInnerHTML={{ __html: desc }} />
-  );
+  return <p className='desc-p' dangerouslySetInnerHTML={{ __html: desc }} />;
 };
 
-export default function Question({ val, stepItem, fomData, setFomData }) {
+export default function Question({ val, stepItem, setInput, edit }) {
   const { desc, inputName, guideItems } = stepItem;
 
   return (
     <div className='input-wrapper'>
       <div className='input-left'>
-        <Description desc={desc} />
-        <div class='mb-3 mt-4'>
+        <h6 className='h6 form-title'>
+          <span>{stepItem.id}.</span> {stepItem.title}
+        </h6>
+        {desc}
+        <div className='mb-3 mt-4'>
           <textarea
-            class='form-control'
-            placeholder='firstAnswer'
-            rows='10'
+            className='form-control'
+            placeholder={`Write your answer to question ${stepItem.id} here...`}
+            rows='5'
             name={inputName}
             value={val}
             onChange={(e) => {
-              setFomData(e.target.value);
+              setInput(e.target.value);
             }}
           ></textarea>
         </div>
       </div>
-      <div
-        className='input-right card text-bg-primary mb-3'
-        style={{
-          maxWidth: "30rem",
-          color: "white",
-          backgroundColor: "maroon",
-        }}
-      >
-        <div class='card-header'>Use this questions as a guide</div>
-        <div class='card-body'>
-          {guideItems.map((item, index) => {
-            return (
-              <h5 class='card-title' key={index}>
-                {item}
-              </h5>
-            );
-          })}
+      <div className='input-right card text-bg-primary mb-3'>
+        <div className='card-header h5 text-center'>
+          Use this questions as a guide
+        </div>
+        <div className='card-body'>
+          <ul>
+            {guideItems.map((item, index) => {
+              return (
+                <li className='card-title' key={index}>
+                  {item}
+                </li>
+              );
+            })}
+          </ul>
         </div>
       </div>
     </div>

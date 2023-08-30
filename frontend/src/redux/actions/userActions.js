@@ -15,7 +15,6 @@ export const register = async (details, dispatch) => {
   try {
     const { data } = await axios.post(`${API_ENDPOINT}/user/register`, details);
     dispatch(registerSuccess(data));
-    console.log(data);
   } catch (err) {
     dispatch(
       registerFail(err.response ? err.response.data.message : err.message)
@@ -37,4 +36,25 @@ export const login = async (details, dispatch) => {
 export const logout = () => (dispatch) => {
   localStorage.removeItem("userInfo");
   dispatch(logoutUser());
+};
+
+export const verifySession = () => async (dispatch, getState) => {
+  try {
+    const {
+      user: { userInfo },
+    } = getState();
+
+    const { data } = await axios.post(
+      `${API_ENDPOINT}/user/auth/verification`,
+      {
+        token: userInfo.token,
+      }
+    );
+    console.log(data);
+  } catch (err) {
+    let error = err.response ? err.response.data.message : err.message;
+    if (error === "Not authorized, token failed!") {
+      dispatch(logout());
+    }
+  }
 };

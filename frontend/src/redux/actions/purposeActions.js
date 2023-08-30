@@ -13,8 +13,8 @@ import {
   updateItemStart,
   updateItemSuccess,
 } from "../slices/purposeSlice";
-import { logout } from "./userActions";
 import axios from "axios";
+import { logout } from "./userActions";
 
 // CREATE ITEM
 export const createItem = (details) => async (dispatch, getState) => {
@@ -24,8 +24,6 @@ export const createItem = (details) => async (dispatch, getState) => {
     const {
       user: { userInfo },
     } = getState();
-
-    console.log(userInfo.token);
 
     const config = {
       headers: {
@@ -44,10 +42,10 @@ export const createItem = (details) => async (dispatch, getState) => {
   } catch (err) {
     let error = err.response ? err.response.data.message : err.message;
     if (
-      error === "Not authorized, token failed" ||
-      error === "Not authorized, no token"
+      error === "Not authorized, token failed!" ||
+      error === "Not authorized, no token!"
     ) {
-      dispatch(logout())
+      dispatch(logout());
     }
     dispatch(createItemFail(error));
   }
@@ -78,17 +76,17 @@ export const getItem = () => async (dispatch, getState) => {
   } catch (err) {
     let error = err.response ? err.response.data.message : err.message;
     if (
-      error === "Not authorized, token failed" ||
-      error === "Not authorized, no token"
+      error === "Not authorized, token failed!" ||
+      error === "Not authorized, no token!"
     ) {
-      dispatch(logout())
+      dispatch(logout());
     }
     dispatch(getItemFail(error));
   }
 };
 
 // UPDATE ITEM
-export const updateItem = () => async (dispatch, getState) => {
+export const updateItem = (details) => async (dispatch, getState) => {
   try {
     dispatch({ type: updateItemStart });
 
@@ -105,6 +103,7 @@ export const updateItem = () => async (dispatch, getState) => {
 
     const { data } = await axios.put(
       `${API_ENDPOINT}/purpose-clarity/${userInfo._id}`,
+      details,
       config
     );
 
@@ -112,10 +111,10 @@ export const updateItem = () => async (dispatch, getState) => {
   } catch (err) {
     let error = err.response ? err.response.data.message : err.message;
     if (
-      error === "Not authorized, token failed" ||
-      error === "Not authorized, no token"
+      error === "Not authorized, token failed!" ||
+      error === "Not authorized, no token!"
     ) {
-      dispatch(logout())
+      dispatch(logout());
     }
     dispatch(updateItemFail(error));
   }
@@ -146,10 +145,10 @@ export const deleteItem = () => async (dispatch, getState) => {
   } catch (err) {
     let error = err.response ? err.response.data.message : err.message;
     if (
-      error === "Not authorized, token failed" ||
-      error === "Not authorized, no token"
+      error === "Not authorized, token failed!" ||
+      error === "Not authorized, no token!"
     ) {
-      dispatch(logout())
+      dispatch(logout());
     }
     dispatch(deleteItemFail(error));
   }

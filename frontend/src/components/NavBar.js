@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { logout } from "../redux/actions/userActions";
@@ -19,45 +20,26 @@ const NavBar = () => {
     dispatch(logout());
   }
   return (
-    <div class='nav-cont p-3 rounded'>
-      <NavLink
-        to='/'
-        /* set exact so it knows to only set activeStyle when route is deeply equal to link */
-        exact
-        /* add styling to Navlink */
-        style={linkStyles}
-        /* add prop for activeStyle */
-        activeStyle={{
-          background: "darkblue",
-        }}
-      >
-        Home
-      </NavLink>
-
-      <NavLink
-        to='/register'
-        exact
-        style={linkStyles}
-        activeStyle={{
-          background: "darkblue",
-        }}
-      >
-        Register
-      </NavLink>
-      <NavLink
-        to='/login'
-        exact
-        style={linkStyles}
-        activeStyle={{
-          background: "grey",
-        }}
-      >
-        Login
-      </NavLink>
-
-      <button class='btn btn-secondary' onClick={handleLogout}>
-        Logout
-      </button>
+    <div className='cont'>
+      <div className='header-row'>
+        <Link to='/' className='logo-img'>
+          <img src='/kome-logo.png' alt='' />
+        </Link>
+        <div className='nav-menu'>
+          <ul>
+            <li>
+              <Link to='/login' className='nav-link-item'>
+                <i className='fa fa-sign-in' aria-hidden='true'></i>
+                <span>Login</span>
+              </Link>
+            </li>
+            <li onClick={handleLogout}>
+              <i className='fa fa-sign-out' aria-hidden='true'></i>
+              <span>Logout</span>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
   );
 };
