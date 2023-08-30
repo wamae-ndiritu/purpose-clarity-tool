@@ -40,7 +40,6 @@ export const logout = () => (dispatch) => {
 };
 
 export const verifySession = () => async (dispatch, getState) => {
-  console.log("verifying session...");
   try {
     const {
       user: { userInfo },

@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Routes, Route, Outlet, Navigate } from "react-router-dom";
+import { Routes, Route, Outlet, Navigate, useLocation } from "react-router-dom";
 import Home from "./components/Home";
 import About from "./components/About";
 import Login from "./components/Login";
@@ -16,6 +16,8 @@ function App() {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
   const { userInfo } = user;
+  const location = useLocation();
+  const path = location.pathname;
 
   function AuthLayout() {
     if (userInfo.token) {
@@ -26,7 +28,7 @@ function App() {
 
   useEffect(() => {
     dispatch(verifySession());
-  }, []);
+  }, [dispatch, path]);
 
   return (
     <div className='App'>
