@@ -6,7 +6,7 @@ const Description = ({ desc }) => {
   );
 };
 
-export default function Question({ val, stepItem, fomData, setFomData }) {
+export default function Question({ val, stepItem, setInput }) {
   const { desc, inputName, guideItems } = stepItem;
 
   return (
@@ -16,28 +16,28 @@ export default function Question({ val, stepItem, fomData, setFomData }) {
           <span>{stepItem.id}.</span> {stepItem.title}
         </h6>
         <Description desc={desc} />
-        <div class='mb-3 mt-4'>
+        <div className='mb-3 mt-4'>
           <textarea
-            class='form-control'
+            className='form-control'
             placeholder={`Write your answer to question ${stepItem.id} here...`}
             rows='10'
             name={inputName}
             value={val}
             onChange={(e) => {
-              setFomData(e.target.value);
+              setInput(e.target.value);
             }}
           ></textarea>
         </div>
       </div>
       <div className='input-right card text-bg-primary mb-3'>
-        <div class='card-header h5 text-center'>
+        <div className='card-header h5 text-center'>
           Use this questions as a guide
         </div>
-        <div class='card-body'>
+        <div className='card-body'>
           <ul>
             {guideItems.map((item, index) => {
               return (
-                <li class='card-title' key={index}>
+                <li className='card-title' key={index}>
                   {item}
                 </li>
               );

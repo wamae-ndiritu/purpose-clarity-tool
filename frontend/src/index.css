@@ -273,7 +273,7 @@ body{
     text-transform: uppercase;
 }
 
-@media (max-width: 599px){
+@media (max-width: 768.5px){
     .logo-img{
         flex: 100%;
     }
@@ -367,7 +367,7 @@ body{
     color: #fff;
 }
 
-@media (max-width: 599px){
+@media (max-width: 768.5px){
 
     .input-wrapper{
         flex-direction: column-reverse;

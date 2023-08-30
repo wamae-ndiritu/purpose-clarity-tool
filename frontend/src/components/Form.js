@@ -2,33 +2,18 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Question from "./Question";
 import { steps } from "./formStepData";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addState } from "../redux/slices/formSlice";
 
 const Form = () => {
   const dispatch = useDispatch();
-  const form = useSelector((state) => state.form);
-  console.log(form);
   const navigate = useNavigate();
 
   const handlenav = () => {
     dispatch(addState({ name: stepItem.inputName, value: input }));
     setInput("");
-    navigate("/answers", {
-      state: {
-        fomData,
-      },
-    });
+    navigate("/answers");
   };
-  const [fomData, setFomData] = useState({
-    you: "",
-    what: "",
-    love: "",
-    serve: "",
-    beneficiaries: "",
-    transform: "",
-    income: "",
-  });
   const [input, setInput] = useState("");
   const [stepItem, setStepItem] = useState(steps[0]);
 
@@ -70,15 +55,10 @@ const Form = () => {
         </div>
       </div>
       <div className='row fom'>
-        <Question
-          fomData={fomData}
-          setFomData={setInput}
-          stepItem={stepItem}
-          val={input}
-        />
+        <Question setInput={setInput} stepItem={stepItem} val={input} />
         <div className='btns'>
           <button
-            class='btn btn-secondary'
+            className='btn btn-secondary'
             disabled={stepItem.id === 1}
             onClick={() => {
               handleToggleQuestion(stepItem.id, "prev");
@@ -87,7 +67,7 @@ const Form = () => {
             Prev
           </button>
           <button
-            class='btn btn-secondary'
+            className='btn btn-secondary'
             onClick={() => {
               if (stepItem.id === steps.length) {
                 handlenav();
