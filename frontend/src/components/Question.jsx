@@ -18,7 +18,7 @@ export default function Question({ val, stepItem, setInput, edit }) {
           <textarea
             className='form-control'
             placeholder={`Write your answer to question ${stepItem.id} here...`}
-            rows='10'
+            rows='5'
             name={inputName}
             value={val}
             onChange={(e) => {

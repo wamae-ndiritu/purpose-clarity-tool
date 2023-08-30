@@ -93,17 +93,34 @@ const Form = () => {
             edit={quizNo}
           />
           <div className='btns'>
-            <button
-              className='btn btn-secondary'
+            <div
+              className='btn-submit btn-div'
               disabled={stepItem.id === 1}
               onClick={() => {
                 handleToggleQuestion(stepItem.id, "prev");
               }}
             >
-              Prev
-            </button>
-            <button
-              className='btn btn-secondary'
+              <span>
+                <i class='fa fa-angle-left' aria-hidden='true'></i>
+                <h6>Prev</h6>
+              </span>
+            </div>
+            <div className='pages-cont'>
+              {steps.map((step) => {
+                const { id } = step;
+                return (
+                  <span
+                    className={`${stepItem.id === id && "active-span"}`}
+                    key={id}
+                    onClick={() => handleQuestion(id)}
+                  >
+                    {id}
+                  </span>
+                );
+              })}
+            </div>
+            <div
+              className='btn-submit btn-div'
               onClick={() => {
                 if (stepItem.id === steps.length) {
                   handlenav();
@@ -111,25 +128,13 @@ const Form = () => {
                   handleToggleQuestion(stepItem.id, "next");
                 }
               }}
+              disabled={stepItem.id === steps.length + 1}
             >
-              {stepItem.id === steps.length ? "Submit" : "Next"}
-            </button>
-          </div>
-        </div>
-        <div className='row'>
-          <div className='pages-cont'>
-            {steps.map((step) => {
-              const { id } = step;
-              return (
-                <span
-                  className={`${stepItem.id === id && "active-span"}`}
-                  key={id}
-                  onClick={() => handleQuestion(id)}
-                >
-                  {id}
-                </span>
-              );
-            })}
+              <span>
+                <h6>Next </h6>
+                <i class='fa fa-angle-right' aria-hidden='true'></i>
+              </span>
+            </div>
           </div>
         </div>
       </div>

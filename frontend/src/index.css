@@ -111,25 +111,24 @@ body{
 
 .btns{
     width: 70%;
+    height: 20px;
+    display: flex;
+    align-items: center;
     margin-bottom: 5px;
     display: flex;
-    justify-content: space-between;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 30px;
 }
 
 .btns button{
-    width: 200px;
-    background-color: var(--color-main);
-    text-transform: uppercase;
-    font-weight: 700;
-    transition: 0.4s ease-out;
-}
-
-.btns button:hover{
-    background-color: var(--color-main);
+    width: max-content;
+    font-size: 16px;
+    padding: 5px 10px;
 }
 
 .pages-cont{
-    width: 70%;
     display: flex;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -149,7 +148,7 @@ body{
 }
 
 .pages-cont .active-span{
-    background-color: maroon;
+    background-color: var(--color-main);
 }
 
 /* Header */
@@ -455,13 +454,7 @@ body{
         justify-content: space-around;
     }
 
-    .btns button{
-        width: 100px;
-    }
-
     .pages-cont{
-        width: 90%;
-        margin: 0 auto;
         margin-top: 5px;
         margin-bottom: 30px;
     }
@@ -567,6 +560,34 @@ body{
     padding: 10px;
     text-transform: uppercase;
     font-size: 16px;
+ }
+
+ .btn-div{
+    display: flex;
+    align-items: center;
+    width: max-content;
+    cursor: pointer;
+ }
+
+ .btn-div:disabled{
+    cursor: not-allowed;
+    background-color: #915454;
+ }
+
+ .btn-div span{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+ }
+
+ .btn-div span h6{
+    margin: auto 0 !important;
+    font-size: 14px;
+ }
+
+ .fa-angle-right{
+    /* font-size: 24px; */
+    margin: auto 0;
  }
 
  @media (max-width: 768.5px){
