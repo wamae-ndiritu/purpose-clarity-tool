@@ -38,3 +38,25 @@ export const logout = () => (dispatch) => {
   localStorage.removeItem("userInfo");
   dispatch(logoutUser());
 };
+
+export const verifySession = () => async (dispatch, getState) => {
+  console.log("verifying session...");
+  try {
+    const {
+      user: { userInfo },
+    } = getState();
+
+    const { data } = await axios.post(
+      `${API_ENDPOINT}/user/auth/verification`,
+      {
+        token: userInfo.token,
+      }
+    );
+    console.log(data);
+  } catch (err) {
+    let error = err.response ? err.response.data.message : err.message;
+    if (error === "Not authorized, token failed!") {
+      dispatch(logout());
+    }
+  }
+};

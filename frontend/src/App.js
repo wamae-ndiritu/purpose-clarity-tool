@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Routes, Route, Outlet, Navigate } from "react-router-dom";
 import Home from "./components/Home";
 import About from "./components/About";
@@ -7,11 +7,13 @@ import Form from "./components/Form";
 import "./index.css";
 import Register from "./components/Register";
 import Answers from "./components/Answers";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import View from "./components/UserView/View";
 import Statement from "./components/UserView/Statement";
+import { verifySession } from "./redux/actions/userActions";
 
 function App() {
+  const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
   const { userInfo } = user;
 
@@ -21,6 +23,10 @@ function App() {
     }
     return <Navigate to='/login' />;
   }
+
+  useEffect(() => {
+    dispatch(verifySession());
+  }, []);
 
   return (
     <div className='App'>
