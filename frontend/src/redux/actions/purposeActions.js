@@ -43,7 +43,7 @@ export const createItem = (details) => async (dispatch, getState) => {
     let error = err.response ? err.response.data.message : err.message;
     if (
       error === "Not authorized, token failed!" ||
-      error === "Not authorized, no token"
+      error === "Not authorized, no token!"
     ) {
       dispatch(logout());
     }
@@ -77,7 +77,7 @@ export const getItem = () => async (dispatch, getState) => {
     let error = err.response ? err.response.data.message : err.message;
     if (
       error === "Not authorized, token failed!" ||
-      error === "Not authorized, no token"
+      error === "Not authorized, no token!"
     ) {
       dispatch(logout());
     }
@@ -111,7 +111,7 @@ export const updateItem = () => async (dispatch, getState) => {
     let error = err.response ? err.response.data.message : err.message;
     if (
       error === "Not authorized, token failed!" ||
-      error === "Not authorized, no token"
+      error === "Not authorized, no token!"
     ) {
       dispatch(logout());
     }
@@ -145,7 +145,7 @@ export const deleteItem = () => async (dispatch, getState) => {
     let error = err.response ? err.response.data.message : err.message;
     if (
       error === "Not authorized, token failed!" ||
-      error === "Not authorized, no token"
+      error === "Not authorized, no token!"
     ) {
       dispatch(logout());
     }

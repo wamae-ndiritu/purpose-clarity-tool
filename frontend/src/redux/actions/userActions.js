@@ -15,7 +15,6 @@ export const register = async (details, dispatch) => {
   try {
     const { data } = await axios.post(`${API_ENDPOINT}/user/register`, details);
     dispatch(registerSuccess(data));
-    console.log(data);
   } catch (err) {
     dispatch(
       registerFail(err.response ? err.response.data.message : err.message)
