@@ -15,9 +15,18 @@ function Purposestatement() {
   const [purposeData, setPurposeData] = useState({
     purposestatement: "",
   });
+  const [inputErr, setInputErr] = useState(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const isValid = validateInput(form);
+    if (!isValid) {
+      setInputErr("All questions not answered!");
+      return;
+    } else if (purposeData.purposestatement === "") {
+      setInputErr("All questions not answered!");
+      return;
+    }
     const details = {
       identity: you,
       strengths: what,
@@ -29,6 +38,19 @@ function Purposestatement() {
       purpose_statement: purposeData.purposestatement,
     };
     dispatch(createItem(details));
+  };
+
+  const validateInput = (form) => {
+    // Returns false if there is an invalid and true if no invalid
+    for (const key in form) {
+      if (form.hasOwnProperty(key)) {
+        if (form[key] === "") {
+          return false;
+        } else {
+          return true;
+        }
+      }
+    }
   };
 
   useEffect(() => {
@@ -137,7 +159,7 @@ function Purposestatement() {
             >
               Submit
             </button>
-            <UtilComponent loading={loading} error={error} />
+            <UtilComponent loading={loading} error={inputErr || error} />
           </div>
         </div>
       </div>
