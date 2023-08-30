@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 const Description = ({ desc }) => {
-  return (
-    <p style={{ color: "maroon" }} dangerouslySetInnerHTML={{ __html: desc }} />
-  );
+  return <p className='desc-p' dangerouslySetInnerHTML={{ __html: desc }} />;
 };
 
 export default function Question({ val, stepItem, setInput, edit }) {
@@ -15,7 +13,7 @@ export default function Question({ val, stepItem, setInput, edit }) {
         <h6 className='h6 form-title'>
           <span>{stepItem.id}.</span> {stepItem.title}
         </h6>
-        <Description desc={desc} />
+        {desc}
         <div className='mb-3 mt-4'>
           <textarea
             className='form-control'

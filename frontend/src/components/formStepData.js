@@ -1,21 +1,44 @@
+import React from "react";
+
 export const steps = [
   {
     id: 1,
     title: "Who are you?",
-    desc: `Purpose is clarified when something in you meets with something in the
+    desc: (
+      <div className='desc-item'>
+        <p>
+          Purpose is clarified when something in you meets with something in the
           world that triggers you to take action.
-          <br />
-          This question is meant to bring out something in you.This question
-          aims at two key aspects: <br />
-          what resources do you have for your life's assignment?The resources
-          are not material or physical <br />
-          but natural abilities (unique strengths),learned abilities, values,
-          and experiences.Why you and not someone else
-          <br />
-          be the bearer of the particular purpose?Clarifying your purpose starts
-          with clarifying who you are.
-          <br />
-          Knowing yourself is imperative in clarifying your purpose.`,
+        </p>
+        <p>
+          This question is meant to bring out something in you. It aims at two
+          key aspects;
+        </p>
+        <ul>
+          <li>
+            <strong>
+              What resources do you have for your life's assignment?
+            </strong>
+            <p>
+              The resources are not material or physical but natural abilities{" "}
+              <i>
+                (unique strengths),learned abilities, values,and experiences.
+              </i>
+            </p>
+          </li>
+          <li>
+            <strong>
+              Why you and not someone else be the bearer of the particular
+              purpose
+            </strong>
+            <p>Clarifying your purpose starts with clarifying who you are.</p>
+          </li>
+        </ul>
+        <p>
+          <i>Knowing yourself is imperative in clarifying your purpose.</i>
+        </p>
+      </div>
+    ),
     inputName: "you",
     guideItems: [
       "What are your identities, beliefs and convictions?",
@@ -31,13 +54,29 @@ export const steps = [
   {
     id: 2,
     title: "What do you do well?",
-    desc: `The challenge here is that you may have unutilised potential;
-      hence,<br/>  you must search deeper than what you are currently good at.
-      You may<br/>  not even have the right words to explain what you are good at.
-      For <br/> example a person who is faster on their hands than their legs may not<br/>
-      even consider including this in the list of things they are good at. It does<br/> 
-      not have to be fancy or cool to others. It does not have to attract top dollars;<br/>
-      you must be good at it. Two questions will guide you in answering question 2.`,
+    desc: (
+      <div className='desc-item'>
+        <p>
+          The challenge here is that you may have unutilised potential; hence,
+          you must search deeper than what you are currently good at.
+        </p>
+        <p>
+          You may not even have the right words to explain what you are good at.
+          For example;{" "}
+          <i>
+            a person who is faster on their hands than their legs may not even
+            consider including this in the list of things they are good at.
+          </i>
+        </p>
+        <p>
+          It does not have to be fancy or cool to others. It does not have to
+          attract top dollars; <i>you must be good at it.</i>
+        </p>
+        <p>
+          <i>Two questions will guide you in answering question 2.</i>
+        </p>
+      </div>
+    ),
     inputName: "what",
     guideItems: [
       "It is possible that you can do many things, but what are you really good at?",
@@ -47,17 +86,43 @@ export const steps = [
   {
     id: 3,
     title: "What do you love to do?",
-    desc: `These are the loves of your life. You must see yourself as lucky or blessed<br/>
-      to work on those pursuits. It is the kind of work you enjoy. I have concluded that<br/>
-      sustainable good success is built on the path of less resistance internally.<br/>
-      However, externally, this is not guaranteed; in most cases, it is the opposite.<br/>
-      At this stage, include all things you love doing. You may include watching cartoons<br/>
-      the whole day at this level if it is one of the things you love to do because it could<br/>
-      indicate the underlying potential; however, by the time you answer all 7Qs, you will<br/>
-      have narrowed down to things you love to do which help others and they are will to pay<br/>
-      for them.You should not only dwell at the moment or present but also search in the past,<br/>
-       things you love but were discouraged from doing or lacked opportunities to do.<br/>
-        Include activities that get you into the flow.`,
+    desc: (
+      <div className='desc-item'>
+        <p>
+          These are the loves of your life. You must see yourself as lucky or
+          blessed to work on those pursuits. It is the kind of work you enjoy.
+        </p>
+        <p>
+          <strong>
+            I have concluded that sustainable good success is built on the path
+            of less resistance internally.
+          </strong>
+        </p>
+        <p>
+          However, externally, this is not guaranteed; in most cases, it is the
+          opposite.
+        </p>
+        <p>
+          At this stage, include all things you love doing. You may include
+          watching cartoons the whole day at this level if it is one of the
+          things you love to do because it could indicate the underlying
+          potential;
+        </p>
+        <p>
+          However, by the time you answer all <strong>7Qs</strong>, you will
+          have narrowed down to things you love to do which help others and they
+          are will to pay for them.
+        </p>
+        <p>
+          You should not only dwell at the moment or present but also search in
+          the past things you love but were discouraged from doing or lacked
+          opportunities to do.
+        </p>
+        <p>
+          <i>Include activities that get you into the flow.</i>
+        </p>
+      </div>
+    ),
     inputName: "love",
     guideItems: [
       "You can be good at several things, but what do you love to do?",
@@ -69,15 +134,37 @@ export const steps = [
   {
     id: 4,
     title: "Whom do you intend to serve?",
-    desc: `Name your beneficiaries. Find your community. You may serve the whole world,<br/>
-      but like Apple, which serves a 'think different' or creative community, you must<br/>
-       have your own core group. Just because you can write doesn't mean you can write for<br/>
-       all age groups. There is a group you can serve better than your peers, so you choose<br/>
-       that group, although it is the group that chooses you. Whichever way you look at it,<br/>
-       you and the group must understand each other well. Another example is if you sell<br/>
-       homes, many people need to own a home, but not all need a high-end home; some need a<br/>
-       low-cost home. If you are in this space, you must pick a group you are passionate about<br/>
-       serving.`,
+    desc: (
+      <div className='desc-item'>
+        <p>
+          <strong>Name your beneficiaries.</strong>
+        </p>
+        <p>
+          Find your community. You may serve the whole world, but like Apple,
+          which serves a <i>think different</i> or creative community, you must
+          have your own core group. Just because you can write doesn't mean you
+          can write for all age groups.
+        </p>
+        <p>
+          There is a group you can serve better than your peers, so you choose
+          that group, although it is the group that chooses you. Whichever way
+          you look at it, you and the group must understand each other well.
+        </p>
+        <p>
+          Another example is{" "}
+          <i>
+            if you sell homes, many people need to own a home, but not all need
+            a high-end home; some need a low-cost home.
+          </i>
+        </p>
+        <p>
+          <i>
+            If you are in this space, you must pick a group you are passionate
+            about serving.
+          </i>
+        </p>
+      </div>
+    ),
     inputName: "serve",
     guideItems: [
       "Who is your core constituency?",

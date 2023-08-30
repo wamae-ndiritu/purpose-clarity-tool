@@ -100,6 +100,11 @@ body{
     flex: 70%;
 }
 
+.desc-p{
+    font-size: 14px;
+    padding: 3px;
+}
+
 .input-wrapper .input-right{
     flex: 30%;
 }
@@ -410,6 +415,11 @@ body{
 .input-right{
     background-color: var(--maroon-text);
     color: #fff;
+    height: max-content;
+}
+
+.input-right ul li{
+    font-size: 14px;
 }
 
 @media (max-width: 768.5px){
@@ -511,18 +521,23 @@ body{
     color: var(--color-orange);
  }
 
- .purpose-desc-cont p{
+ .purpose-desc-cont p, .desc-item p{
     padding: 3px;
     margin: 0;
     font-size: 14px;
  }
 
- .purpose-desc-cont p ul{
+ .purpose-desc-cont p ul, .desc-item p ul, .desc-item ul{
     list-style-type: upper-alpha;
  }
 
- .purpose-desc-cont strong, .purpose-desc-cont i{
+ .purpose-desc-cont strong, .purpose-desc-cont i, .desc-item strong, .desc-item i{
     color: var(--color-orange);
+ }
+
+ .desc-item strong{
+    font-size: 16px;
+    color: var(--color-main);
  }
 
  .btn-wrapper{
