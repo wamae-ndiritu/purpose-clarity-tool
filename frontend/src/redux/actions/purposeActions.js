@@ -86,7 +86,7 @@ export const getItem = () => async (dispatch, getState) => {
 };
 
 // UPDATE ITEM
-export const updateItem = () => async (dispatch, getState) => {
+export const updateItem = (details) => async (dispatch, getState) => {
   try {
     dispatch({ type: updateItemStart });
 
@@ -103,6 +103,7 @@ export const updateItem = () => async (dispatch, getState) => {
 
     const { data } = await axios.put(
       `${API_ENDPOINT}/purpose-clarity/${userInfo._id}`,
+      details,
       config
     );
 

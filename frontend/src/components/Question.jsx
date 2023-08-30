@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
 
 const Description = ({ desc }) => {
   return (
@@ -9,8 +8,6 @@ const Description = ({ desc }) => {
 
 export default function Question({ val, stepItem, setInput, edit }) {
   const { desc, inputName, guideItems } = stepItem;
-
-  const form = useSelector((state) => state.form);
 
   return (
     <div className='input-wrapper'>

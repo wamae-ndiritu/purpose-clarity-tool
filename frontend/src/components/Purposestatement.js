@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { createItem } from "../redux/actions/purposeActions";
+import { createItem, updateItem } from "../redux/actions/purposeActions";
 import UtilComponent from "./UtilComponent";
 
 function Purposestatement() {
   const dispatch = useDispatch();
   const purpose = useSelector((state) => state.purpose);
-  const { loading, error, success } = purpose;
+  const { loading, error, success, item } = purpose;
   const form = useSelector((state) => state.form);
   const { you, what, love, serve, beneficiaries, transform, income } = form;
   const navigate = useNavigate();
@@ -37,7 +37,12 @@ function Purposestatement() {
       revenue_sources: income,
       purpose_statement: purposeData.purposestatement,
     };
-    dispatch(createItem(details));
+    // check if we want to update or create a new one
+    if (item) {
+      dispatch(updateItem(details));
+    } else {
+      dispatch(createItem(details));
+    }
   };
 
   const validateInput = (form) => {
