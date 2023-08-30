@@ -176,13 +176,36 @@ export const steps = [
   {
     id: 5,
     title: "What do your beneficiaries need?",
-    desc: `Identify the needs of your beneficiaries that you are uniquely qualified to meet.<br/>
-      Also, find out how you will deliver your contribution to the beneficiaries; this<br/>
-       includes finding your voice, how to express yourself, and your positioning.Given <br/>
-       that beneficiaries may have different and changing preferences, you should also <br/>
-       constantly polish yourself. Search and experiment widely. It is why musicians experiment,<br/>
-       sports people attempt several techniques or even sports, and writers search for new styles,<br/>
-       even literary genres or categories. The following sub-questions will guide you through:`,
+    desc: (
+      <div className='desc-item'>
+        <p>
+          <strong>
+            Identify the needs of your beneficiaries that you are uniquely
+            qualified to meet.
+          </strong>
+        </p>
+        <p>
+          Also, find out how you will deliver your contribution to the
+          beneficiaries; this includes finding your voice, how to express
+          yourself, and your positioning.
+        </p>
+        <p>
+          Given that beneficiaries may have different and changing preferences,
+          you should also constantly polish yourself.
+        </p>
+        <p>Search and experiment widely.</p>
+        <p>
+          <i>
+            It is why musicians experiment, sports people attempt several
+            techniques or even sports, and writers search for new styles, even
+            literary genres or categories.
+          </i>
+        </p>
+        <p>
+          <i>The following sub-questions will guide you through:</i>
+        </p>
+      </div>
+    ),
     inputName: "beneficiaries",
     guideItems: [
       "What problems or challenges are affecting your potential beneficiaries?",
@@ -192,12 +215,33 @@ export const steps = [
   {
     id: 6,
     title: "How do your offerings transform your beneficiaries?",
-    desc: `State not just the output but the outcome, which is the impact of your action.<br/>
-      The answer to why you do what you do should be inbuilt into the impact you want to<br/>
-      create. Personally, I inspire individuals and organisations to live meaningful lives.<br/>
-      inspire my beneficiaries through training and advisory, and as a result, they live<br/>
-      meaningful lives. The beneficiaries transform from pursuing anything they can to pursuing<br/>
-      what impacts society and fulfils them.`,
+    desc: (
+      <div className='desc-item'>
+        <p>
+          <strong>
+            State not just the output but the outcome, which is the impact of
+            your action.
+          </strong>
+        </p>
+        <p>
+          The answer to why you do what you do should be inbuilt into the impact
+          you want to create.
+        </p>
+        <p>
+          <br />
+          Personally,{" "}
+          <i>
+            I inspire individuals and organisations to live meaningful lives;
+            inspire my beneficiaries through training and advisory, and as a
+            result, they live meaningful lives.
+          </i>
+        </p>
+        <p>
+          The beneficiaries transform from pursuing anything they can to
+          pursuing what impacts society and fulfils them.
+        </p>
+      </div>
+    ),
     inputName: "transform",
     guideItems: [
       "What is the output of your interventions?",
@@ -207,9 +251,21 @@ export const steps = [
   {
     id: 7,
     title: "What activities can generate income for you?",
-    desc: `Without this question, all the other questions lead to a hobby, and with only<br/>
-      this ques- tion, you may end up as an unfulfilled ruthless money-making machine.<br/>
-      This question gives you a vocation and multiplies the impact you can make.`,
+    desc: (
+      <div className='desc-item'>
+        <p>
+          Without this question, all the other questions lead to a hobby, and
+          with only this question, you may end up as an unfulfilled ruthless
+          money-making machine.
+        </p>
+        <p>
+          <i>
+            This question gives you a vocation and multiplies the impact you can
+            make.
+          </i>
+        </p>
+      </div>
+    ),
     inputName: "income",
     guideItems: [
       "What are the beneficiaries willing and able to pay for, and how much?",

@@ -413,7 +413,7 @@ body{
 }
 
 .input-right{
-    background-color: var(--maroon-text);
+    background-color: var(--color-main);
     color: #fff;
     height: max-content;
 }
