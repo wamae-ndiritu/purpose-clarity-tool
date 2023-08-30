@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import Question from "./Question";
 import { steps } from "./formStepData";
 import { useDispatch } from "react-redux";
@@ -8,6 +8,9 @@ import { addState } from "../redux/slices/formSlice";
 const Form = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const location = useLocation();
+  const quizNo = location.search ? Number(location.search.split("=")[1]) : null;
 
   const handlenav = () => {
     dispatch(addState({ name: stepItem.inputName, value: input }));
@@ -36,6 +39,12 @@ const Form = () => {
     const item = steps.find((step) => step.id === id);
     setStepItem(item);
   };
+
+  useEffect(() => {
+    if (quizNo) {
+      setStepItem(steps[quizNo - 1]);
+    }
+  }, [quizNo]);
 
   return (
     <div className='container form-container'>

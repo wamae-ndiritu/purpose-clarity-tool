@@ -1,6 +1,7 @@
 import React from "react";
 import Purposestatement from "./Purposestatement";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 function Answers() {
   const form = useSelector((state) => state.form);
@@ -62,7 +63,9 @@ function Answers() {
                 return (
                   <li key={id}>
                     <h6>
-                      {id}. {question}
+                      <Link to={`/form?question=${id}`}>
+                        {id}. {question}
+                      </Link>
                     </h6>
                     {answer === "" ? (
                       <p>Please fill your answer</p>
