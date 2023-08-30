@@ -8,6 +8,19 @@
     --color-orange: #EF8F42;
 }
 
+:link{
+    color: unset;
+}
+
+a{
+    color: unset;
+    text-decoration: none;
+}
+
+a:hover{
+    color: unset;
+}
+
 body{
     background-color: var(--bg-color);
 }

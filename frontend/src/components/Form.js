@@ -2,18 +2,25 @@ import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Question from "./Question";
 import { steps } from "./formStepData";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addState } from "../redux/slices/formSlice";
 
 const Form = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const form = useSelector((state) => state.form);
+
   const location = useLocation();
   const quizNo = location.search ? Number(location.search.split("=")[1]) : null;
 
   const handlenav = () => {
-    dispatch(addState({ name: stepItem.inputName, value: input }));
+    dispatch(
+      addState({
+        name: stepItem.inputName,
+        value: input,
+      })
+    );
     setInput("");
     navigate("/answers");
   };
@@ -21,8 +28,12 @@ const Form = () => {
   const [stepItem, setStepItem] = useState(steps[0]);
 
   const handleToggleQuestion = (id, type) => {
-    dispatch(addState({ name: stepItem.inputName, value: input }));
-    setInput("");
+    dispatch(
+      addState({
+        name: stepItem.inputName,
+        value: input || form[stepItem.inputName],
+      })
+    );
     let itemId;
     if (type === "next") {
       itemId = id + 1;
@@ -31,18 +42,31 @@ const Form = () => {
     }
     const nextItem = steps.find((step) => step.id === itemId);
     setStepItem(nextItem);
+    setInput(() => {
+      return form[nextItem.inputName];
+    });
   };
 
   const handleQuestion = (id) => {
-    dispatch(addState({ name: stepItem.inputName, value: input }));
-    setInput("");
+    dispatch(
+      addState({
+        name: stepItem.inputName,
+        value: input || form[stepItem.inputName],
+      })
+    );
     const item = steps.find((step) => step.id === id);
     setStepItem(item);
+    setInput(() => {
+      return form[item.inputName];
+    });
   };
 
   useEffect(() => {
     if (quizNo) {
       setStepItem(steps[quizNo - 1]);
+      setInput(() => {
+        return form[steps[quizNo - 1].inputName];
+      });
     }
   }, [quizNo]);
 
@@ -64,7 +88,12 @@ const Form = () => {
         </div>
       </div>
       <div className='row fom'>
-        <Question setInput={setInput} stepItem={stepItem} val={input} />
+        <Question
+          setInput={setInput}
+          stepItem={stepItem}
+          val={input}
+          edit={quizNo}
+        />
         <div className='btns'>
           <button
             className='btn btn-secondary'
