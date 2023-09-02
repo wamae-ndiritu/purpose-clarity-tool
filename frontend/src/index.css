@@ -569,9 +569,13 @@ body{
     cursor: pointer;
  }
 
- .btn-div:disabled{
+ .btn-div[disabled]{
     cursor: not-allowed;
     background-color: #915454;
+ }
+
+ .btn-div h6{
+    margin: auto 0;
  }
 
  .btn-div span{

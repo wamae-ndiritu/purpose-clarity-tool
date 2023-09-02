@@ -5,7 +5,7 @@ import About from "./components/About";
 import Login from "./components/Login";
 import Form from "./components/Form";
 import "./index.css";
-import Register from "./components/Register";
+import Register from "./components/account/Register";
 import Answers from "./components/Answers";
 import { useDispatch, useSelector } from "react-redux";
 import View from "./components/UserView/View";

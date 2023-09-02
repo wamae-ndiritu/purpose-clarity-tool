@@ -128,12 +128,15 @@ const Form = () => {
                   handleToggleQuestion(stepItem.id, "next");
                 }
               }}
-              disabled={stepItem.id === steps.length + 1}
             >
-              <span>
-                <h6>Next </h6>
-                <i class='fa fa-angle-right' aria-hidden='true'></i>
-              </span>
+              {stepItem.id === steps.length ? (
+                <h6>Submit</h6>
+              ) : (
+                <span>
+                  <h6>Next </h6>
+                  <i class='fa fa-angle-right' aria-hidden='true'></i>
+                </span>
+              )}
             </div>
           </div>
         </div>
