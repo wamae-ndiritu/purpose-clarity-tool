@@ -42,6 +42,12 @@ const Register = ({ setToken }) => {
 
   const navigate = useNavigate();
 
+  const [showRegister, setShowRegister] = useState(false);
+
+  const handleComponentToggle = () => {
+    setShowRegister(!showRegister);
+  };
+
   const handleSignUp = (e) => {
     e.preventDefault(e);
     if (
@@ -136,53 +142,84 @@ const Register = ({ setToken }) => {
                   If you already have an account, click on the link below to log
                   in.
                 </p>
-                <button className='btn account-btn'>Sign In</button>
+                <button
+                  className='btn account-btn'
+                  onClick={handleComponentToggle}
+                >
+                  {showRegister ? "Sign In" : "Sign Up"}
+                </button>
               </div>
               <div className='account-right'>
-                <section className='user'>
-                  <h5 className='h5'>New User?</h5>
-                  <p>Use the form below to create yout account</p>
-                  <div className='input-col-2 mb-3'>
-                    <input
-                      type='text'
-                      className='form-control'
-                      placeholder='First Name'
-                    />
-                    <input
-                      type='text'
-                      className='form-control'
-                      placeholder='Last Name'
-                    />
-                  </div>
-                  <div className='mb-3'>
-                    <input
-                      type='email'
-                      className='form-control'
-                      placeholder='Enter your email'
-                    />
-                  </div>
-                  <div className='input-col-2 mb-3'>
-                    <input
-                      type='password'
-                      className='form-control'
-                      placeholder='Password'
-                    />
-                    <input
-                      type='password'
-                      className='form-control'
-                      placeholder='Confirm Password'
-                    />
-                  </div>
-                  <div className='mb-3 terms'>
-                    <input type='checkbox' />
-                    <p>Agree to Terms and Conditions</p>
-                  </div>
-                  <div className='mb-3 d-flex justify-content-center'>
-                    <button className='btn account-btn btn-user'>
-                      Sing Up
-                    </button>
-                  </div>
-                </section>
+                {showRegister ? (
+                  <section className='user'>
+                    <h5 className='h5'>New User?</h5>
+                    <p>Use the form below to create yout account</p>
+                    <div className='input-col-2 mb-3'>
+                      <input
+                        type='text'
+                        className='form-control'
+                        placeholder='First Name'
+                      />
+                      <input
+                        type='text'
+                        className='form-control'
+                        placeholder='Last Name'
+                      />
+                    </div>
+                    <div className='mb-3'>
+                      <input
+                        type='email'
+                        className='form-control'
+                        placeholder='Enter your email'
+                      />
+                    </div>
+                    <div className='input-col-2 mb-3'>
+                      <input
+                        type='password'
+                        className='form-control'
+                        placeholder='Password'
+                      />
+                      <input
+                        type='password'
+                        className='form-control'
+                        placeholder='Confirm Password'
+                      />
+                    </div>
+                    <div className='mb-3 terms'>
+                      <input type='checkbox' />
+                      <p>Agree to Terms and Conditions</p>
+                    </div>
+                    <div className='mb-3 d-flex justify-content-center'>
+                      <button className='btn account-btn btn-user'>
+                        Sing Up
+                      </button>
+                    </div>
+                  </section>
+                ) : (
+                  <section className='user'>
+                    <h5 className='h5'>Returning User?</h5>
+                    <p>Enter your email and password to login</p>
+                    <div className='mb-3'>
+                      <input
+                        type='email'
+                        className='form-control'
+                        placeholder='Enter your email'
+                      />
+                    </div>
+                    <div className='mb-3'>
+                      <input
+                        type='password'
+                        className='form-control'
+                        placeholder='Password'
+                      />
+                    </div>
+                    <div className='mb-3 d-flex justify-content-center'>
+                      <button className='btn account-btn btn-user'>
+                        Sing In
+                      </button>
+                    </div>
+                  </section>
+                )}
               </div>
             </div>
           </div>
