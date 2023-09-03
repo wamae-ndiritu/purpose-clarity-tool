@@ -83,7 +83,10 @@ const Home = () => {
             </div>
           </div>
           <div className='hero-btns'>
-            <Link to='/view/purpose-clarity-item' className='btn button'>
+            <Link
+              to='/view/purpose-clarity-item/previous'
+              className='btn button'
+            >
               See Previous Answers
             </Link>
             <Link to='/form' className='btn button btn-start'>

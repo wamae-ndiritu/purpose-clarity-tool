@@ -1,20 +1,27 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const localStorageAnswers = localStorage.getItem("purposeInfo")
+  ? JSON.parse(localStorage.getItem("purposeInfo"))
+  : {
+      you: "",
+      what: "",
+      love: "",
+      serve: "",
+      beneficiaries: "",
+      transform: "",
+      income: "",
+      purpose_statement: "",
+    };
+
 export const formSlice = createSlice({
   name: "form",
-  initialState: {
-    you: "",
-    what: "",
-    love: "",
-    serve: "",
-    beneficiaries: "",
-    transform: "",
-    income: "",
-    purpose_statement: "",
-  },
+  initialState: localStorageAnswers,
   reducers: {
     addState: (state, action) => {
-      state[action.payload.name] = action.payload.value;
+      const { name, value } = action.payload;
+      state[name] = value;
+
+      localStorage.setItem("purposeInfo", JSON.stringify(state));
     },
   },
 });

@@ -9,6 +9,9 @@ import {
   getItemFail,
   getItemStart,
   getItemSuccess,
+  shareAnswersFail,
+  shareAnswersStart,
+  shareAnswersSuccess,
   updateItemFail,
   updateItemStart,
   updateItemSuccess,
@@ -151,5 +154,39 @@ export const deleteItem = () => async (dispatch, getState) => {
       dispatch(logout());
     }
     dispatch(deleteItemFail(error));
+  }
+};
+
+export const sharePurpose = (purposeInfo) => async (dispatch, getState) => {
+  try {
+    dispatch(shareAnswersStart());
+
+    const {
+      user: { userInfo },
+    } = getState();
+
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    };
+
+    await axios.post(
+      `${API_ENDPOINT}/purpose-clarity/send-feedback-email`,
+      purposeInfo,
+      config
+    );
+
+    dispatch(shareAnswersSuccess());
+  } catch (err) {
+    let error = err.response ? err.response.data.message : err.message;
+    if (
+      error === "Not authorized, token failed!" ||
+      error === "Not authorized, no token!"
+    ) {
+      dispatch(logout());
+    }
+    dispatch(shareAnswersFail(error));
   }
 };

@@ -1,56 +1,28 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { createItem, updateItem } from "../redux/actions/purposeActions";
-import UtilComponent from "./UtilComponent";
-import { validateInput } from "../formValidation";
+import { addState } from "../redux/slices/formSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 function Purposestatement() {
   const dispatch = useDispatch();
-  const purpose = useSelector((state) => state.purpose);
-  const { loading, error, success, item } = purpose;
-  const form = useSelector((state) => state.form);
-  const { you, what, love, serve, beneficiaries, transform, income } = form;
   const navigate = useNavigate();
 
+  const form = useSelector((state) => state.form);
+
   const [purposeData, setPurposeData] = useState({
-    purposestatement: "",
+    purposestatement: form.purpose_statement,
   });
-  const [inputErr, setInputErr] = useState(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const isValid = validateInput(form);
-    if (!isValid) {
-      setInputErr("All questions not answered!");
-      return;
-    } else if (purposeData.purposestatement === "") {
-      setInputErr("All questions not answered!");
-      return;
-    }
-    const details = {
-      identity: you,
-      strengths: what,
-      passions: love,
-      target_audience: serve,
-      beneficiary_needs: beneficiaries,
-      impact: transform,
-      revenue_sources: income,
-      purpose_statement: purposeData.purposestatement,
-    };
-    // check if we want to update or create a new one
-    if (item) {
-      dispatch(updateItem(details));
-    } else {
-      dispatch(createItem(details));
-    }
+    dispatch(
+      addState({
+        name: "purpose_statement",
+        value: purposeData.purposestatement,
+      })
+    );
+    navigate("/view/purpose-clarity-item/current");
   };
-
-  useEffect(() => {
-    if (success) {
-      navigate("/purpose-clarity-item/download");
-    }
-  }, [success, navigate]);
 
   return (
     <div className='container'>
@@ -150,9 +122,8 @@ function Purposestatement() {
               class='btn-submit mt-4'
               onClick={handleSubmit}
             >
-              Submit
+              View Responses
             </button>
-            <UtilComponent loading={loading} error={inputErr || error} />
           </div>
         </div>
       </div>

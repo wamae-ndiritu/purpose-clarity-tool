@@ -10,6 +10,7 @@ import Statement from "./components/UserView/Statement";
 import { verifySession } from "./redux/actions/userActions";
 import Account from "./components/account/Account";
 import PreviousView from "./components/UserView/PreviousView";
+import CurrentView from "./components/UserView/CurrentView";
 
 function App() {
   const dispatch = useDispatch();
@@ -39,8 +40,13 @@ function App() {
         <Route exact path='/' element={<Home />} />
         <Route
           exact
-          path='/view/purpose-clarity-item'
+          path='/view/purpose-clarity-item/previous'
           element={<PreviousView />}
+        />
+        <Route
+          exact
+          path='/view/purpose-clarity-item/current'
+          element={<CurrentView />}
         />
         <Route
           exact
