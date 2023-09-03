@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   createItem,
   getItem,
+  sharePurpose,
   updateItem,
 } from "../../redux/actions/purposeActions";
 import View from "./View";
@@ -29,28 +30,34 @@ const CurrentView = () => {
 
   const [inputErr, setInputErr] = useState(null);
 
+  const details = {
+    identity: you,
+    strengths: what,
+    passions: love,
+    target_audience: serve,
+    beneficiary_needs: beneficiaries,
+    impact: transform,
+    revenue_sources: income,
+    purpose_statement: purpose_statement,
+  };
+
   const handleSubmit = () => {
     const isValid = validateInput(form);
     if (!isValid) {
       setInputErr("All questions not answered!");
       return;
     }
-    const details = {
-      identity: you,
-      strengths: what,
-      passions: love,
-      target_audience: serve,
-      beneficiary_needs: beneficiaries,
-      impact: transform,
-      revenue_sources: income,
-      purpose_statement: purpose_statement,
-    };
     // check if we want to update or create a new one
     if (item) {
       dispatch(updateItem(details));
     } else {
       dispatch(createItem(details));
     }
+  };
+
+  const handleShareAnswers = (e) => {
+    e.preventDefault();
+    dispatch(sharePurpose(details));
   };
 
   useEffect(() => {
@@ -64,7 +71,12 @@ const CurrentView = () => {
         <div className='row row-btn'>
           <div className='col-lg-8 col-md-8 col-sm-10 col-btn'>
             <button className='btn btn-submit btn-1'>Go Back</button>
-            <button className='btn btn-submit btn-1'>Share For Feadback</button>
+            <button
+              className='btn btn-submit btn-1'
+              onClick={handleShareAnswers}
+            >
+              Share For Feadback
+            </button>
             <button className='btn btn-submit btn-1'>View Purpose</button>
           </div>
         </div>

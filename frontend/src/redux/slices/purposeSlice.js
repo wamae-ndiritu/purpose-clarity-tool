@@ -7,6 +7,8 @@ export const purposeSlice = createSlice({
     loading: false,
     error: false,
     success: false,
+    sent: false,
+    msg: null,
   },
   reducers: {
     createItemStart: (state) => {
@@ -60,6 +62,19 @@ export const purposeSlice = createSlice({
       state.loading = false;
       state.error = action.payload;
     },
+    shareAnswersStart: (state) => {
+      state.loading = true;
+      state.sent = false;
+      state.msg = null;
+    },
+    shareAnswersSuccess: (state) => {
+      state.loading = false;
+      state.sent = true;
+    },
+    shareAnswersFail: (state, action) => {
+      state.loading = false;
+      state.msg = action.payload;
+    },
   },
 });
 
@@ -76,5 +91,8 @@ export const {
   deleteItemStart,
   deleteItemSuccess,
   deleteItemFail,
+  shareAnswersStart,
+  shareAnswersSuccess,
+  shareAnswersFail,
 } = purposeSlice.actions;
 export default purposeSlice.reducer;
