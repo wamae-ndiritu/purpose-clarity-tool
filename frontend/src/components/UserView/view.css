@@ -1,7 +1,5 @@
 .view-cont{
-    padding: 30px !important;
     display: flex;
-    justify-content: center;
 }
 
 .view-cont h2{
@@ -19,32 +17,39 @@
     text-align: right;
 }
 
-.view-wrapper{
-    padding: 10px;
+.col-item{
+    padding: 0;
+    padding-left: 5px;
 }
 
-
 .item-wrapper, .purpose-cont{
-    padding: 10px;
-    border-radius: 10px;
-
+    padding: 10px 20px;
 }
 
 .item-wrapper{
-    margin: 10px 0;
+    margin-bottom: 5px;
 }
 
 .item-wrapper h6{
-    font-size: 18px;
+    font-size: 16px;
     color: #000;
     margin: 0;
+    transition: 0.4s ease-out;
+}
+
+.item-wrapper h6:hover{
+    color: #ea710f;
+    text-decoration: underline;
 }
 
 .item-wrapper p, .purpose-cont p{
-    font-size: 16px;
-    letter-spacing: 1px;
+    font-size: 14px;
     padding: 3px;
     margin: 0;
+}
+
+.purpose-cont{
+    margin: 0 15px;
 }
 
 .purpose-cont h6{
