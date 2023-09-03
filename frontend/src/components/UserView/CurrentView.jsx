@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import {
@@ -83,7 +84,7 @@ const CurrentView = () => {
     <div>
       <View item={form} />
       <UtilComponent loading={loading} error={inputErr || error} />
-      <div className='container mt-3'>
+      <div className='container'>
         <div className='row row-btn'>
           <div className='col-lg-8 col-md-8 col-sm-10 col-btn'>
             <button className='btn btn-submit btn-1'>Go Back</button>
@@ -93,8 +94,23 @@ const CurrentView = () => {
             >
               Share For Feadback
             </button>
-            <button className='btn btn-submit btn-1'>View Purpose</button>
+            <Link
+              to='/purpose-clarity-item/download'
+              className='btn btn-submit btn-1'
+            >
+              View Purpose
+            </Link>
           </div>
+        </div>
+        <div className='row text-success my-3'>
+          <p className='policy-text text-center'>
+            By clicking{" "}
+            <i>
+              <stron>Submit For Feadback</stron>
+            </i>{" "}
+            button, you agree to share your responses to the 7Qs to your coach
+            for feadback and review.
+          </p>
         </div>
       </div>
     </div>
