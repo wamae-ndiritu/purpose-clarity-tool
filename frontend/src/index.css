@@ -29,6 +29,12 @@ body{
     background-color: var(--bg-color);
 }
 
+.active-header{
+    position: fixed;
+    background-color: #fff;
+    top: 0;
+}
+
 .App {
     width: 100%;
     display: flex;
