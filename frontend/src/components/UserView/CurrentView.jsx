@@ -92,7 +92,7 @@ const CurrentView = () => {
               className='btn btn-submit btn-1'
               onClick={handleShareAnswers}
             >
-              Share For Feadback
+              Share For Feedback
             </button>
             <Link
               to='/purpose-clarity-item/download'
@@ -106,7 +106,7 @@ const CurrentView = () => {
           <p className='policy-text text-center'>
             By clicking{" "}
             <i>
-              <stron>Submit For Feadback</stron>
+              <stron>Submit For Feedback</stron>
             </i>{" "}
             button, you agree to share your responses to the 7Qs to your coach
             for feadback and review.
