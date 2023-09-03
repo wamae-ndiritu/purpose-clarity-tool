@@ -41,39 +41,39 @@ const Home = () => {
           </p>
           <div className='questions-wrapper'>
             <div className='left'>
-              <div className='quiz-item'>
+              <Link to='/form?question=1' className='quiz-item'>
                 <h6>Who are you</h6>
                 <span>1</span>
-              </div>
-              <div className='quiz-item'>
+              </Link>
+              <Link to='/form?question=2' className='quiz-item'>
                 <h6>What do you do well</h6>
                 <span>2</span>
-              </div>
-              <div className='quiz-item'>
+              </Link>
+              <Link to='/form?question=3' className='quiz-item'>
                 <h6>What do you love to do?</h6>
                 <span>3</span>
-              </div>
-              <div className='quiz-item'>
+              </Link>
+              <Link to='/form?question=4' className='quiz-item'>
                 <h6>Whom do you intend to serve?</h6>
                 <span>4</span>
-              </div>
+              </Link>
             </div>
             <div className='center'>
               <img src='/purpose-quiz.png' alt='...' />
             </div>
             <div className='right'>
-              <div className='quiz-item'>
+              <Link to='/form?question=5' className='quiz-item'>
                 <h6>What do your beneficiaries need?</h6>
                 <span>5</span>
-              </div>
-              <div className='quiz-item'>
+              </Link>
+              <Link to='/form?question=6' className='quiz-item'>
                 <h6>How do your offerings transform your beneficiaries?</h6>
                 <span>6</span>
-              </div>
-              <div className='quiz-item'>
+              </Link>
+              <Link to='/form?question=7' className='quiz-item'>
                 <h6>What activities can generate income for you?</h6>
                 <span>7</span>
-              </div>
+              </Link>
               <div className='quiz-item'>
                 <h6>The Purpose Statement</h6>
                 <span>

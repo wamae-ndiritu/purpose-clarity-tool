@@ -269,11 +269,17 @@ body{
     justify-content: flex-end;
     align-items: center;
     margin: 10px;
+    transition: 0.4s ease-out;
+}
+
+.quiz-item:hover h6{
+    color: #EF8F42;
 }
 
 .quiz-item h6{
     font-size: 16px;
     font-weight: 400;
+    transition: 0.4s ease-out;
 }
 
 .quiz-item span{
