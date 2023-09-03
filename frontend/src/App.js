@@ -6,10 +6,10 @@ import Form from "./components/Form";
 import "./index.css";
 import Answers from "./components/Answers";
 import { useDispatch, useSelector } from "react-redux";
-import View from "./components/UserView/View";
 import Statement from "./components/UserView/Statement";
 import { verifySession } from "./redux/actions/userActions";
 import Account from "./components/account/Account";
+import PreviousView from "./components/UserView/PreviousView";
 
 function App() {
   const dispatch = useDispatch();
@@ -37,7 +37,11 @@ function App() {
         <Route exact path='/form' element={<Form />} />
         <Route exact path='/answers' element={<Answers />} />
         <Route exact path='/' element={<Home />} />
-        <Route exact path='/view/purpose-clarity-item' element={<View />} />
+        <Route
+          exact
+          path='/view/purpose-clarity-item'
+          element={<PreviousView />}
+        />
         <Route
           exact
           path='/purpose-clarity-item/download'
