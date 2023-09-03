@@ -9,23 +9,25 @@ export const userSlice = createSlice({
   initialState: {
     userInfo: userInfoFromLocalStorage,
     loading: false,
+    loadingLogin: false,
     error: null,
+    errorLogin: null,
     success: false,
   },
   reducers: {
     loginStart: (state) => {
-      state.loading = true;
-      state.error = false;
+      state.loadingLogin = true;
+      state.errorLogin = null;
       state.success = false;
     },
     loginSuccess: (state, action) => {
-      state.loading = false;
+      state.loadingLogin = false;
       state.userInfo = action.payload;
       state.success = true;
     },
     loginFail: (state, action) => {
-      state.loading = false;
-      state.error = action.payload;
+      state.loadingLogin = false;
+      state.errorLogin = action.payload;
     },
     logoutUser: (state) => {
       state.userInfo = {};
@@ -42,6 +44,10 @@ export const userSlice = createSlice({
       state.loading = false;
       state.error = action.payload;
     },
+    hideError: (state) => {
+      state.error = null;
+      state.errorLogin = null;
+    },
   },
 });
 
@@ -53,5 +59,6 @@ export const {
   registerStart,
   registerSuccess,
   registerFail,
+  hideError,
 } = userSlice.actions;
 export default userSlice.reducer;
