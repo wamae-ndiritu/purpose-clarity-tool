@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
 import {
   createItem,
   getItem,
@@ -10,11 +11,18 @@ import View from "./View";
 import UtilComponent from "../UtilComponent";
 import { validateInput } from "../../formValidation";
 
+const ToastObjects = {
+  pauseOnFocusLoss: false,
+  draggable: false,
+  pauseOnHover: false,
+  autoClose: 2000,
+};
+
 const CurrentView = () => {
   const dispatch = useDispatch();
 
   const purpose = useSelector((state) => state.purpose);
-  const { loading, error, item } = purpose;
+  const { loading, error, item, sent, msg } = purpose;
 
   const form = useSelector((state) => state.form);
   const {
@@ -63,10 +71,18 @@ const CurrentView = () => {
   useEffect(() => {
     dispatch(getItem());
   }, [dispatch]);
+
+  useEffect(() => {
+    if (sent) {
+      toast.success("Sent successfully!", ToastObjects);
+    } else if (msg) {
+      toast.error(msg, ToastObjects);
+    }
+  }, [sent, msg]);
   return (
     <div>
-      <UtilComponent loading={loading} error={inputErr || error} />
       <View item={form} />
+      <UtilComponent loading={loading} error={inputErr || error} />
       <div className='container mt-3'>
         <div className='row row-btn'>
           <div className='col-lg-8 col-md-8 col-sm-10 col-btn'>

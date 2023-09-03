@@ -33,13 +33,10 @@ const createPurposeItem = async (req, res) => {
 
 // GET PURPOSE ITEM
 const getUserPurposeItem = async (req, res) => {
-  console.log(req.params.id);
   const purpose = await Purpose.findOne({ user: req.params.id }).populate(
     "user",
-    "firstName email"
+    "firstName lastName email"
   );
-
-  console.log(purpose);
 
   if (purpose) {
     res.json(purpose);

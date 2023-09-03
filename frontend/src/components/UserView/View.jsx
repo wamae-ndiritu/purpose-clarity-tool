@@ -3,6 +3,7 @@ import "./view.css";
 import NavBar from "../NavBar";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import Toast from "../../Toast";
 
 const View = ({ item }) => {
   const form = useSelector((state) => state.form);
@@ -63,6 +64,7 @@ const View = ({ item }) => {
     <>
       <NavBar />
       <div className='container my-3'>
+        <Toast />
         <div className='my-3'>
           <h6 className='h6 text-center title'>Your Reponses</h6>
         </div>

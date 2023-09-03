@@ -41,7 +41,7 @@ exports.submitForFeadback = async (req, res) => {
   const mailOptions = {
     from: process.env.AUTH_EMAIL,
     to: email,
-    subject: `<h4>Answers to 7 Questions Purpose Clarification Tool</h4>`,
+    subject: "Answers to 7 Questions Purpose Clarification Tool",
     html: `
     <p><h4>${
       (firstName, lastName)
@@ -95,7 +95,7 @@ exports.submitForFeadback = async (req, res) => {
     res.status(200).json({ message: "Feedback email sent successfully!" });
     console.log("Feedback email sent successfully!");
   } catch (error) {
-    console.error("Error sending feedback email:", error);
+    // console.error("Error sending feedback email:", error);
     return res.status(500).json({ message: "Feadback email not sent!" });
   }
 };
