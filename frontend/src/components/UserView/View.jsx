@@ -2,43 +2,55 @@ import React from "react";
 import "./view.css";
 import NavBar from "../NavBar";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const View = ({ item }) => {
+  const form = useSelector((state) => state.form);
+  const {
+    you,
+    what,
+    love,
+    serve,
+    beneficiaries,
+    transform,
+    income,
+    purpose_statement,
+  } = form;
   const items = [
     {
       id: 0,
       title: "Who are you?",
-      value: item?.identity,
+      value: item?.identity || you,
     },
     {
       id: 1,
       title: "What do you do well?",
-      value: item?.strengths,
+      value: item?.strengths || what,
     },
     {
       id: 2,
       title: "What do you love to do?",
-      value: item?.passions,
+      value: item?.passions || love,
     },
     {
       id: 3,
       title: "Whom do you intend to serve?",
-      value: item?.target_audience,
+      value: item?.target_audience || serve,
     },
     {
       id: 4,
       title: "What do your beneficiaries need?",
-      value: item?.beneficiary_needs,
+      value: item?.beneficiary_needs || beneficiaries,
     },
     {
       id: 5,
       title: "How do your offerings transform your beneficiaries?",
-      value: item?.impact,
+      value: item?.impact || transform,
     },
     {
       id: 6,
       title: "What activities can generate income for you?",
-      value: item?.revenue_sources,
+      value: item?.revenue_sources || income,
     },
     {
       id: 7,
@@ -88,7 +100,7 @@ const View = ({ item }) => {
           <div className='row view-cont d-flex justify-content-center'>
             <div className='shadow-sm purpose-cont bg-white'>
               <h6 className='text-center h6'>Purpose Statement Summary</h6>
-              <p>{item?.purpose_statement}</p>
+              <p>{item?.purpose_statement || purpose_statement}</p>
             </div>
           </div>
         )}

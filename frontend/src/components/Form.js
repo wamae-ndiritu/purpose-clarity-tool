@@ -25,13 +25,10 @@ const Form = () => {
     setInput("");
     navigate("/answers");
   };
-  const [input, setInput] = useState("");
+  const [input, setInput] = useState(form.you);
   const [stepItem, setStepItem] = useState(steps[0]);
 
   const handleToggleQuestion = (id, type) => {
-    if (id === 1) {
-      return;
-    }
     dispatch(
       addState({
         name: stepItem.inputName,
@@ -42,6 +39,9 @@ const Form = () => {
     if (type === "next") {
       itemId = id + 1;
     } else if (type === "prev") {
+      if (id === 1) {
+        return;
+      }
       itemId = id - 1;
     }
     const nextItem = steps.find((step) => step.id === itemId);
