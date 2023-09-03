@@ -29,6 +29,9 @@ const Form = () => {
   const [stepItem, setStepItem] = useState(steps[0]);
 
   const handleToggleQuestion = (id, type) => {
+    if (id === 1) {
+      return;
+    }
     dispatch(
       addState({
         name: stepItem.inputName,
