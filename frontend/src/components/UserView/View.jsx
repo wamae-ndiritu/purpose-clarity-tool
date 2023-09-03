@@ -1,17 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./view.css";
-import { useSelector, useDispatch } from "react-redux";
-import { getItem } from "../../redux/actions/purposeActions";
+import NavBar from "../NavBar";
+import { Link } from "react-router-dom";
 
-const View = () => {
-  const dispatch = useDispatch();
-  const purpose = useSelector((state) => state.purpose);
-  const { item } = purpose;
-
-  useEffect(() => {
-    dispatch(getItem());
-  }, [dispatch]);
-
+const View = ({ item }) => {
   const items = [
     {
       id: 0,
@@ -48,31 +40,60 @@ const View = () => {
       title: "What activities can generate income for you?",
       value: item?.revenue_sources,
     },
+    {
+      id: 7,
+      title: "The Purpose Statement",
+      value: "See your purpose statement below.",
+    },
   ];
 
   return (
-    <div className='container bg-white'>
-      <div className='row view-cont'>
-        <h2 className='text-center h2'>Purpose Clarity Tool</h2>
-        <p className='text-center'>These are your responses</p>
-        <span className='float-right'>Hi, {item?.user?.firstName}</span>
-        <div className='col-8 view-wrapper'>
-          {items.map((itemData) => {
-            const { id, title, value } = itemData;
-            return (
-              <div className='shadow-sm item-wrapper' key={id}>
-                <h6 className='h6'>{title}</h6>
-                <p>{value}</p>
-              </div>
-            );
-          })}
-          <div className='shadow-sm mt-3 purpose-cont'>
-            <h6 className='text-center h6'>Purpose Statement Summary</h6>
-            <p>{item?.purpose_statement}</p>
-          </div>
+    <>
+      <NavBar />
+      <div className='container my-3'>
+        <div className='my-3'>
+          <h6 className='h6 text-center title'>Your Reponses</h6>
         </div>
+        <div className='row view-cont'>
+          {item ? (
+            items.map((itemData) => {
+              const { id, title, value } = itemData;
+              return (
+                <div className='col-lg-6 col-md-6 col-sm-6 col-item' key={id}>
+                  <div className='shadow-sm item-wrapper bg-white'>
+                    <h6 className='h6'>
+                      <Link
+                        to={`${id === 7 ? "/" : `/form?question=${id + 1}`}`}
+                      >
+                        {id + 1}. {title}
+                      </Link>
+                    </h6>
+                    <p>{value}</p>
+                  </div>
+                </div>
+              );
+            })
+          ) : (
+            <div className='col-8 no-response'>
+              <h6 className='h6 text-center'>
+                You have no previous responses.
+              </h6>
+              <Link to='/form' className='text-center'>
+                Start Here
+              </Link>
+            </div>
+          )}
+        </div>
+        {item && (
+          <div className='row view-cont d-flex justify-content-center'>
+            <div className='shadow-sm purpose-cont bg-white'>
+              <h6 className='text-center h6'>Purpose Statement Summary</h6>
+              <p>{item?.purpose_statement}</p>
+            </div>
+          </div>
+        )}
       </div>
-    </div>
+    </>
   );
 };
 

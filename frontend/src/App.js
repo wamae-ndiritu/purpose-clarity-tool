@@ -2,15 +2,14 @@ import React, { useEffect } from "react";
 import { Routes, Route, Outlet, Navigate, useLocation } from "react-router-dom";
 import Home from "./components/Home";
 import About from "./components/About";
-import Login from "./components/Login";
 import Form from "./components/Form";
 import "./index.css";
-import Register from "./components/Register";
 import Answers from "./components/Answers";
 import { useDispatch, useSelector } from "react-redux";
-import View from "./components/UserView/View";
 import Statement from "./components/UserView/Statement";
 import { verifySession } from "./redux/actions/userActions";
+import Account from "./components/account/Account";
+import PreviousView from "./components/UserView/PreviousView";
 
 function App() {
   const dispatch = useDispatch();
@@ -23,7 +22,7 @@ function App() {
     if (userInfo.token) {
       return <Outlet />;
     }
-    return <Navigate to='/login' />;
+    return <Navigate to='/account/login' />;
   }
 
   useEffect(() => {
@@ -32,14 +31,17 @@ function App() {
 
   return (
     <Routes>
-      <Route exact path='/register' element={<Register />} />
-      <Route exact path='/login' element={<Login />} />
+      <Route exact path='/account/login' element={<Account />} />
       <Route element={<AuthLayout />}>
         <Route exact path='/about' element={<About />} />
         <Route exact path='/form' element={<Form />} />
         <Route exact path='/answers' element={<Answers />} />
         <Route exact path='/' element={<Home />} />
-        <Route exact path='/view/purpose-clarity-item' element={<View />} />
+        <Route
+          exact
+          path='/view/purpose-clarity-item'
+          element={<PreviousView />}
+        />
         <Route
           exact
           path='/purpose-clarity-item/download'

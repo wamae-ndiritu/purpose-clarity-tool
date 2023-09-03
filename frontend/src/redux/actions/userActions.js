@@ -1,4 +1,5 @@
 import {
+  hideError,
   loginFail,
   loginStart,
   loginSuccess,
@@ -10,7 +11,7 @@ import {
 import axios from "axios";
 import { API_ENDPOINT } from "../../Url";
 
-export const register = async (details, dispatch) => {
+export const register = (details) => async (dispatch) => {
   dispatch(registerStart());
   try {
     const { data } = await axios.post(`${API_ENDPOINT}/user/register`, details);
@@ -22,7 +23,7 @@ export const register = async (details, dispatch) => {
   }
 };
 
-export const login = async (details, dispatch) => {
+export const login = (details) => async (dispatch) => {
   dispatch(loginStart());
   try {
     const { data } = await axios.post(`${API_ENDPOINT}/user/login`, details);
@@ -31,6 +32,10 @@ export const login = async (details, dispatch) => {
   } catch (err) {
     dispatch(loginFail(err.response ? err.response.data.message : err.message));
   }
+};
+
+export const hideLoginErr = () => (dispatch) => {
+  dispatch(hideError());
 };
 
 export const logout = () => (dispatch) => {

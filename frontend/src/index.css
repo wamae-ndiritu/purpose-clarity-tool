@@ -269,11 +269,17 @@ body{
     justify-content: flex-end;
     align-items: center;
     margin: 10px;
+    transition: 0.4s ease-out;
+}
+
+.quiz-item:hover h6{
+    color: #EF8F42;
 }
 
 .quiz-item h6{
     font-size: 16px;
     font-weight: 400;
+    transition: 0.4s ease-out;
 }
 
 .quiz-item span{
@@ -569,9 +575,13 @@ body{
     cursor: pointer;
  }
 
- .btn-div:disabled{
+ .btn-div[disabled]{
     cursor: not-allowed;
     background-color: #915454;
+ }
+
+ .btn-div h6{
+    margin: auto 0;
  }
 
  .btn-div span{

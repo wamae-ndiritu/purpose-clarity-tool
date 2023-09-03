@@ -4,21 +4,11 @@
 
 ## Design Link
 
-
 ## Description
 
 Purpose clarity tool is a a website that provides a way to create, update, delete and retrieve jobs. It also provides a way to create and retrieve a user.
 
 ## Setup Requirements
-
-
-
-
-
-
-
-
-
 
 ## Technologies Used
 
@@ -30,13 +20,7 @@ The following have been used on this project:
 - React
 - Figma
 
-
-
-#### Live link to view the project 
-
-
-
-
+#### Live link to view the project
 
 ## Known Bugs
 
