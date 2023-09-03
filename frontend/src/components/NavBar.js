@@ -13,7 +13,7 @@ const NavBar = () => {
   useEffect(() => {
     window.addEventListener("scroll", function () {
       const activeHeader = document.querySelector("#header");
-      activeHeader?.classList.toggle("active-header", window.scrollY > 30);
+      activeHeader?.classList.toggle("active-header", window.scrollY > 200);
     });
 
     return () => {
