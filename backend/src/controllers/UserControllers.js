@@ -73,4 +73,10 @@ const updatePassword = async (req, res) => {
   }
 };
 
-module.exports = { register, login, updatePassword };
+// ADMIN GET ALL USERS
+const getUsers = async (req, res) => {
+  const users = await User.find({});
+  res.json(users);
+};
+
+module.exports = { register, login, updatePassword, getUsers };

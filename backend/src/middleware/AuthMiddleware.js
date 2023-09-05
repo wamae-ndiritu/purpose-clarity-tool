@@ -23,6 +23,14 @@ exports.verify = async (req, res, next) => {
   }
 };
 
+exports.admin = (req, res, next) => {
+  if (req.user && req.user.isAdmin) {
+    next();
+  } else {
+    res.status(401).json({ message: "Not authorized as an Admin" });
+  }
+};
+
 exports.verifyToken = (req, res) => {
   const token = req.body.token;
   try {
