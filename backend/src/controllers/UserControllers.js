@@ -4,7 +4,7 @@ const { generateToken } = require("../utils/generateToken");
 
 // REGISTER
 const register = async (req, res) => {
-  const { firstName, lastName, email, password } = req.body;
+  const { fullName, email, password } = req.body;
 
   const userExists = await User.findOne({ email });
 
@@ -14,8 +14,7 @@ const register = async (req, res) => {
     const salt = 10;
     const hashPassword = bcrypt.hashSync(password, salt);
     const user = await new User({
-      firstName,
-      lastName,
+      fullName,
       email,
       password: hashPassword,
     });
@@ -37,8 +36,7 @@ const login = async (req, res) => {
     if (comparePassword) {
       res.status(200).json({
         _id: user._id,
-        firstName: user.firstName,
-        lastName: user.lastName,
+        fullName: user.fullName,
         email: user.email,
         token: generateToken(user._id),
       });
