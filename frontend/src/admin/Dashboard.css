@@ -1,0 +1,22 @@
+.dashboard-container {
+    display: flex;
+    height: 100vh;
+}
+
+.sidebar {
+    width: 200px;
+    background-color: #E8ECF5;
+    color: #fff;
+}
+
+.content {
+    flex: 1;
+    background-color: #fff;
+}
+
+.topbar {
+    margin: 0;
+    height: 60px;
+    background-color: #E8ECF5;
+    color: #000;
+}
