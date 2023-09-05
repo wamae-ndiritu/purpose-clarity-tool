@@ -1,9 +1,8 @@
 .sidebar {
-    width: 150px;
+    width: 200px;
     height: 100%;
-    position: fixed;
-    top: 60px;
-    left: 0;
+    /* position: fixed; */
+    top: 0;
     background-color: #E8ECF5;
     color: #fff;
     overflow-y: auto;
@@ -41,7 +40,7 @@
 .sidebar-footer {
     position: absolute;
     bottom: 0;
-    width: 100%;
+    width: 200px;
     padding: 20px;
     text-align: center;
     background-color: #E8ECF5;
@@ -59,6 +58,10 @@
 
 .sidebar.collapsed .sidebar-header i {
     transform: rotate(180deg);
+}
+
+.sidebar.collapsed .sidebar-footer{
+    width: 60px;
 }
 
 .sidebar.collapsed .link-text, .sidebar.collapsed .pct-title{

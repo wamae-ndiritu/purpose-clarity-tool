@@ -37,7 +37,6 @@ const SideBar = () => {
               <h6 className='link-text'>Rensponses</h6>
             </Link>
           </li>
-          {/* Add more menu items as needed */}
         </ul>
       </div>
       <div className='sidebar-footer'>Sidebar Footer</div>
