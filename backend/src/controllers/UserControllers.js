@@ -48,4 +48,29 @@ const login = async (req, res) => {
   }
 };
 
-module.exports = { register, login };
+// UPDATE PASSWORD
+const updatePassword = async (req, res) => {
+  const { password } = req.body;
+  const id = req.params.id;
+
+  const user = await User.findById(id);
+
+  if (user) {
+    const hashRounds = 10;
+    const hashedPassword = await bcrypt.hash(password, hashRounds);
+
+    if (hashedPassword) {
+      user.password = hashedPassword;
+
+      const updatedUser = await user.save();
+
+      if (updatedUser) {
+        res.status(200).json(updatedUser);
+      }
+    }
+  } else {
+    res.status(400).json({ message: "Invalid request!" });
+  }
+};
+
+module.exports = { register, login, updatePassword };
