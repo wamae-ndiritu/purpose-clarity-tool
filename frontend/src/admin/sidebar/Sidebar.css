@@ -36,16 +36,6 @@
     padding: 0 10px;
     color: #000;
 }
-
-.sidebar-footer {
-    position: absolute;
-    bottom: 0;
-    width: 200px;
-    padding: 20px;
-    text-align: center;
-    background-color: #E8ECF5;
-}
-
 .sidebar.collapsed {
     width: 60px;
 }
@@ -58,10 +48,6 @@
 
 .sidebar.collapsed .sidebar-header i {
     transform: rotate(180deg);
-}
-
-.sidebar.collapsed .sidebar-footer{
-    width: 60px;
 }
 
 .sidebar.collapsed .link-text, .sidebar.collapsed .pct-title{

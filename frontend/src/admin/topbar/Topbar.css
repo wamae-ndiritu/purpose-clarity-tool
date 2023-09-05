@@ -6,11 +6,12 @@
     display: flex;
     align-items: center;
     padding: 0 20px;
-    position: static;
+    /* position: fixed; */
     top: 0;
     right: 0;
     z-index: 999;
     border-bottom: 1px solid #fff;
+    position: relative;
 }
 
 .topbar-content {
@@ -18,6 +19,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding: 10px 0;
+    background-color: #E8ECF5;
 }
 
 .topbar-content h6{

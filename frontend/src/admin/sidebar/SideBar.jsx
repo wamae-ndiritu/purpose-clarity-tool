@@ -39,7 +39,6 @@ const SideBar = () => {
           </li>
         </ul>
       </div>
-      <div className='sidebar-footer'>Sidebar Footer</div>
     </div>
   );
 };

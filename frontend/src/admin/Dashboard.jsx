@@ -2,6 +2,8 @@ import React from "react";
 import SideBar from "./sidebar/SideBar";
 import TopBar from "./topbar/TopBar";
 import "./Dashboard.css";
+import UserssList from "./users/UsersList";
+import dummyData from "./users/usersData";
 
 const Dashboard = () => {
   return (
@@ -34,6 +36,11 @@ const Dashboard = () => {
                 </div>
                 <p className='text-success'>7 Reviews</p>
               </div>
+            </div>
+          </div>
+          <div className='row d-flex justify-content-center my-3'>
+            <div className='col-lg-10 col-md-10 col-sm-10'>
+              <UserssList data={dummyData} />
             </div>
           </div>
         </div>
