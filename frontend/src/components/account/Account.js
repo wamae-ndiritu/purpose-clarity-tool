@@ -2,19 +2,26 @@ import { useState, useEffect } from "react";
 import "./account.css";
 import { useDispatch, useSelector } from "react-redux";
 import React from "react";
-import { useNavigate } from "react-router-dom";
-import { hideLoginErr, login, register } from "../../redux/actions/userActions";
+import { useLocation, useNavigate } from "react-router-dom";
+import {
+  hideLoginErr,
+  login,
+  register,
+  resetPassword,
+  updatePassword,
+} from "../../redux/actions/userActions";
 import { validateInput } from "../../formValidation";
 
 const Account = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const location = useLocation();
 
   const userLogin = useSelector((state) => state.user);
   const { loadingLogin, errorLogin, success } = userLogin;
 
   const user = useSelector((state) => state.user);
-  const { loading, error, userInfo } = user;
+  const { loading, error, userInfo, resetPass, updatePass } = user;
 
   const [signUpData, setSignUpData] = useState({
     firstName: "",
@@ -29,6 +36,21 @@ const Account = () => {
   });
   const [showRegister, setShowRegister] = useState(false);
   const [inputErr, setInputErr] = useState(null);
+  const [forgotPass, setForgotPass] = useState(false);
+  const [showResetPass, setShowResetPass] = useState(false);
+  const [forgotData, setForgotData] = useState({
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
+
+  const userId = location.search
+    ? location.search.split("?")[1].split("&")[0].split("=")[1]
+    : null;
+
+  const loginAction = location.search
+    ? location.search.split("?")[1].split("&")[1].split("=")[1]
+    : null;
 
   const handleChange = (e) => {
     setSignUpData((prev) => {
@@ -78,6 +100,37 @@ const Account = () => {
     dispatch(login(signInData));
   };
 
+  const handleResetPass = (e) => {
+    e.preventDefault();
+    if (forgotData.email === "") {
+      return;
+    }
+    dispatch(resetPassword(forgotData));
+  };
+
+  const handleForgotData = (e) => {
+    setForgotData((prevState) => {
+      const { name, value } = e.target;
+      return {
+        ...prevState,
+        [name]: value,
+      };
+    });
+  };
+
+  const handleSubmitResetPassword = (e) => {
+    e.preventDefault();
+    setInputErr(null);
+    if (forgotData.password === "" || forgotData.confirmPassword === "") {
+      setInputErr("Please create and confirm password!");
+      return;
+    } else if (forgotData.password !== forgotData.confirmPassword) {
+      setInputErr("Password do not match!");
+      return;
+    }
+    dispatch(updatePassword(userId, { password: forgotData.password }));
+  };
+
   useEffect(() => {
     if (userInfo.created) {
       setShowRegister(false);
@@ -87,8 +140,7 @@ const Account = () => {
   useEffect(() => {
     setInputErr(null);
     setSignUpData({
-      firstName: "",
-      lastName: "",
+      fullName: "",
       email: "",
       password: "",
       confirmPassword: "",
@@ -104,6 +156,24 @@ const Account = () => {
       navigate("/");
     }
   }, [navigate, success]);
+
+  useEffect(() => {
+    if (loginAction) {
+      setForgotPass(true);
+      setShowResetPass(true);
+    }
+  }, [loginAction]);
+
+  useEffect(() => {
+    if (resetPass) {
+      setShowResetPass(true);
+    }
+    if (updatePass) {
+      setShowResetPass(false);
+      setForgotPass(false);
+      setInputErr(null);
+    }
+  }, [updatePass, resetPass]);
 
   function checkAndHide() {
     if (error || errorLogin) {
@@ -147,6 +217,7 @@ const Account = () => {
               <div className='account-right'>
                 {showRegister ? (
                   <section className='user'>
+                    <h5 className='h5'>New User?</h5>
                     {inputErr && (
                       <span className='text-danger'>{inputErr}</span>
                     )}
@@ -155,23 +226,14 @@ const Account = () => {
                     ) : (
                       error && <span className='text-danger'>{error}</span>
                     )}
-                    <h5 className='h5'>New User?</h5>
                     <p>Use the form below to create yout account</p>
-                    <div className='input-col-2 mb-3'>
+                    <div className='mb-3'>
                       <input
                         type='text'
                         className='form-control'
-                        placeholder='First Name'
-                        name='firstName'
-                        value={signUpData.firstName}
-                        onChange={handleChange}
-                      />
-                      <input
-                        type='text'
-                        className='form-control'
-                        placeholder='Last Name'
-                        name='lastName'
-                        value={signUpData.lastName}
+                        placeholder='Enter your Name'
+                        name='fullName'
+                        value={signUpData.fullName}
                         onChange={handleChange}
                       />
                     </div>
@@ -216,8 +278,80 @@ const Account = () => {
                       </button>
                     </div>
                   </section>
+                ) : forgotPass ? (
+                  showResetPass ? (
+                    <section className='user'>
+                      <h5 className='h5'>Reset Password?</h5>
+                      {inputErr && (
+                        <span className='text-danger'>{inputErr}</span>
+                      )}
+                      {loading ? (
+                        <span className='text-warning'>Loading...</span>
+                      ) : (
+                        error && <span className='text-danger'>{error}</span>
+                      )}
+                      <p>Create a new password and confirm to continue</p>
+                      <div className='mb-3'>
+                        <input
+                          type='password'
+                          className='form-control'
+                          placeholder='New Password'
+                          name='password'
+                          value={forgotData.password}
+                          onChange={handleForgotData}
+                        />
+                      </div>
+                      <div className='mb-3'>
+                        <input
+                          type='password'
+                          className='form-control'
+                          placeholder='Confirm New Password'
+                          name='confirmPassword'
+                          value={forgotData.confirmPassword}
+                          onChange={handleForgotData}
+                        />
+                      </div>
+                      <div className='mb-3 d-flex justify-content-center'>
+                        <button
+                          className='btn account-btn btn-user'
+                          onClick={handleSubmitResetPassword}
+                        >
+                          Reset Password
+                        </button>
+                      </div>
+                    </section>
+                  ) : (
+                    <section className='user'>
+                      <h5 className='h5'>Reset Password</h5>
+                      {loading ? (
+                        <span className='text-warning'>Loading...</span>
+                      ) : (
+                        error && <span className='text-danger'>{error}</span>
+                      )}
+                      <p>Enter your email to reset password</p>
+                      <div className='mb-3'>
+                        <input
+                          type='email'
+                          className='form-control'
+                          placeholder='Enter your email'
+                          name='email'
+                          value={forgotData.email}
+                          onChange={handleForgotData}
+                        />
+                      </div>
+                      <div className='mb-3 d-flex flex-column justify-content-center align-items-center'>
+                        <button
+                          className='btn account-btn btn-user'
+                          onClick={handleResetPass}
+                        >
+                          Reset Password
+                        </button>
+                      </div>
+                    </section>
+                  )
                 ) : (
                   <section className='user'>
+                    <h5 className='h5'>Returning User?</h5>
                     {inputErr && (
                       <span className='text-danger'>{inputErr}</span>
                     )}
@@ -228,7 +362,6 @@ const Account = () => {
                         <span className='text-danger'>{errorLogin}</span>
                       )
                     )}
-                    <h5 className='h5'>Returning User?</h5>
                     <p>Enter your email and password to login</p>
                     <div className='mb-3'>
                       <input
@@ -250,13 +383,21 @@ const Account = () => {
                         onChange={handleSignInChange}
                       />
                     </div>
-                    <div className='mb-3 d-flex justify-content-center'>
+                    <div className='mb-3 d-flex flex-column justify-content-center align-items-center'>
                       <button
                         className='btn account-btn btn-user'
                         onClick={handleSignIn}
                       >
                         Sign In
                       </button>
+                      <div className='terms'>
+                        <p
+                          className='text-center mt-3 forgot-link'
+                          onClick={() => setForgotPass(true)}
+                        >
+                          Forgot your password?
+                        </p>
+                      </div>
                     </div>
                   </section>
                 )}

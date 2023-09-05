@@ -113,6 +113,14 @@
     width: 200px;
 }
 
+.forgot-link{
+    cursor: pointer;
+}
+
+.forgot-link:hover{
+    text-decoration: underline;
+}
+
 @media (max-width: 599px){
     .login-top{
         height: 20vh;

@@ -7,6 +7,12 @@ import {
   registerFail,
   registerStart,
   registerSuccess,
+  resetPasswordFail,
+  resetPasswordStart,
+  resetPasswordSuccess,
+  updatePasswordFail,
+  updatePasswordStart,
+  updatePasswordSuccess,
 } from "../slices/userSlice";
 import axios from "axios";
 import { API_ENDPOINT } from "../../Url";
@@ -31,6 +37,35 @@ export const login = (details) => async (dispatch) => {
     localStorage.setItem("userInfo", JSON.stringify(data));
   } catch (err) {
     dispatch(loginFail(err.response ? err.response.data.message : err.message));
+  }
+};
+
+// Reset Password
+export const resetPassword = (details) => async (dispatch) => {
+  try {
+    dispatch(resetPasswordStart());
+
+    await axios.post(`${API_ENDPOINT}/user/forgot/password`, details);
+
+    dispatch(resetPasswordSuccess());
+  } catch (err) {
+    dispatch(
+      resetPasswordFail(err.response ? err.response.data.message : err.message)
+    );
+  }
+};
+
+export const updatePassword = (id, data) => async (dispatch) => {
+  try {
+    dispatch(updatePasswordStart());
+
+    await axios.put(`${API_ENDPOINT}/user/update/${id}/password`, data);
+
+    dispatch(updatePasswordSuccess());
+  } catch (err) {
+    dispatch(
+      updatePasswordFail(err.response ? err.response.data.message : err.message)
+    );
   }
 };
 
