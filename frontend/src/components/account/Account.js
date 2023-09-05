@@ -165,15 +165,12 @@ const Account = () => {
   }, [loginAction]);
 
   useEffect(() => {
-    if (resetPass) {
-      setShowResetPass(true);
-    }
     if (updatePass) {
       setShowResetPass(false);
       setForgotPass(false);
       setInputErr(null);
     }
-  }, [updatePass, resetPass]);
+  }, [updatePass]);
 
   function checkAndHide() {
     if (error || errorLogin) {
@@ -327,6 +324,14 @@ const Account = () => {
                         <span className='text-warning'>Loading...</span>
                       ) : (
                         error && <span className='text-danger'>{error}</span>
+                      )}
+                      {resetPass && (
+                        <div className='bg-success'>
+                          <p className='alert alert-success'>
+                            A reset password link has been sent to your{" "}
+                            <strong>Email.</strong> Please check to continue...
+                          </p>
+                        </div>
                       )}
                       <p>Enter your email to reset password</p>
                       <div className='mb-3'>
