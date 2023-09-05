@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import { DataGrid } from "@mui/x-data-grid";
+import moment from "moment";
 
 export default function UserssList({ data }) {
   const handleDelete = (id) => {
@@ -23,9 +24,32 @@ export default function UserssList({ data }) {
       width: 200,
     },
     {
+      field: "isAdmin",
+      headerName: "Role",
+      width: 100,
+      renderCell: (params) => {
+        return (
+          <>
+            {params.row.isAdmin ? (
+              <h6 className='alert alert-warning role'>Admin</h6>
+            ) : (
+              <h6 className='alert alert-success role'>User</h6>
+            )}
+          </>
+        );
+      },
+    },
+    {
       field: "date",
       headerName: "Joined",
       width: 150,
+      renderCell: (params) => {
+        return (
+          <div className='alert alert-info role'>
+            {moment(params.row.createdAt).format("MMM Do YY")}
+          </div>
+        );
+      },
     },
     {
       field: "action",
