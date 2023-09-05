@@ -1,11 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
 import SideBar from "./sidebar/SideBar";
 import TopBar from "./topbar/TopBar";
 import "./Dashboard.css";
 import UserssList from "./users/UsersList";
 import dummyData from "./users/usersData";
+import { useDispatch, useSelector } from "react-redux";
+import { listUsers } from "../redux/actions/userActions";
 
 const Dashboard = () => {
+  const dispatch = useDispatch();
+
+  const user = useSelector((state) => state.user);
+  const { loading, error, users } = user;
+
+  useEffect(() => {
+    dispatch(listUsers());
+  }, [dispatch]);
+
+  console.log(users);
   return (
     <div className='dashboard-container'>
       <SideBar />
@@ -39,6 +51,11 @@ const Dashboard = () => {
             </div>
           </div>
           <div className='row d-flex justify-content-center my-3'>
+            {loading ? (
+              <span className='text-warning'>Loading...</span>
+            ) : (
+              error && <span className='text-danger'>{error}</span>
+            )}
             <div className='col-lg-10 col-md-10 col-sm-10'>
               <UserssList data={dummyData} />
             </div>

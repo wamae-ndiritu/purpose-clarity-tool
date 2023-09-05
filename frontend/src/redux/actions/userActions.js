@@ -1,4 +1,7 @@
 import {
+  getUsersFail,
+  getUsersStart,
+  getUsersSuccess,
   hideError,
   loginFail,
   loginStart,
@@ -96,5 +99,37 @@ export const verifySession = () => async (dispatch, getState) => {
     if (error === "Not authorized, token failed!") {
       dispatch(logout());
     }
+  }
+};
+
+// LIST USERS
+export const listUsers = () => async (dispatch, getState) => {
+  try {
+    dispatch(getUsersStart());
+
+    const {
+      user: { userInfo },
+    } = getState();
+
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    };
+
+    const { data } = await axios.get(`${API_ENDPOINT}/user/`, config);
+
+    dispatch(getUsersSuccess(data));
+  } catch (err) {
+    let error = err.response ? err.response.data.message : err.message;
+    if (
+      error === "Not authorized, token failed!" ||
+      error === "Not authorized, no token!" ||
+      error === "Not authorized as an Admin!"
+    ) {
+      dispatch(logout());
+    }
+    dispatch(getUsersFail(error));
   }
 };
