@@ -13,13 +13,16 @@ const register = async (req, res) => {
   } else {
     const salt = 10;
     const hashPassword = bcrypt.hashSync(password, salt);
-    const user = await new User({
+    const user = new User({
       fullName,
       email,
       password: hashPassword,
     });
 
-    await user.save();
+    if (user) {
+      await user.save();
+    }
+
     res.status(201).json({ created: true });
   }
 };
@@ -76,7 +79,7 @@ const updatePassword = async (req, res) => {
 // ADMIN GET ALL USERS
 const getUsers = async (req, res) => {
   const users = await User.find({});
-  res.json(users);
+  res.status(200).json(users);
 };
 
 module.exports = { register, login, updatePassword, getUsers };
