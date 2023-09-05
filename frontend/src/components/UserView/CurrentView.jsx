@@ -87,7 +87,9 @@ const CurrentView = () => {
       <div className='container'>
         <div className='row row-btn'>
           <div className='col-lg-8 col-md-8 col-sm-10 col-btn'>
-            <button className='btn btn-submit btn-1'>Go Back</button>
+            <Link to='/answers' className='btn btn-submit btn-1'>
+              Go Back
+            </Link>
             <button
               className='btn btn-submit btn-1'
               onClick={handleShareAnswers}

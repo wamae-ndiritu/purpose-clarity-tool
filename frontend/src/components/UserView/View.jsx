@@ -102,7 +102,9 @@ const View = ({ item }) => {
           <div className='row view-cont d-flex justify-content-center'>
             <div className='shadow-sm purpose-cont bg-white'>
               <h6 className='text-center h6'>Purpose Statement Summary</h6>
-              <p>{item?.purpose_statement || purpose_statement}</p>
+              <p className='text-center'>
+                {item?.purpose_statement || purpose_statement}
+              </p>
             </div>
           </div>
         )}

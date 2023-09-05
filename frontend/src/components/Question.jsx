@@ -1,9 +1,5 @@
 import React from "react";
 
-const Description = ({ desc }) => {
-  return <p className='desc-p' dangerouslySetInnerHTML={{ __html: desc }} />;
-};
-
 export default function Question({ val, stepItem, setInput }) {
   const { desc, inputName, guideItems } = stepItem;
 

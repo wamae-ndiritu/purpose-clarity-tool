@@ -8,9 +8,7 @@ import NavBar from "../NavBar";
 const Statement = () => {
   const contentRef = useRef(null);
   const dispatch = useDispatch();
-  const purpose = useSelector((state) => state.purpose);
   const form = useSelector((state) => state.form);
-  const { item } = purpose;
 
   const handleDownload = () => {
     const content = contentRef.current;
