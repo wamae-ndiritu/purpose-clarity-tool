@@ -20,19 +20,19 @@ const SideBar = () => {
       <div className='sidebar-content'>
         <ul>
           <li>
-            <Link to='/' className='side-link'>
+            <Link to='/admin' className='side-link'>
               <i className='fa fa-home' aria-hidden='true'></i>
-              <h6 className='link-text'>Home</h6>
+              <h6 className='link-text'>Dashboard</h6>
             </Link>
           </li>
           <li>
-            <Link to='/users' className='side-link'>
+            <Link to='/admin/users' className='side-link'>
               <i class='fa fa-users' aria-hidden='true'></i>
               <h6 className='link-text'>Users</h6>
             </Link>
           </li>
           <li>
-            <Link to='/users' className='side-link'>
+            <Link to='/admin/responses' className='side-link'>
               <i class='fa fa-sticky-note' aria-hidden='true'></i>
               <h6 className='link-text'>Rensponses</h6>
             </Link>
