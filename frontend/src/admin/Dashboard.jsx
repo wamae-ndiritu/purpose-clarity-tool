@@ -17,14 +17,13 @@ const Dashboard = () => {
     }
   }, [users, dispatch]);
 
-  const formattedUsers = users?.map((user) => {
+  const formattedUsers = users?.map((user, index) => {
     return {
       ...user,
-      id: user._id,
+      id: index + 1,
     };
   });
 
-  console.log(formattedUsers);
   return (
     <div className='dashboard-container'>
       <SideBar />

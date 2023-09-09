@@ -11,7 +11,7 @@ export default function UserssList({ data }) {
     {
       field: "id",
       headerName: "S/NO",
-      width: 10,
+      width: 50,
     },
     {
       field: "fullName",
@@ -21,7 +21,7 @@ export default function UserssList({ data }) {
     {
       field: "email",
       headerName: "Email",
-      width: 200,
+      width: 250,
     },
     {
       field: "isAdmin",

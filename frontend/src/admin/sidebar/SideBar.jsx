@@ -27,14 +27,20 @@ const SideBar = () => {
           </li>
           <li>
             <Link to='/admin/users' className='side-link'>
-              <i class='fa fa-users' aria-hidden='true'></i>
+              <i className='fa fa-users' aria-hidden='true'></i>
               <h6 className='link-text'>Users</h6>
             </Link>
           </li>
           <li>
             <Link to='/admin/responses' className='side-link'>
-              <i class='fa fa-sticky-note' aria-hidden='true'></i>
+              <i className='fa fa-sticky-note' aria-hidden='true'></i>
               <h6 className='link-text'>Rensponses</h6>
+            </Link>
+          </li>
+          <li>
+            <Link to='/admin/questions' className='side-link'>
+              <i className='fa fa-pencil-square-o' aria-hidden='true'></i>
+              <h6 className='link-text'>Questions</h6>
             </Link>
           </li>
         </ul>
