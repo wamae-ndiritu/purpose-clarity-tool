@@ -3,7 +3,6 @@ import SideBar from "./sidebar/SideBar";
 import TopBar from "./topbar/TopBar";
 import "./Dashboard.css";
 import UserssList from "./users/UsersList";
-import dummyData from "./users/usersData";
 import { useDispatch, useSelector } from "react-redux";
 import { listUsers } from "../redux/actions/userActions";
 
@@ -12,16 +11,11 @@ const Dashboard = () => {
   const { loading, error, users } = user;
   const dispatch = useDispatch();
 
-  const getUsers = () => {
+  useEffect(() => {
     if (users.length === 0) {
       dispatch(listUsers());
     }
-    // dispatch(listUsers()); this is where am calling listUsers function but this is being called all the time causing the app even to crash
-  };
-
-  useEffect(() => {
-    getUsers();
-  }, []);
+  }, [users, dispatch]);
 
   const formattedUsers = users?.map((user) => {
     return {
