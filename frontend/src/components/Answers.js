@@ -54,7 +54,10 @@ function Answers() {
           <div className='answers-left'>
             <Purposestatement />
           </div>
-          <div class='card answers-right text-bg-primary mb-3'>
+          <div
+            class='card answers-right text-bg-primary mb-3'
+            style={{ backgroundColor: "#9F2232" }}
+          >
             <div class='card-header answers-header'>
               Here are your answers to the 7 key questions, you can click at any
               of them to edit.
