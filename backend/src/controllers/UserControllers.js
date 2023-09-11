@@ -4,7 +4,7 @@ const { generateToken } = require("../utils/generateToken");
 
 // REGISTER
 const register = async (req, res) => {
-  const { firstName, lastName, email, password } = req.body;
+  const { fullName, email, password } = req.body;
 
   const userExists = await User.findOne({ email });
 
@@ -13,14 +13,16 @@ const register = async (req, res) => {
   } else {
     const salt = 10;
     const hashPassword = bcrypt.hashSync(password, salt);
-    const user = await new User({
-      firstName,
-      lastName,
+    const user = new User({
+      fullName,
       email,
       password: hashPassword,
     });
 
-    await user.save();
+    if (user) {
+      await user.save();
+    }
+
     res.status(201).json({ created: true });
   }
 };
@@ -37,8 +39,7 @@ const login = async (req, res) => {
     if (comparePassword) {
       res.status(200).json({
         _id: user._id,
-        firstName: user.firstName,
-        lastName: user.lastName,
+        fullName: user.fullName,
         email: user.email,
         token: generateToken(user._id),
       });
@@ -50,4 +51,35 @@ const login = async (req, res) => {
   }
 };
 
-module.exports = { register, login };
+// UPDATE PASSWORD
+const updatePassword = async (req, res) => {
+  const { password } = req.body;
+  const id = req.params.id;
+
+  const user = await User.findById(id);
+
+  if (user) {
+    const hashRounds = 10;
+    const hashedPassword = await bcrypt.hash(password, hashRounds);
+
+    if (hashedPassword) {
+      user.password = hashedPassword;
+
+      const updatedUser = await user.save();
+
+      if (updatedUser) {
+        res.status(200).json(updatedUser);
+      }
+    }
+  } else {
+    res.status(400).json({ message: "Invalid request!" });
+  }
+};
+
+// ADMIN GET ALL USERS
+const getUsers = async (req, res) => {
+  const users = await User.find({});
+  res.status(200).json(users);
+};
+
+module.exports = { register, login, updatePassword, getUsers };

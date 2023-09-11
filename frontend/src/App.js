@@ -11,6 +11,7 @@ import { verifySession } from "./redux/actions/userActions";
 import Account from "./components/account/Account";
 import PreviousView from "./components/UserView/PreviousView";
 import CurrentView from "./components/UserView/CurrentView";
+import { Dashboard, Responses, User } from "./admin";
 
 function App() {
   const dispatch = useDispatch();
@@ -53,6 +54,9 @@ function App() {
           path='/purpose-clarity-item/download'
           element={<Statement />}
         />
+        <Route exact path='/admin/' element={<Dashboard />} />
+        <Route exact path='/admin/users' element={<User />} />
+        <Route exact path='/admin/responses' element={<Responses />} />
       </Route>
     </Routes>
   );

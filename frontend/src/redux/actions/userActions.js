@@ -1,4 +1,7 @@
 import {
+  getUsersFail,
+  getUsersStart,
+  getUsersSuccess,
   hideError,
   loginFail,
   loginStart,
@@ -7,6 +10,12 @@ import {
   registerFail,
   registerStart,
   registerSuccess,
+  resetPasswordFail,
+  resetPasswordStart,
+  resetPasswordSuccess,
+  updatePasswordFail,
+  updatePasswordStart,
+  updatePasswordSuccess,
 } from "../slices/userSlice";
 import axios from "axios";
 import { API_ENDPOINT } from "../../Url";
@@ -31,6 +40,35 @@ export const login = (details) => async (dispatch) => {
     localStorage.setItem("userInfo", JSON.stringify(data));
   } catch (err) {
     dispatch(loginFail(err.response ? err.response.data.message : err.message));
+  }
+};
+
+// Reset Password
+export const resetPassword = (details) => async (dispatch) => {
+  try {
+    dispatch(resetPasswordStart());
+
+    await axios.post(`${API_ENDPOINT}/user/forgot/password`, details);
+
+    dispatch(resetPasswordSuccess());
+  } catch (err) {
+    dispatch(
+      resetPasswordFail(err.response ? err.response.data.message : err.message)
+    );
+  }
+};
+
+export const updatePassword = (id, data) => async (dispatch) => {
+  try {
+    dispatch(updatePasswordStart());
+
+    await axios.put(`${API_ENDPOINT}/user/update/${id}/password`, data);
+
+    dispatch(updatePasswordSuccess());
+  } catch (err) {
+    dispatch(
+      updatePasswordFail(err.response ? err.response.data.message : err.message)
+    );
   }
 };
 
@@ -61,5 +99,37 @@ export const verifySession = () => async (dispatch, getState) => {
     if (error === "Not authorized, token failed!") {
       dispatch(logout());
     }
+  }
+};
+
+// LIST USERS
+export const listUsers = () => async (dispatch, getState) => {
+  try {
+    dispatch(getUsersStart());
+
+    const {
+      user: { userInfo },
+    } = getState();
+
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    };
+
+    const { data } = await axios.get(`${API_ENDPOINT}/user/`, config);
+
+    dispatch(getUsersSuccess(data));
+  } catch (err) {
+    let error = err.response ? err.response.data.message : err.message;
+    if (
+      error === "Not authorized, token failed!" ||
+      error === "Not authorized, no token!" ||
+      error === "Not authorized as an Admin!"
+    ) {
+      dispatch(logout());
+    }
+    dispatch(getUsersFail(error));
   }
 };

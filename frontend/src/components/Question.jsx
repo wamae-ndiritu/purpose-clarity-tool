@@ -1,9 +1,5 @@
 import React from "react";
 
-const Description = ({ desc }) => {
-  return <p className='desc-p' dangerouslySetInnerHTML={{ __html: desc }} />;
-};
-
 export default function Question({ val, stepItem, setInput }) {
   const { desc, inputName, guideItems } = stepItem;
 
@@ -27,7 +23,10 @@ export default function Question({ val, stepItem, setInput }) {
           ></textarea>
         </div>
       </div>
-      <div className='input-right card text-bg-primary mb-3'>
+      <div
+        className='input-right card text-bg-primary mb-3'
+        style={{ backgroundColor: "#9F2232" }}
+      >
         <div className='card-header h5 text-center'>
           Use this questions as a guide
         </div>

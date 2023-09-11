@@ -7,8 +7,9 @@ import { getItem } from "../../redux/actions/purposeActions";
 const Statement = () => {
   const contentRef = useRef(null);
   const dispatch = useDispatch();
-  const purpose = useSelector((state) => state.purpose);
-  const { item } = purpose;
+
+  const form = useSelector((state) => state.form);
+
 
   const handleDownload = () => {
     const content = contentRef.current;

@@ -72,7 +72,7 @@ const Form = () => {
         return form[steps[quizNo - 1].inputName];
       });
     }
-  }, [quizNo]);
+  }, [quizNo, form]);
 
   return (
     <>

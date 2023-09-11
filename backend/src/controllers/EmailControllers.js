@@ -1,15 +1,17 @@
 const nodemailer = require("nodemailer");
 const smtpTranspoter = require("nodemailer-smtp-transport");
+const User = require("../models/User");
 
 const AUTH_EMAIL = process.env.AUTH_EMAIL;
 const AUTH_PASS = process.env.AUTH_PASS;
+const CLIENT_URL = process.env.CLIENT_URL;
 
 // create mail transporter
 let transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: process.env.AUTH_EMAIL,
-    pass: process.env.AUTH_PASS,
+    user: AUTH_EMAIL,
+    pass: AUTH_PASS,
   },
 });
 
@@ -95,7 +97,33 @@ exports.submitForFeadback = async (req, res) => {
     res.status(200).json({ message: "Feedback email sent successfully!" });
     console.log("Feedback email sent successfully!");
   } catch (error) {
-    // console.error("Error sending feedback email:", error);
     return res.status(500).json({ message: "Feadback email not sent!" });
+  }
+};
+
+const sendPasswordResetMail = async ({ id, fullName, email }) => {
+  const mailOptions = {
+    from: AUTH_EMAIL,
+    to: email,
+    subject: "Reset Password",
+    html: `<p>Hi <h5>${fullName}</h5>, A request to reset your password was made. Please <a href="${CLIENT_URL}/account/login?user=${id}&action=reset-password">Click here</a> to reset. If it wasn't you, you can ignore this </p> `,
+  };
+
+  await transporter.sendMail(mailOptions);
+};
+
+// FORGOT PASSWORD
+exports.resetPassword = async (req, res) => {
+  const email = req.body.email;
+
+  console.log(email);
+
+  const user = await User.findOne({ email });
+
+  if (user) {
+    sendPasswordResetMail(user);
+    res.status(201).json({ message: "Reset Email sent" });
+  } else {
+    res.status(404).json({ message: "Account does not exist!" });
   }
 };
