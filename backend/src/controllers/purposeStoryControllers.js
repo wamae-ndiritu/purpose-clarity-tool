@@ -27,6 +27,12 @@ const createPurposeStory = async (req, res) => {
   res.status(201).json(purposeStory);
 };
 
+// ADMIN GET ALL PURPOSE STORIES
+const getPurposeStories = async (req, res) => {
+  const purposeStories = await PurposeStory.find({});
+  res.status(200).json(purposeStories);
+};
+
 // GET PURPOSE ITEM
 const getPurposeStory = async (req, res) => {
   const purposeStory = await PurposeStory.findOne({
@@ -84,6 +90,7 @@ const deletePurposeStory = async (req, res) => {
 
 module.exports = {
   createPurposeStory,
+  getPurposeStories,
   getPurposeStory,
   updatePurposeStory,
   deletePurposeStory,
