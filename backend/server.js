@@ -4,6 +4,7 @@ const cors = require("cors");
 const connectDB = require("./src/mongoDB");
 const userRouter = require("./src/routes/userRoutes");
 const purposeRouter = require("./src/routes/purposeRoutes");
+const purposeStoryRouter = require("./src/routes/purposeStoryRoutes");
 
 const PORT = process.env.PORT || 8000;
 
@@ -16,6 +17,7 @@ app.use(cors());
 
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/purpose-clarity", purposeRouter);
+app.use("/api/v1/purpose-story", purposeStoryRouter);
 
 app.listen(PORT, () => {
   console.log(`Backend running on port ${PORT}`);
