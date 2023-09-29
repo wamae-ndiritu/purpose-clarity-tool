@@ -9,21 +9,27 @@ const PurposeStorySchema = new mongoose.Schema(
     },
     purpose: {
       type: String,
+      default: null,
     },
     origin: {
       type: String,
+      default: null,
     },
     vissionAndMission: {
       type: String,
+      default: null,
     },
     valuesAndBeliefs: {
       type: String,
+      default: null,
     },
     impactAndBeneficiaries: {
       type: String,
+      default: null,
     },
     actionsAndCommitments: {
       type: String,
+      default: null,
     },
   },
   {
