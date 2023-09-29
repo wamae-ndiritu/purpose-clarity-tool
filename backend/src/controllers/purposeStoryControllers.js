@@ -41,7 +41,7 @@ const getPurposeStory = async (req, res) => {
 };
 
 // UPDATE PURPOSE STORY
-const updatePuposeStory = async (req, res) => {
+const updatePurposeStory = async (req, res) => {
   const {
     purpose,
     origin,
@@ -72,7 +72,7 @@ const updatePuposeStory = async (req, res) => {
 };
 
 // DELETE PURPOSE STORY
-const deletePuposeStory = async (req, res) => {
+const deletePurposeStory = async (req, res) => {
   const purposeStory = await PurposeStory.findById(req.params.id);
   if (purposeStory) {
     await purposeStory.remove();
@@ -85,6 +85,6 @@ const deletePuposeStory = async (req, res) => {
 module.exports = {
   createPurposeStory,
   getPurposeStory,
-  updatePuposeStory,
-  deletePuposeStory,
+  updatePurposeStory,
+  deletePurposeStory,
 };
