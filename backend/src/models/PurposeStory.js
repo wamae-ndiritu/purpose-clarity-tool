@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
 const PurposeStorySchema = new mongoose.Schema(
   {
@@ -16,19 +17,19 @@ const PurposeStorySchema = new mongoose.Schema(
       default: null,
     },
     vissionAndMission: {
-      type: String,
+      type: Schema.Types.Mixed,
       default: null,
     },
     valuesAndBeliefs: {
-      type: String,
+      type: Schema.Types.Mixed,
       default: null,
     },
     impactAndBeneficiaries: {
-      type: String,
+      type: Schema.Types.Mixed,
       default: null,
     },
     actionsAndCommitments: {
-      type: String,
+      type: Schema.Types.Mixed,
       default: null,
     },
   },

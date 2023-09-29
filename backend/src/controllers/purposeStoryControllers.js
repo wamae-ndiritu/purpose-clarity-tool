@@ -57,7 +57,9 @@ const updatePurposeStory = async (req, res) => {
     actionsAndCommitments,
   } = req.body;
 
-  const purposeStory = await PurposeStory.findById(req.params.id);
+  const purposeStory = await PurposeStory.findOne({
+    user: req.params.id,
+  }).populate("user", "firstName lastName email");
   if (purposeStory) {
     purposeStory.purpose = purpose || purposeStory.purpose;
     purposeStory.origin = origin || purposeStory.origin;
