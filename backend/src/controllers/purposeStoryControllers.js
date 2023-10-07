@@ -53,9 +53,11 @@ const updatePurposeStory = async (req, res) => {
     origin,
     vissionAndMission,
     valuesAndBeliefs,
-    impactAndBeliefs,
+    impactAndBeneficiaries,
     actionsAndCommitments,
   } = req.body;
+
+  console.log(req.body);
 
   const purposeStory = await PurposeStory.findOne({
     user: req.params.id,
@@ -67,8 +69,8 @@ const updatePurposeStory = async (req, res) => {
       vissionAndMission || purposeStory.vissionAndMission;
     purposeStory.valuesAndBeliefs =
       valuesAndBeliefs || purposeStory.valuesAndBeliefs;
-    purposeStory.impactAndBeliefs =
-      impactAndBeliefs || purposeStory.impactAndBeliefs;
+    purposeStory.impactAndBeneficiaries =
+      impactAndBeneficiaries || purposeStory.impactAndBeneficiaries;
     purposeStory.actionsAndCommitments =
       actionsAndCommitments || purposeStory.actionsAndCommitments;
 
