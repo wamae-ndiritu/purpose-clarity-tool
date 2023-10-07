@@ -19,6 +19,9 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    account_type: {
+      type: String,
+    },
   },
   { timestamps: true }
 );

@@ -49,3 +49,24 @@
     display: flex;
     align-items: center;
 }
+
+.title-1-cont{
+    width: 100%;
+    justify-content: space-between;
+}
+
+.users-btn-cont{
+    display: flex;
+}
+
+.users-btn-cont button{
+    background-color: #E8ECF5;
+    color: #000;
+    border: 1px solid gray;
+    padding: 5px 10px;
+    margin-right: 3px;
+}
+
+.users-btn-cont .active{
+    background-color: rgb(216, 208, 208);
+}

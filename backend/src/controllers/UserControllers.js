@@ -4,7 +4,7 @@ const { generateToken } = require("../utils/generateToken");
 
 // REGISTER
 const register = async (req, res) => {
-  const { fullName, email, password } = req.body;
+  const { fullName, email, password, account_type } = req.body;
 
   const userExists = await User.findOne({ email });
 
@@ -17,6 +17,7 @@ const register = async (req, res) => {
       fullName,
       email,
       password: hashPassword,
+      account_type,
     });
 
     if (user) {
@@ -42,6 +43,7 @@ const login = async (req, res) => {
         fullName: user.fullName,
         email: user.email,
         token: generateToken(user._id),
+        account_type: user.account_type,
       });
     } else {
       res.status(401).json({ message: "Invalid Password!" });

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import SideBar from "../sidebar/SideBar";
 import TopBar from "../topbar/TopBar";
 import { listUsers } from "../../redux/actions/userActions";
@@ -22,13 +22,42 @@ const User = () => {
       id: index + 1,
     };
   });
+
+  const getAllUsers = () => {
+    setList(formattedUsers);
+  };
+
+  const [list, setList] = useState(formattedUsers);
+
+  const getMPSUsers = () => {
+    const newUsers = users.filter((item) => item.account_type === "MPS");
+    const formattedUsers = newUsers?.map((user, index) => {
+      return {
+        ...user,
+        id: index + 1,
+      };
+    });
+    setList(formattedUsers);
+  };
+
+  const getPCTUsers = () => {
+    const newUsers = users.filter((item) => item.account_type !== "MPS");
+    const formattedUsers = newUsers?.map((user, index) => {
+      return {
+        ...user,
+        id: index + 1,
+      };
+    });
+    setList(formattedUsers);
+  };
+
+  console.log(list);
   return (
     <div className='dashboard-container'>
       <SideBar />
       <div className='content'>
         <TopBar />
         <div className='container mt-3'>
-          <h6 className='text-center'>Subscribed Users</h6>
           <div className='row d-flex justify-content-center my-3'>
             {loading ? (
               <span className='text-warning'>Loading...</span>
@@ -36,7 +65,27 @@ const User = () => {
               error && <span className='text-danger'>{error}</span>
             )}
             <div className='col-lg-10 col-md-10 col-sm-10'>
-              <UserssList data={formattedUsers} />
+              <div className='d-flex align-items-center justify-space-between mb-3 title-1-cont'>
+                <div className='users-btn-cont'>
+                  <button
+                    className='btn user-btn-toggle active'
+                    onClick={getAllUsers}
+                  >
+                    ALL
+                  </button>
+                  <button
+                    className='btn user-btn-toggle active'
+                    onClick={getPCTUsers}
+                  >
+                    PCT USERS
+                  </button>
+                  <button className='btn user-btn-toggle' onClick={getMPSUsers}>
+                    MPS USERS
+                  </button>
+                </div>
+                <h6 className='text-center'>Subscribed Users</h6>
+              </div>
+              <UserssList data={list} />
             </div>
           </div>
         </div>
