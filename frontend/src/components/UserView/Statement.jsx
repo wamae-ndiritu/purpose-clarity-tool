@@ -10,7 +10,6 @@ const Statement = () => {
 
   const form = useSelector((state) => state.form);
 
-
   const handleDownload = () => {
     const content = contentRef.current;
 
@@ -40,7 +39,7 @@ const Statement = () => {
             </div>
             <div className='cert-info'>
               <h4 className='h4'>You Purpose Statement</h4>
-              <p>{item.purpose_statement}</p>
+              <p>{form.purpose_statement}</p>
             </div>
           </div>
         </div>

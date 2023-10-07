@@ -1,0 +1,18 @@
+
+
+.ql-editor p {
+    font-size: 16px;
+    line-height: 1.5;
+    color: red;
+}
+
+/* Style for unordered lists */
+.ql-editor ul {
+    list-style-type: disc;
+    margin-left: 20px;
+}
+
+/* Style for list items */
+.ql-editor li {
+    color: blue;
+}
