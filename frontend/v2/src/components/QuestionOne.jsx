@@ -7,7 +7,9 @@ const QuestionOne = () => {
     <div className='container mx-auto grid grid-cols-1 md:grid-cols-5 p-4 gap-5'>
       {/* Question Guide Card (1st Column) */}
       <div className='col-span-2 bg-white rounded-lg shadow p-6 w-full mb-4'>
-        <h2 className='text-2xl font-bold mb-4'>Guide Questions</h2>
+        <h2 className='text-2xl font-bold mb-4 text-gray-600'>
+          Guide Questions
+        </h2>
         <ul className='list-disc pl-6 mb-6 text-gray-600'>
           <li className='mb-2'>
             What are your identities, beliefs, and convictions?
@@ -27,21 +29,36 @@ const QuestionOne = () => {
       </div>
       {/* Question Description and Answer Input (2nd Column) */}
       <div className='col-span-3 flex flex-col justify-start items-start'>
-        <h2 className='text-2xl md:text-3xl font-bold mb-4'>Who Are You?</h2>
-        <p className='mb-4'>
+        <h2 className='text-2xl md:text-2xl font-bold mb-4 mt-3 text-gray-600'>
+          Who Are You?
+        </h2>
+        <p className='text-md text-gray-600'>
           Purpose is clarified when something in you meets with something in the
           world that triggers you to take action. This question is meant to
-          bring out something in you. This question aims at two key aspects: (1)
-          what resources do you have for your life’s assignment? The resources
-          are not material or physical but natural abilities (unique strengths),
-          learned abilities, values, and experiences. (2) Why you and not
-          someone else should be the bearer of the particular purpose?
-          Clarifying your purpose starts with clarifying who you are. Knowing
-          yourself is imperative in clarifying your purpose.
+          bring out something in you.
         </p>
+        <p className='text-md text-gray-600 mt-3'>
+          This question aims at two key aspects:
+          <ol className='text-gray-600 list-decimal ml-8 text-sm'>
+            <li>
+              What resources do you have for your life’s assignment? The
+              resources are not material or physical but natural abilities
+              (unique strengths), learned abilities, values, and experiences.
+            </li>
+            <li>
+              Why you and not someone else should be the bearer of the
+              particular purpose? Clarifying your purpose starts with clarifying
+              who you are. Knowing yourself is imperative in clarifying your
+              purpose.
+            </li>
+          </ol>
+        </p>
+
         {/* Answer Textarea */}
         <div className='w-full'>
-          <h3 className='text-lg font-semibold mb-2'>Your Answer</h3>
+          <h3 className='text-lg font-semibold mb-2 text-gray-600'>
+            Your Answer
+          </h3>
           <textarea
             className='w-full h-40 p-4 border border-gray-300 rounded focus:outline-none focus:border-blue-500'
             placeholder='Type your answer here...'
@@ -50,14 +67,6 @@ const QuestionOne = () => {
           ></textarea>
         </div>
         {/* Save Button */}
-        <button
-          className='bg-green-400 text-white py-2 px-6 rounded hover:bg-green-600 mt-4'
-          onClick={() => {
-            // Handle save logic here
-          }}
-        >
-          Save
-        </button>
       </div>
     </div>
   );
