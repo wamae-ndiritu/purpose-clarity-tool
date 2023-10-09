@@ -1,81 +1,54 @@
-import React, { useEffect, useState } from "react";
-import Pagination from "./Pagination";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  getPurposeStory,
-  updatePurposeStory,
-} from "../redux/actions/purposeActions";
-import Loading from "../utils/Loading";
-import Message from "../utils/Message";
+import React, { useState } from "react";
 
-const QuestionTwo = ({ page, totalPages, changePage }) => {
-  const dispatch = useDispatch();
-  const purposeStory = useSelector((state) => state.purposeStory);
-  const { loading, error, item } = purposeStory;
+const QuestionTwo = () => {
   const [answer, setAnswer] = useState("");
 
-  const handleAnswerChange = (event) => {
-    setAnswer(event.target.value);
-  };
-
-  const handleSave = () => {
-    dispatch(updatePurposeStory({ origin: answer }));
-  };
-
-  useEffect(() => {
-    dispatch(getPurposeStory());
-  }, [dispatch]);
-
-  useEffect(() => {
-    if (item) {
-      setAnswer(item.origin);
-    }
-  }, [item]);
-
   return (
-    <div className='flex flex-col md:flex-row md:items-start justify-center py-16'>
-      {/* Question Side */}
-      <div className='md:w-1/2 mb-6 md:mb-0 px-4'>
-        <h2 className='text-xl md:text-3xl font-bold mb-4'>
-          Origin and Personal Connection
+    <div className='container mx-auto grid grid-cols-1 md:grid-cols-5 p-4 gap-5'>
+      {/* Question Guide Card (1st Column) */}
+      <div className='col-span-2 bg-white rounded-lg shadow p-6 w-full mb-4'>
+        <h2 className='text-2xl font-bold mb-4 text-gray-600'>
+          Guide Questions
         </h2>
-        <p className='text-gray-600 pt-1'>
-          Introduce the background, experiences, or inspirations that led to the
-          development of the purpose. This is the genesis of your purpose.
-        </p>
-        <p className='text-gray-600 pt-1'>
-          Share personal anecdotes, pivotal moments, or influential individuals
-          that shaped the purpose.
-        </p>
-        <p className='text-gray-600 pt-1'>
-          Highlight the emotional connection and passion that drives you or your
-          organization.
-        </p>
+        <ul className='list-disc pl-6 mb-6 text-gray-600'>
+          <li className='mb-2'>
+            It is possible that you can do many things, but what are you really
+            good at?
+          </li>
+          <li className='mb-2'>
+            What do you feel uniquely qualified to teach or offer others?
+          </li>
+        </ul>
       </div>
+      {/* Question Description and Answer Input (2nd Column) */}
+      <div className='col-span-3 flex flex-col justify-start items-start'>
+        <h2 className='text-2xl md:text-2xl font-bold mb-4 mt-3 text-gray-600'>
+          2. What do you do well?
+        </h2>
+        <p className='text-md text-gray-600'>
+          The challenge here is that you may have unutilized potential; hence,
+          you must search deeper than what you are currently good at. You may
+          not even have the right words to explain what you are good at.
+        </p>
+        <p className='text-md text-gray-600 mt-3'>
+          For example, a person who is faster on their hands than their legs may
+          not even consider including this in the list of things they are good
+          at. It does not have to be fancy or cool to others. It does not have
+          to attract top dollars; you must be good at it.
+        </p>
 
-      {/* Form Side */}
-      <div className='md:w-1/2 px-4'>
-        <div className='flex justify-between items-center mb-2'>
-          <label className='block text-lg font-semibold'>Your Answer:</label>
-          <button
-            className='bg-green-400 rounded text-white py-1 px-4'
-            onClick={handleSave}
-          >
-            Save
-          </button>
+        {/* Answer Textarea */}
+        <div className='w-full'>
+          <h3 className='text-lg font-semibold mb-2 text-gray-600'>
+            Your Answer
+          </h3>
+          <textarea
+            className='w-full h-40 p-4 border border-gray-300 rounded focus:outline-none focus:border-blue-500'
+            placeholder='Type your answer here...'
+            value={answer}
+            onChange={(e) => setAnswer(e.target.value)}
+          ></textarea>
         </div>
-        <textarea
-          className='w-full h-40 p-4 border border-gray-300 rounded focus:outline-none focus:border-blue-500'
-          value={answer}
-          onChange={handleAnswerChange}
-          placeholder='Share your story here...'
-        ></textarea>
-        {loading ? <Loading /> : error && <Message>{error}</Message>}
-        <Pagination
-          page={page}
-          totalPages={totalPages}
-          changePage={changePage}
-        />
       </div>
     </div>
   );

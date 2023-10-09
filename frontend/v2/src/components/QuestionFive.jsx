@@ -1,106 +1,51 @@
-import React, { useState, useEffect } from "react";
-import Pagination from "./Pagination";
-import {
-  getPurposeStory,
-  updatePurposeStory,
-} from "../redux/actions/purposeActions";
-import Loading from "../utils/Loading";
-import Message from "../utils/Message";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState } from "react";
 
-const QuestionFive = ({ page, totalPages, changePage }) => {
-  const dispatch = useDispatch();
-  const purposeStory = useSelector((state) => state.purposeStory);
-  const { loading, error, item } = purposeStory;
-  const [impact, setImpact] = useState("");
-  const [beneficiaries, setBeneficiaries] = useState("");
-
-  const handleImpactChange = (event) => {
-    setImpact(event.target.value);
-  };
-
-  const handleBeneficiariesChange = (event) => {
-    setBeneficiaries(event.target.value);
-  };
-
-  const handleSave = () => {
-    dispatch(
-      updatePurposeStory({
-        impactAndBeneficiaries: {
-          impact,
-          beneficiaries,
-        },
-      })
-    );
-  };
-
-  useEffect(() => {
-    dispatch(getPurposeStory());
-  }, [dispatch]);
-
-  useEffect(() => {
-    if (item) {
-      setImpact(item.impactAndBeneficiaries?.impact);
-      setBeneficiaries(item.impactAndBeneficiaries?.beneficiaries);
-    }
-  }, [item]);
+const QuestionFive = () => {
+  const [answer, setAnswer] = useState("");
 
   return (
-    <div className='flex flex-col md:flex-row md:items-start justify-center py-16 mb-4'>
-      {/* Question Side */}
-      <div className='md:w-1/2 mb-6 md:mb-0 px-4'>
-        <h2 className='text-2xl md:text-3xl font-bold mb-4'>
-          Impact and Beneficiaries
+    <div className='container mx-auto grid grid-cols-1 md:grid-cols-5 p-4 gap-5'>
+      {/* Question Guide Card (1st Column) */}
+      <div className='col-span-2 bg-white rounded-lg shadow p-6 w-full mb-4'>
+        <h2 className='text-2xl font-bold mb-4 text-gray-600'>
+          Guide Questions
         </h2>
-        <p className='text-gray-600'>
-          Describe the tangible impact or positive outcomes your purpose seeks
-          to create.
-        </p>
-        <p className='text-gray-600'>
-          Identify the specific stakeholders, communities, or beneficiaries who
-          stand to benefit from your purpose.
-        </p>
-        <p className='text-gray-600'>
-          Highlight how your purpose addresses their needs, challenges, or
-          aspirations.
-        </p>
+        <ul className='list-disc pl-6 mb-6 text-gray-600'>
+          <li className='mb-2'>
+            What problems or challenges are affecting your potential
+            beneficiaries?
+          </li>
+          <li className='mb-2'>How does your community want to be served?</li>
+        </ul>
       </div>
+      {/* Question Description and Answer Input (2nd Column) */}
+      <div className='col-span-3 flex flex-col justify-start items-start'>
+        <h2 className='text-2xl md:text-2xl font-bold mb-4 mt-3 text-gray-600'>
+          5. What do your beneficiaries need?
+        </h2>
+        <p className='text-sm text-gray-600'>
+          Identify the needs of your beneficiaries that you are uniquely
+          qualified to meet. Also, find out how you will contribute to the
+          beneficiaries; this includes finding your voice, how to express
+          yourself, and your positioning.
+        </p>
+        <p className='text-sm text-gray-600 mt-3'>
+          Given that beneficiaries may have different and changing preferences,
+          you should also constantly polish yourself. Search and experiment
+          widely. It is why musicians experiment, sports people attempt several
+          techniques or even sports, and writers search for new styles, even
+          literary genres or categories.
+        </p>
 
-      {/* Form Side */}
-      <div className='md:w-1/2 px-4'>
-        <div className='flex justify-between items-center mb-2'>
-          <label className='block text-lg font-semibold'>
-            Impact Description:
-          </label>
-          <button
-            className='bg-green-400 rounded text-white py-1 px-4'
-            onClick={handleSave}
-          >
-            Save
-          </button>
+        {/* Answer Textarea */}
+        <div className='w-full mt-3'>
+          <textarea
+            className='w-full h-40 p-4 border border-gray-300 rounded focus:outline-none focus:border-blue-500'
+            placeholder='Type your answer here...'
+            value={answer}
+            onChange={(e) => setAnswer(e.target.value)}
+          ></textarea>
         </div>
-        <textarea
-          className='w-full h-20 p-4 border border-gray-300 rounded mb-4 focus:outline-none focus:border-blue-500'
-          value={impact}
-          onChange={handleImpactChange}
-          placeholder='Describe the impact here...'
-        ></textarea>
-
-        <label className='block text-lg font-semibold mb-2'>
-          Beneficiaries:
-        </label>
-        <textarea
-          className='w-full h-20 p-4 border border-gray-300 rounded mb-4 focus:outline-none focus:border-blue-500'
-          value={beneficiaries}
-          onChange={handleBeneficiariesChange}
-          placeholder='Identify the beneficiaries here...'
-        ></textarea>
-        {loading ? <Loading /> : error && <Message>{error}</Message>}
-        <Pagination
-          page={page}
-          totalPages={totalPages}
-          changePage={changePage}
-        />
       </div>
     </div>
   );

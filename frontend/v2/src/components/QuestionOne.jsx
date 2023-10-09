@@ -30,7 +30,7 @@ const QuestionOne = () => {
       {/* Question Description and Answer Input (2nd Column) */}
       <div className='col-span-3 flex flex-col justify-start items-start'>
         <h2 className='text-2xl md:text-2xl font-bold mb-4 mt-3 text-gray-600'>
-          Who Are You?
+          1. Who Are You?
         </h2>
         <p className='text-md text-gray-600'>
           Purpose is clarified when something in you meets with something in the

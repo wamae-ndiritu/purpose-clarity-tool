@@ -71,8 +71,10 @@ const PurposeQuestion = () => {
 
   return (
     <div>
-      {renderedQuestions}
-      {/* Include your pagination component here */}
+      {/* {renderedQuestions} */}
+      <QuestionViewWrapper>
+        <QuestionSix />
+      </QuestionViewWrapper>
     </div>
   );
 };
