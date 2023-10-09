@@ -9,6 +9,7 @@ import QuestionSix from "../components/QuestionSix";
 import Pagination from "../components/Pagination";
 import QuestionViewWrapper from "../components/QuestionViewWrapper";
 import QuestionSeven from "../components/QuestionSeven";
+import PurposeStatement from "../components/PurposeStatement";
 
 const PurposeQuestion = () => {
   const location = useLocation();
@@ -74,7 +75,7 @@ const PurposeQuestion = () => {
     <div>
       {/* {renderedQuestions} */}
       <QuestionViewWrapper>
-        <QuestionSeven />
+        <PurposeStatement />
       </QuestionViewWrapper>
     </div>
   );
