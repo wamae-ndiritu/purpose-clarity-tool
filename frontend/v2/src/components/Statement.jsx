@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useRef } from "react";
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
 import { useSelector } from "react-redux";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
@@ -7,11 +9,32 @@ import { useNavigate } from "react-router-dom";
 const Statement = () => {
   const navigate = useNavigate();
   const form = useSelector((state) => state.form);
+
+  const contentRef = useRef(null);
+
+  const handleDownload = () => {
+    const content = contentRef.current;
+
+    html2canvas(content).then((canvas) => {
+      const imgData = canvas.toDataURL("image/png");
+      const pdf = new jsPDF("landscape");
+      const imgWidth = 280;
+      const aspectRatio = canvas.width / canvas.height;
+      const imgHeight = imgWidth / aspectRatio;
+
+      // Add the canvas image to the PDF
+      pdf.addImage(imgData, "PNG", 10, 10, imgWidth, imgHeight);
+      pdf.save("purpose-statement.pdf");
+    });
+  };
   return (
     <div className='bg-slate-100'>
       <Navbar />
       <div className='w-full flex flex-col items-center gap-5 justify-center py-12'>
-        <div className='mx-4 md:mx-0 md:w-3/5 bg-white p-4 md:p-8'>
+        <div
+          className='mx-4 md:mx-0 md:w-3/5 bg-white p-4 md:p-8'
+          ref={contentRef}
+        >
           <div className='w-24 h-16'>
             <img src='/kome-logo.png' className='w-full' alt='KOMEBC logo' />
           </div>
@@ -27,7 +50,10 @@ const Statement = () => {
           >
             Go Back
           </button>
-          <button className='bg-gray-700 text-white rounded px-4 py-1'>
+          <button
+            className='bg-gray-700 text-white rounded px-4 py-1'
+            onClick={handleDownload}
+          >
             Download PDF
           </button>
         </div>
