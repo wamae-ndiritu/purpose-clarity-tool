@@ -8,6 +8,7 @@ import "./index.css";
 import PurposeQuestion from "./pages/PurposeQuestion";
 import Answers from "./pages/Answers";
 import Register from "./pages/Register";
+import { Dashboard, Responses, User, Questions } from "./admin";
 
 function App() {
   const dispatch = useDispatch();
@@ -17,7 +18,7 @@ function App() {
   const path = location.pathname;
 
   function AuthLayout() {
-    if (userInfo?.token && userInfo?.account_type === "MPS") {
+    if (userInfo?.token) {
       return <Outlet />;
     }
     return <Navigate to='/account/login' />;
@@ -35,6 +36,10 @@ function App() {
         <Route exact path='/' element={<Home />} />
         <Route exact path='/questions/purpose' element={<PurposeQuestion />} />
         <Route exact path='/questions/answers' element={<Answers />} />
+        <Route exact path='/admin/' element={<Dashboard />} />
+        <Route exact path='/admin/users' element={<User />} />
+        <Route exact path='/admin/responses' element={<Responses />} />
+        <Route exact path='/admin/questions' element={<Questions />} />
       </Route>
     </Routes>
   );

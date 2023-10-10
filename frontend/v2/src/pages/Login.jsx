@@ -99,22 +99,10 @@ const Login = () => {
   }, [updatePass]);
 
   useEffect(() => {
-    if (userInfo?.token && userInfo?.account_type !== "MPS") {
-      setLoginErr("Invalid credentials!");
-    }
-  }, [userInfo]);
-
-  useEffect(() => {
-    if (userInfo?.token && userInfo?.account_type === "MPS") {
+    if (userInfo?.token) {
       navigate("/");
     }
   }, [userInfo]);
-
-  function hideError() {
-    setLoginErr(null);
-  }
-
-  setInterval(hideError, 5000);
 
   return (
     <div

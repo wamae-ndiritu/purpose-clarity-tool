@@ -12,6 +12,7 @@ export const userSlice = createSlice({
     error: null,
     resetPass: false,
     updatePass: false,
+    users: [],
   },
   reducers: {
     loginStart: (state) => {
@@ -64,6 +65,18 @@ export const userSlice = createSlice({
       state.updatePass = true;
     },
     updatePasswordFail: (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+    },
+    getUsersStart: (state) => {
+      state.loading = true;
+      state.error = false;
+    },
+    getUsersSuccess: (state, action) => {
+      state.loading = false;
+      state.users = action.payload;
+    },
+    getUsersFail: (state, action) => {
       state.loading = false;
       state.error = action.payload;
     },
