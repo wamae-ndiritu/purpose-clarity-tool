@@ -22,39 +22,35 @@ const PurposeQuestion = () => {
   const questionViews = [
     {
       pageNo: 1,
-      element: (
-        <QuestionOne page={page} changePage={changePage} totalPages={6} />
-      ),
+      element: <QuestionOne />,
     },
     {
       pageNo: 2,
-      element: (
-        <QuestionTwo page={page} changePage={changePage} totalPages={6} />
-      ),
+      element: <QuestionTwo />,
     },
     {
       pageNo: 3,
-      element: (
-        <QuestionThree page={page} changePage={changePage} totalPages={6} />
-      ),
+      element: <QuestionThree />,
     },
     {
       pageNo: 4,
-      element: (
-        <QuestionFour page={page} changePage={changePage} totalPages={6} />
-      ),
+      element: <QuestionFour />,
     },
     {
       pageNo: 5,
-      element: (
-        <QuestionFive page={page} changePage={changePage} totalPages={6} />
-      ),
+      element: <QuestionFive />,
     },
     {
       pageNo: 6,
-      element: (
-        <QuestionSix page={page} changePage={changePage} totalPages={6} />
-      ),
+      element: <QuestionSix />,
+    },
+    {
+      pageNo: 7,
+      element: <QuestionSeven />,
+    },
+    {
+      pageNo: 8,
+      element: <PurposeStatement />,
     },
   ];
 
@@ -64,6 +60,7 @@ const PurposeQuestion = () => {
       return (
         <QuestionViewWrapper key={view.pageNo}>
           {view.element}
+          <Pagination page={page} totalPages={8} changePage={changePage} />
         </QuestionViewWrapper>
       );
     }
@@ -71,15 +68,7 @@ const PurposeQuestion = () => {
     return null;
   });
 
-  return (
-    <div>
-      {/* {renderedQuestions} */}
-      <QuestionViewWrapper>
-        <PurposeStatement />
-        <Pagination page={page} totalPages={8} changePage={changePage} />
-      </QuestionViewWrapper>
-    </div>
-  );
+  return <div>{renderedQuestions}</div>;
 };
 
 export default PurposeQuestion;

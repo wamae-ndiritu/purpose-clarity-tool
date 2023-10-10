@@ -66,7 +66,6 @@ const QuestionOne = () => {
             onChange={(e) => setAnswer(e.target.value)}
           ></textarea>
         </div>
-        {/* Save Button */}
       </div>
     </div>
   );

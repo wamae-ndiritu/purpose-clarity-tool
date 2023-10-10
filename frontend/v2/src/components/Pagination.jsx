@@ -35,14 +35,14 @@ const Pagination = ({ page, totalPages, changePage }) => {
       <button
         onClick={() => {
           if (page === totalPages) {
-            navigate("/questions/answers");
+            navigate("/");
           } else {
             changePage(page + 1);
           }
         }}
         className={`bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded ml-2 `}
       >
-        Next
+        {page === 8 ? "Submit" : "Next"}
       </button>
     </div>
   );
