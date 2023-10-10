@@ -11,8 +11,6 @@ const createPurposeStory = async (req, res) => {
     actionsAndCommitments,
   } = req.body;
 
-  console.log(req.body);
-
   const purposeStory = new PurposeStory({
     purpose,
     origin,
@@ -56,8 +54,6 @@ const updatePurposeStory = async (req, res) => {
     impactAndBeneficiaries,
     actionsAndCommitments,
   } = req.body;
-
-  console.log(req.body);
 
   const purposeStory = await PurposeStory.findOne({
     user: req.params.id,

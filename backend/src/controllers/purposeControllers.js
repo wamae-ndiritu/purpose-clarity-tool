@@ -13,8 +13,6 @@ const createPurposeItem = async (req, res) => {
     purpose_statement,
   } = req.body;
 
-  console.log(req.body);
-
   const purpose = new Purpose({
     identity,
     strengths,
@@ -41,7 +39,7 @@ const getUserPurposeItem = async (req, res) => {
   if (purpose) {
     res.json(purpose);
   } else {
-    res.status(404).json({ message: "Item not found" });
+    res.status(404).json({ message: "No saved item" });
   }
 };
 
@@ -59,6 +57,7 @@ const updatePuposeItem = async (req, res) => {
   } = req.body;
 
   const purpose = await Purpose.findById(req.params.id);
+  console.log(purpose);
   if (purpose) {
     purpose.identity = identity || product.identity;
     purpose.strengths = strengths || product.strengths;

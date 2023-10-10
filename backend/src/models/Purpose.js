@@ -9,35 +9,35 @@ const PurposeSchema = new mongoose.Schema(
     },
     identity: {
       type: String,
-      required: true,
+      default: null,
     },
     strengths: {
       type: String,
-      required: true,
+      default: null,
     },
     passions: {
       type: String,
-      required: true,
+      default: null,
     },
     target_audience: {
       type: String,
-      required: true,
+      default: null,
     },
     beneficiary_needs: {
       type: String,
-      required: true,
+      default: null,
     },
     impact: {
       type: String,
-      required: true,
+      default: null,
     },
     revenue_sources: {
       type: String,
-      required: true,
+      default: null,
     },
     purpose_statement: {
       type: String,
-      required: true,
+      default: null,
     },
   },
   {
