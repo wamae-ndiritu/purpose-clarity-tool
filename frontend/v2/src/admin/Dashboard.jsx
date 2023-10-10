@@ -5,6 +5,8 @@ import "./Dashboard.css";
 import UserssList from "./users/UsersList";
 import { useDispatch, useSelector } from "react-redux";
 import { listUsers } from "../redux/actions/userActions";
+import Loading from "../utils/Loading";
+import Message from "../utils/Message";
 
 const Dashboard = () => {
   const user = useSelector((state) => state.user);
@@ -39,12 +41,12 @@ const Dashboard = () => {
                 <p className='text-warning'>{users?.length} Users</p>
               </div>
             </div>
-            <div className='col-lg-3 col-md-3 col-sm-6'>
+            <div className='col-lg-3 col-md-3 col-sm-6 mb-3'>
               <div className='card'>
                 <div className='card-icon'>
                   <i class='fa fa-file-text' aria-hidden='true'></i>
                 </div>
-                <p className='text-info'>18 Responses</p>
+                <p className='text-info'>0 Responses</p>
               </div>
             </div>
             <div className='col-lg-3 col-md-3 col-sm-6'>
@@ -52,16 +54,12 @@ const Dashboard = () => {
                 <div className='card-icon'>
                   <i className='fa fa-comment' aria-hidden='true'></i>
                 </div>
-                <p className='text-success'>7 Reviews</p>
+                <p className='text-success'>0 Reviews</p>
               </div>
             </div>
           </div>
+          {loading ? <Loading /> : error && <Message>{error}</Message>}
           <div className='row d-flex justify-content-center my-3'>
-            {loading ? (
-              <span className='text-warning'>Loading...</span>
-            ) : (
-              error && <span className='text-danger'>{error}</span>
-            )}
             <div className='col-lg-10 col-md-10 col-sm-10'>
               <UserssList data={formattedUsers} />
             </div>
