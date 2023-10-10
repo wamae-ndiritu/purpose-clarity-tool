@@ -16,7 +16,7 @@ const Questions = () => {
       <SideBar />
       <div className='content'>
         <TopBar />
-        <div className='container mt-3'>
+        <div className='px-12 mt-3'>
           <div className='row d-flex justify-content-center my-3'>
             <div className='col-lg-10 col-md-10 col-sm-10'>
               <div className='shadow-sm '>

@@ -31,9 +31,13 @@ export default function UserssList({ data }) {
         return (
           <>
             {params.row.isAdmin ? (
-              <h6 className='alert alert-warning role'>Admin</h6>
+              <h6 className='rounded h-12 text-green-500 border rounded-full p-4 role'>
+                Admin
+              </h6>
             ) : (
-              <h6 className='alert alert-success role'>User</h6>
+              <h6 className='rounded h-12 text-orange-500 border rounded-full p-4 role'>
+                User
+              </h6>
             )}
           </>
         );

@@ -31,30 +31,30 @@ const Dashboard = () => {
       <SideBar />
       <div className='content'>
         <TopBar />
-        <div className='container mt-3'>
-          <div className='row d-flex justify-content-center'>
-            <div className='col-lg-3 col-md-3 col-sm-6'>
-              <div className='card'>
+        <div className='px-12'>
+          <div className='grid grid-cols-3 gap-5 my-3'>
+            <div className='border rounded'>
+              <div className=' card rounded'>
                 <div className='card-icon'>
                   <i className='fa fa-users' aria-hidden='true'></i>
                 </div>
-                <p className='text-warning'>{users?.length} Users</p>
+                <p className='text-orange-500'>{users?.length} Users</p>
               </div>
             </div>
-            <div className='col-lg-3 col-md-3 col-sm-6 mb-3'>
-              <div className='card'>
+            <div className='border rounded'>
+              <div className='card rounded'>
                 <div className='card-icon'>
                   <i class='fa fa-file-text' aria-hidden='true'></i>
                 </div>
-                <p className='text-info'>0 Responses</p>
+                <p className='text-blue-400'>0 Responses</p>
               </div>
             </div>
-            <div className='col-lg-3 col-md-3 col-sm-6'>
-              <div className='card'>
+            <div className='rounded border'>
+              <div className='card rounded'>
                 <div className='card-icon'>
                   <i className='fa fa-comment' aria-hidden='true'></i>
                 </div>
-                <p className='text-success'>0 Reviews</p>
+                <p className='text-green-400'>0 Reviews</p>
               </div>
             </div>
           </div>

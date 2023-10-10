@@ -4,6 +4,8 @@ import TopBar from "../topbar/TopBar";
 import { listUsers } from "../../redux/actions/userActions";
 import { useDispatch, useSelector } from "react-redux";
 import UserssList from "./UsersList";
+import Loading from "../../utils/Loading";
+import Message from "../../utils/Message";
 
 const User = () => {
   const user = useSelector((state) => state.user);
@@ -57,15 +59,11 @@ const User = () => {
       <SideBar />
       <div className='content'>
         <TopBar />
-        <div className='container mt-3'>
-          <div className='row d-flex justify-content-center my-3'>
-            {loading ? (
-              <span className='text-warning'>Loading...</span>
-            ) : (
-              error && <span className='text-danger'>{error}</span>
-            )}
+        <div className='px-12'>
+          <div className='py-12'>
+            {loading ? <Loading /> : error && <Message>{error}</Message>}
             <div className='col-lg-10 col-md-10 col-sm-10'>
-              <div className='d-flex align-items-center justify-space-between mb-3 title-1-cont'>
+              <div className='flex justify-space-between items-center mb-3 title-1-cont'>
                 <div className='users-btn-cont'>
                   <button
                     className='btn user-btn-toggle active'

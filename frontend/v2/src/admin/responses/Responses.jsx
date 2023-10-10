@@ -8,7 +8,7 @@ const Responses = () => {
       <SideBar />
       <div className='content'>
         <TopBar />
-        <div className='container mt-3'>
+        <div className='px-12 mt-3'>
           <p>Response page coming soon...</p>
         </div>
       </div>
