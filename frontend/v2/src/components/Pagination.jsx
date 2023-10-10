@@ -19,17 +19,19 @@ const Pagination = ({ page, totalPages, changePage }) => {
       >
         Prev
       </button>
-      {pages.map((item) => (
-        <button
-          key={item}
-          onClick={() => changePage(item)}
-          className={`bg-white hover:bg-gray-200 text-gray-800 font-semibold py-2 px-2 md:px-4 rounded md:mx-2 ml-2 md:ml-0 ${
-            item === page ? "bg-green-500" : ""
-          }`}
-        >
-          {item}
-        </button>
-      ))}
+      {pages.map((item) => {
+        return (
+          <button
+            key={item}
+            onClick={() => changePage(item)}
+            className={`hover:bg-gray-200 text-gray-800 font-semibold py-2 px-2 md:px-4 rounded md:mx-2 ml-2 md:ml-0 ${
+              item === page ? "bg-gray-300" : "bg-white"
+            }`}
+          >
+            {item}
+          </button>
+        );
+      })}
       <button
         onClick={() => {
           if (page === totalPages) {

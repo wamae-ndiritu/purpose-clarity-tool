@@ -76,6 +76,7 @@ const PurposeQuestion = () => {
       {/* {renderedQuestions} */}
       <QuestionViewWrapper>
         <PurposeStatement />
+        <Pagination page={page} totalPages={8} changePage={changePage} />
       </QuestionViewWrapper>
     </div>
   );
