@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import QuestionOne from "../components/QuestionOne";
 import QuestionTwo from "../components/QuestionTwo";
@@ -18,6 +18,8 @@ const PurposeQuestion = () => {
   const changePage = (page) => {
     setPage(page);
   };
+
+  const pageNo = location.search ? Number(location.search.split("=")[1]) : null;
 
   const questionViews = [
     {
@@ -53,6 +55,12 @@ const PurposeQuestion = () => {
       element: <PurposeStatement />,
     },
   ];
+
+  useEffect(() => {
+    if (pageNo) {
+      setPage(pageNo);
+    }
+  }, [pageNo]);
 
   // Use map to create an array of components
   const renderedQuestions = questionViews.map((view) => {

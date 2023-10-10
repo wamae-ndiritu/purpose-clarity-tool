@@ -12,7 +12,7 @@ const Pagination = ({ page, totalPages, changePage }) => {
     <div className='flex items-center justify-center my-3 px-4'>
       <button
         onClick={() => changePage(page - 1)}
-        className={`bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded md:mr-2 ${
+        className={`bg-gray-700 hover:bg-gray-800 text-white font-semibold py-2 px-4 rounded md:mr-2 ${
           page === 1 ? "opacity-50 cursor-not-allowed" : ""
         }`}
         disabled={page === 1}
@@ -35,12 +35,12 @@ const Pagination = ({ page, totalPages, changePage }) => {
       <button
         onClick={() => {
           if (page === totalPages) {
-            navigate("/");
+            navigate("/questions/answers");
           } else {
             changePage(page + 1);
           }
         }}
-        className={`bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded ml-2 `}
+        className={`bg-gray-700 hover:bg-gray-800 text-white font-semibold py-2 px-4 rounded ml-2 `}
       >
         {page === 8 ? "Submit" : "Next"}
       </button>

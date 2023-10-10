@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { getPurposeStory } from "../redux/actions/purposeActions";
 import { useDispatch, useSelector } from "react-redux";
 import Loading from "../utils/Loading";
@@ -21,28 +21,6 @@ const ViewAnswers = () => {
   const openModal = () => {
     setIsModalOpen(true);
   };
-  // Dummy answers for testing
-  const answers = {
-    questionOne: item?.purpose,
-    questionTwo: item?.origin,
-    questionThree:
-      item?.vissionAndMission?.vision +
-      item?.vissionAndMission?.mission +
-      item?.vissionAndMission?.impact,
-    questionFour:
-      item?.valuesAndBeliefs?.values + item?.valuesAndBeliefs?.beliefs,
-    questionFive:
-      item?.impactAndBeneficiaries?.impact +
-      item.impactAndBeneficiaries?.beneficiaries,
-    questionSix:
-      item?.actionsAndCommitments?.actions +
-      item?.actionsAndCommitments?.examples +
-      item?.actionsAndCommitments?.dedication,
-  };
-
-  useEffect(() => {
-    dispatch(getPurposeStory());
-  }, [dispatch]);
 
   const downloadPDF = () => {
     const element = document.getElementById("printable");
@@ -80,52 +58,113 @@ const ViewAnswers = () => {
   return (
     <div className='w-full flex flex-col items-center gap-5 justify-center py-12'>
       {isModalOpen && <ShareModal closeModal={closeModal} />}
-      <div className='mx-4 md:mx-0 md:w-3/5 bg-white p-4 md:p-8' id='printable'>
-        <h2 className='text-2xl md:text-3xl text-center font-bold mb-3 text-gray-700'>
-          My Purpose Story
-        </h2>
-        {loading ? <Loading /> : error && <Message>{error}</Message>}
-        <div className='mb-4'>
-          {/* <h2 className='text-xl md:text-2xl font-semibold text-gray-700 mb-2'>
-            Purpose Statement
-          </h2> */}
-          <p className='text-gray-600'>{answers.questionOne}</p>
+      <div className='mx-4 md:mx-0 md:w-3/5 bg-white p-4 md:p-8'>
+        <h5 className='text-2xl text-center font-bold mb-4 text-gray-600'>
+          Here are your answers. You can click the title to edit.
+        </h5>
+        <div className='mb-2'>
+          <Link
+            to='/questions/purpose?page=1'
+            className='text-lg text-gray-600 font-semibold hover:text-green-500 hover:underline'
+          >
+            <h6>1. Who are you?</h6>
+          </Link>
+          <p className='text-sm text-gray-600'>
+            Without this question, all the other questions lead to a hobby, and
+            with only this question, you may end up as an unfulfilled ruthless
+            money-making machine. This question gives you a vocation and
+            multiplies the impact you can make.
+          </p>
         </div>
-        <div className='mb-4'>
-          {/* <h2 className='text-xl md:text-2xl font-semibold text-gray-700 mb-2'>
-            Origin and Personal Connection
-          </h2> */}
-          <p className='text-gray-600'>{answers.questionTwo}</p>
+        <div className='mb-2'>
+          <Link
+            to='/questions/purpose?page=2'
+            className='text-lg text-gray-600 font-semibold hover:text-green-500 hover:underline'
+          >
+            <h6>2. What do you do well?</h6>
+          </Link>
+          <p className='text-sm text-gray-600'>
+            This question gives you a vocation and multiplies the impact you can
+            make.
+          </p>
         </div>
-        <div className='mb-4'>
-          {/* <h2 className='text-xl md:text-2xl font-semibold text-gray-700 mb-2'>
-            Vision and Mission
-          </h2> */}
-          <p className='text-gray-600'>{answers.questionThree}</p>
+        <div className='mb-2'>
+          <Link
+            to='/questions/purpose?page=3'
+            className='text-lg text-gray-600 font-semibold hover:text-green-500 hover:underline'
+          >
+            <h6>3. What do you love to do?</h6>
+          </Link>
+          <p className='text-sm text-gray-600'>
+            This question gives you a vocation and multiplies the impact you can
+            make.
+          </p>
         </div>
-        <div className='mb-4'>
-          {/* <h2 className='text-xl md:text-2xl font-semibold text-gray-700 mb-2'>
-            Values and Beliefs
-          </h2> */}
-          <p className='text-gray-600'>{answers.questionFour}</p>
+        <div className='mb-2'>
+          <Link
+            to='/questions/purpose?page=4'
+            className='text-lg text-gray-600 font-semibold hover:text-green-500 hover:underline'
+          >
+            <h6>4. Whom do you intend to serve?</h6>
+          </Link>
+          <p className='text-sm text-gray-600'>
+            This question gives you a vocation and multiplies the impact you can
+            make.
+          </p>
         </div>
-        <div className='mb-4'>
-          {/* <h2 className='text-xl md:text-2xl font-semibold text-gray-700 mb-2'>
-            Impact and Beneficiaries
-          </h2> */}
-          <p className='text-gray-600'>{answers.questionFive}</p>
+        <div className='mb-2'>
+          <Link
+            to='/questions/purpose?page=5'
+            className='text-lg text-gray-600 font-semibold hover:text-green-500 hover:underline'
+          >
+            <h6>5. What do your beneficiaries need?</h6>
+          </Link>
+          <p className='text-sm text-gray-600'>
+            This question gives you a vocation and multiplies the impact you can
+            make.
+          </p>
         </div>
-        <div className='mb-4'>
-          {/* <h2 className='text-xl md:text-2xl font-semibold text-gray-700 mb-2'>
-            Actions and Commitments
-          </h2> */}
-          <p className='text-gray-600'>{answers.questionSix}</p>
+        <div className='mb-2'>
+          <Link
+            to='/questions/purpose?page=6'
+            className='text-lg text-gray-600 font-semibold hover:text-green-500 hover:underline'
+          >
+            <h6>6. How do your offerings transform your beneficiaries?</h6>
+          </Link>
+          <p className='text-sm text-gray-600'>
+            This question gives you a vocation and multiplies the impact you can
+            make.
+          </p>
+        </div>
+        <div className='mb-2'>
+          <Link
+            to='/questions/purpose?page=7'
+            className='text-lg text-gray-600 font-semibold hover:text-green-500 hover:underline'
+          >
+            <h6>7. What activities can generate income for you?</h6>
+          </Link>
+          <p className='text-sm text-gray-600'>
+            This question gives you a vocation and multiplies the impact you can
+            make.
+          </p>
+        </div>
+        <div className='mb-2'>
+          <Link
+            to='/questions/purpose?page=8'
+            className='text-lg text-gray-600 font-semibold hover:text-green-500 hover:underline'
+          >
+            <h6>8. The purpose statement</h6>
+          </Link>
+          <p className='text-sm text-gray-600'>
+            This question gives you a vocation and multiplies the impact you can
+            make.
+          </p>
         </div>
       </div>
       <div className='w-full px-4 md:px-0 md:w-3/5 flex justify-between'>
         <button
           className='bg-red-500 text-white rounded px-4 py-1'
-          onClick={() => navigate("/questions/purpose")}
+          onClick={() => navigate("/questions/purpose?page=8")}
         >
           Go Back to Form
         </button>
