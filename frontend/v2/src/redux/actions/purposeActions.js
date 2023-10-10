@@ -1,25 +1,28 @@
 import { API_ENDPOINT } from "../../Url";
 import {
-  createPurposeStoryStart,
-  createPurposeStorySuccess,
-  createPurposeStoryFail,
-  getPurposeStoryStart,
-  getPurposeStorySuccess,
-  getPurposeStoryFail,
-  updatePurposeStoryStart,
-  updatePurposeStorySuccess,
-  updatePurposeStoryFail,
-  deletePurposeStoryStart,
-  deletePurposeStorySuccess,
-  deletePurposeStoryFail,
+  createItemFail,
+  createItemStart,
+  createItemSuccess,
+  deleteItemFail,
+  deleteItemStart,
+  deleteItemSuccess,
+  getItemFail,
+  getItemStart,
+  getItemSuccess,
+  shareAnswersFail,
+  shareAnswersStart,
+  shareAnswersSuccess,
+  updateItemFail,
+  updateItemStart,
+  updateItemSuccess,
 } from "../slices/purposeSlice";
 import axios from "axios";
 import { logout } from "./userActions";
 
-// CREATE PURPOSE STORY
-export const createPurposeStory = (details) => async (dispatch, getState) => {
+// CREATE ITEM
+export const createItem = (details) => async (dispatch, getState) => {
   try {
-    dispatch({ type: createPurposeStoryStart });
+    dispatch({ type: createItemStart });
 
     const {
       user: { userInfo },
@@ -33,12 +36,12 @@ export const createPurposeStory = (details) => async (dispatch, getState) => {
     };
 
     const { data } = await axios.post(
-      `${API_ENDPOINT}/purpose-story/create`,
+      `${API_ENDPOINT}/purpose-clarity/create`,
       details,
       config
     );
 
-    dispatch({ type: createPurposeStorySuccess, payload: data });
+    dispatch({ type: createItemSuccess, payload: data });
   } catch (err) {
     let error = err.response ? err.response.data.message : err.message;
     if (
@@ -47,14 +50,14 @@ export const createPurposeStory = (details) => async (dispatch, getState) => {
     ) {
       dispatch(logout());
     }
-    dispatch(createPurposeStoryFail(error));
+    dispatch(createItemFail(error));
   }
 };
 
-// GET PURPOSE STORY
-export const getPurposeStory = () => async (dispatch, getState) => {
+// GET ITEM
+export const getItem = () => async (dispatch, getState) => {
   try {
-    dispatch({ type: getPurposeStoryStart });
+    dispatch({ type: getItemStart });
 
     const {
       user: { userInfo },
@@ -68,11 +71,11 @@ export const getPurposeStory = () => async (dispatch, getState) => {
     };
 
     const { data } = await axios.get(
-      `${API_ENDPOINT}/purpose-story/${userInfo._id}`,
+      `${API_ENDPOINT}/purpose-clarity/${userInfo._id}`,
       config
     );
 
-    dispatch({ type: getPurposeStorySuccess, payload: data });
+    dispatch({ type: getItemSuccess, payload: data });
   } catch (err) {
     let error = err.response ? err.response.data.message : err.message;
     if (
@@ -81,14 +84,14 @@ export const getPurposeStory = () => async (dispatch, getState) => {
     ) {
       dispatch(logout());
     }
-    dispatch(getPurposeStoryFail(error));
+    dispatch(getItemFail(error));
   }
 };
 
-// UPDATE PURPOSE STORY
-export const updatePurposeStory = (details) => async (dispatch, getState) => {
+// UPDATE ITEM
+export const updateItem = (details) => async (dispatch, getState) => {
   try {
-    dispatch({ type: updatePurposeStoryStart });
+    dispatch({ type: updateItemStart });
 
     const {
       user: { userInfo },
@@ -102,12 +105,12 @@ export const updatePurposeStory = (details) => async (dispatch, getState) => {
     };
 
     const { data } = await axios.put(
-      `${API_ENDPOINT}/purpose-story/${userInfo._id}`,
+      `${API_ENDPOINT}/purpose-clarity/${userInfo._id}`,
       details,
       config
     );
 
-    dispatch({ type: updatePurposeStorySuccess, payload: data });
+    dispatch({ type: updateItemSuccess, payload: data });
   } catch (err) {
     let error = err.response ? err.response.data.message : err.message;
     if (
@@ -116,14 +119,14 @@ export const updatePurposeStory = (details) => async (dispatch, getState) => {
     ) {
       dispatch(logout());
     }
-    dispatch(updatePurposeStoryFail(error));
+    dispatch(updateItemFail(error));
   }
 };
 
-// DELETE PURPOSE STORY
-export const deletePurposeStory = () => async (dispatch, getState) => {
+// DELETE ITEM
+export const deleteItem = () => async (dispatch, getState) => {
   try {
-    dispatch({ type: deletePurposeStoryStart });
+    dispatch({ type: deleteItemStart });
 
     const {
       user: { userInfo },
@@ -137,11 +140,11 @@ export const deletePurposeStory = () => async (dispatch, getState) => {
     };
 
     const { data } = await axios.delete(
-      `${API_ENDPOINT}/purpose-story/${userInfo._id}`,
+      `${API_ENDPOINT}/purpose-clarity/${userInfo._id}`,
       config
     );
 
-    dispatch({ type: deletePurposeStorySuccess, payload: data });
+    dispatch({ type: deleteItemSuccess, payload: data });
   } catch (err) {
     let error = err.response ? err.response.data.message : err.message;
     if (
@@ -150,6 +153,40 @@ export const deletePurposeStory = () => async (dispatch, getState) => {
     ) {
       dispatch(logout());
     }
-    dispatch(deletePurposeStoryFail(error));
+    dispatch(deleteItemFail(error));
+  }
+};
+
+export const sharePurpose = (purposeInfo) => async (dispatch, getState) => {
+  try {
+    dispatch(shareAnswersStart());
+
+    const {
+      user: { userInfo },
+    } = getState();
+
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    };
+
+    await axios.post(
+      `${API_ENDPOINT}/purpose-clarity/send-feedback-email`,
+      purposeInfo,
+      config
+    );
+
+    dispatch(shareAnswersSuccess());
+  } catch (err) {
+    let error = err.response ? err.response.data.message : err.message;
+    if (
+      error === "Not authorized, token failed!" ||
+      error === "Not authorized, no token!"
+    ) {
+      dispatch(logout());
+    }
+    dispatch(shareAnswersFail(error));
   }
 };

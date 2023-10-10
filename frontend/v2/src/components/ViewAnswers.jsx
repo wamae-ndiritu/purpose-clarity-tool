@@ -9,8 +9,17 @@ import ShareModal from "./ShareModal";
 const ViewAnswers = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const purposeStory = useSelector((state) => state.purposeStory);
-  const { loading, error, item } = purposeStory;
+  const form = useSelector((state) => state.form);
+  const {
+    identity,
+    strengths,
+    passions,
+    target_audience,
+    beneficiary_needs,
+    impact,
+    revenue_sources,
+    purpose_statement,
+  } = form;
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -69,12 +78,7 @@ const ViewAnswers = () => {
           >
             <h6>1. Who are you?</h6>
           </Link>
-          <p className='text-sm text-gray-600'>
-            Without this question, all the other questions lead to a hobby, and
-            with only this question, you may end up as an unfulfilled ruthless
-            money-making machine. This question gives you a vocation and
-            multiplies the impact you can make.
-          </p>
+          <p className='text-sm text-gray-600'>{identity}</p>
         </div>
         <div className='mb-2'>
           <Link
@@ -83,10 +87,7 @@ const ViewAnswers = () => {
           >
             <h6>2. What do you do well?</h6>
           </Link>
-          <p className='text-sm text-gray-600'>
-            This question gives you a vocation and multiplies the impact you can
-            make.
-          </p>
+          <p className='text-sm text-gray-600'>{strengths}</p>
         </div>
         <div className='mb-2'>
           <Link
@@ -95,10 +96,7 @@ const ViewAnswers = () => {
           >
             <h6>3. What do you love to do?</h6>
           </Link>
-          <p className='text-sm text-gray-600'>
-            This question gives you a vocation and multiplies the impact you can
-            make.
-          </p>
+          <p className='text-sm text-gray-600'>{passions}</p>
         </div>
         <div className='mb-2'>
           <Link
@@ -107,10 +105,7 @@ const ViewAnswers = () => {
           >
             <h6>4. Whom do you intend to serve?</h6>
           </Link>
-          <p className='text-sm text-gray-600'>
-            This question gives you a vocation and multiplies the impact you can
-            make.
-          </p>
+          <p className='text-sm text-gray-600'>{target_audience}</p>
         </div>
         <div className='mb-2'>
           <Link
@@ -119,10 +114,7 @@ const ViewAnswers = () => {
           >
             <h6>5. What do your beneficiaries need?</h6>
           </Link>
-          <p className='text-sm text-gray-600'>
-            This question gives you a vocation and multiplies the impact you can
-            make.
-          </p>
+          <p className='text-sm text-gray-600'>{beneficiary_needs}</p>
         </div>
         <div className='mb-2'>
           <Link
@@ -131,10 +123,7 @@ const ViewAnswers = () => {
           >
             <h6>6. How do your offerings transform your beneficiaries?</h6>
           </Link>
-          <p className='text-sm text-gray-600'>
-            This question gives you a vocation and multiplies the impact you can
-            make.
-          </p>
+          <p className='text-sm text-gray-600'>{impact}</p>
         </div>
         <div className='mb-2'>
           <Link
@@ -143,10 +132,7 @@ const ViewAnswers = () => {
           >
             <h6>7. What activities can generate income for you?</h6>
           </Link>
-          <p className='text-sm text-gray-600'>
-            This question gives you a vocation and multiplies the impact you can
-            make.
-          </p>
+          <p className='text-sm text-gray-600'>{revenue_sources}</p>
         </div>
         <div className='mb-2'>
           <Link
@@ -155,10 +141,7 @@ const ViewAnswers = () => {
           >
             <h6>8. The purpose statement</h6>
           </Link>
-          <p className='text-sm text-gray-600'>
-            This question gives you a vocation and multiplies the impact you can
-            make.
-          </p>
+          <p className='text-sm text-gray-600'>{purpose_statement}</p>
         </div>
       </div>
       <div className='w-full px-4 md:px-0 md:w-3/5 flex justify-between'>

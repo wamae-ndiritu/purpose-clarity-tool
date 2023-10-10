@@ -1,12 +1,21 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { createItem } from "../redux/actions/purposeActions";
 
 const Pagination = ({ page, totalPages, changePage }) => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const form = useSelector((state) => state.form);
   const pages = [];
   for (let i = 1; i <= totalPages; i++) {
     pages.push(i);
   }
+
+  const handleSubmit = () => {
+    dispatch(createItem(form));
+  };
 
   return (
     <div className='flex items-center justify-center my-3 px-4'>
@@ -35,6 +44,7 @@ const Pagination = ({ page, totalPages, changePage }) => {
       <button
         onClick={() => {
           if (page === totalPages) {
+            handleSubmit();
             navigate("/questions/answers");
           } else {
             changePage(page + 1);

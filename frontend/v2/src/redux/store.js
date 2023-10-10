@@ -1,10 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import userReducer from "./slices/userSlice";
 import purposeReducer from "./slices/purposeSlice";
+import formReducer from "./slices/formSlice";
 
 export const store = configureStore({
   reducer: {
     user: userReducer,
-    purposeStory: purposeReducer,
+    purpose: purposeReducer,
+    form: formReducer,
   },
 });

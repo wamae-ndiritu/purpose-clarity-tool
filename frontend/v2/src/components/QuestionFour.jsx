@@ -1,7 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addState } from "../redux/slices/formSlice";
 
 const QuestionFour = () => {
-  const [answer, setAnswer] = useState("");
+  const dispatch = useDispatch();
+  const form = useSelector((state) => state.form);
+  const handleState = (e) => {
+    dispatch(addState({ name: e.target.name, value: e.target.value }));
+  };
 
   return (
     <div className='container mx-auto grid grid-cols-1 md:grid-cols-5 p-4 gap-5'>
@@ -48,8 +54,9 @@ const QuestionFour = () => {
           <textarea
             className='w-full h-40 p-4 border border-gray-300 rounded focus:outline-none focus:border-blue-500'
             placeholder='Type your answer here...'
-            value={answer}
-            onChange={(e) => setAnswer(e.target.value)}
+            name='target_audience'
+            value={form.target_audience}
+            onChange={handleState}
           ></textarea>
         </div>
       </div>

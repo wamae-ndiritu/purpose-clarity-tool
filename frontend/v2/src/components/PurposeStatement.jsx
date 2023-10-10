@@ -1,8 +1,24 @@
-import React, { useState } from "react";
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { addState } from "../redux/slices/formSlice";
 
 const PurposeStatement = () => {
-  const [answer, setAnswer] = useState("");
+  const dispatch = useDispatch();
+  const form = useSelector((state) => state.form);
+  const {
+    identity,
+    strengths,
+    passions,
+    target_audience,
+    beneficiary_needs,
+    impact,
+    revenue_sources,
+    purpose_statement,
+  } = form;
+  const handleState = (e) => {
+    dispatch(addState({ name: e.target.name, value: e.target.value }));
+  };
 
   return (
     <div className='container mx-auto grid grid-cols-1 md:grid-cols-5 p-4 gap-5'>
@@ -18,12 +34,7 @@ const PurposeStatement = () => {
           >
             <h6>1. Who are you?</h6>
           </Link>
-          <p className='text-sm text-gray-600'>
-            Without this question, all the other questions lead to a hobby, and
-            with only this question, you may end up as an unfulfilled ruthless
-            money-making machine. This question gives you a vocation and
-            multiplies the impact you can make.
-          </p>
+          <p className='text-sm text-gray-600'>{identity}</p>
         </div>
         <div className='mb-2'>
           <Link
@@ -32,10 +43,7 @@ const PurposeStatement = () => {
           >
             <h6>2. What do you do well?</h6>
           </Link>
-          <p className='text-sm text-gray-600'>
-            This question gives you a vocation and multiplies the impact you can
-            make.
-          </p>
+          <p className='text-sm text-gray-600'>{strengths}</p>
         </div>
         <div className='mb-2'>
           <Link
@@ -44,10 +52,7 @@ const PurposeStatement = () => {
           >
             <h6>3. What do you love to do?</h6>
           </Link>
-          <p className='text-sm text-gray-600'>
-            This question gives you a vocation and multiplies the impact you can
-            make.
-          </p>
+          <p className='text-sm text-gray-600'>{passions}</p>
         </div>
         <div className='mb-2'>
           <Link
@@ -56,10 +61,7 @@ const PurposeStatement = () => {
           >
             <h6>4. Whom do you intend to serve?</h6>
           </Link>
-          <p className='text-sm text-gray-600'>
-            This question gives you a vocation and multiplies the impact you can
-            make.
-          </p>
+          <p className='text-sm text-gray-600'>{target_audience}</p>
         </div>
         <div className='mb-2'>
           <Link
@@ -68,10 +70,7 @@ const PurposeStatement = () => {
           >
             <h6>5. What do your beneficiaries need?</h6>
           </Link>
-          <p className='text-sm text-gray-600'>
-            This question gives you a vocation and multiplies the impact you can
-            make.
-          </p>
+          <p className='text-sm text-gray-600'>{beneficiary_needs}</p>
         </div>
         <div className='mb-2'>
           <Link
@@ -80,10 +79,7 @@ const PurposeStatement = () => {
           >
             <h6>6. How do your offerings transform your beneficiaries?</h6>
           </Link>
-          <p className='text-sm text-gray-600'>
-            This question gives you a vocation and multiplies the impact you can
-            make.
-          </p>
+          <p className='text-sm text-gray-600'>{impact}</p>
         </div>
         <div className='mb-2'>
           <Link
@@ -92,10 +88,7 @@ const PurposeStatement = () => {
           >
             <h6>7. What activities can generate income for you?</h6>
           </Link>
-          <p className='text-sm text-gray-600'>
-            This question gives you a vocation and multiplies the impact you can
-            make.
-          </p>
+          <p className='text-sm text-gray-600'>{revenue_sources}</p>
         </div>
       </div>
       {/* Question Description and Answer Input (2nd Column) */}
@@ -166,8 +159,9 @@ const PurposeStatement = () => {
           <textarea
             className='w-full h-40 p-4 border border-gray-300 rounded focus:outline-none focus:border-blue-500'
             placeholder='Type your answer here...'
-            value={answer}
-            onChange={(e) => setAnswer(e.target.value)}
+            name='purpose_statement'
+            value={form.purpose_statement}
+            onChange={handleState}
           ></textarea>
         </div>
       </div>
