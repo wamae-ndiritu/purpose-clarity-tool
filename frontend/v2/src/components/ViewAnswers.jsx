@@ -155,9 +155,12 @@ const ViewAnswers = () => {
           <div className='cursor-pointer' onClick={openModal}>
             🔄
           </div>
-          <div className='cursor-pointer' onClick={downloadPDF}>
-            ⬇️
-          </div>
+          <Link
+            to='/view/purpose-statement'
+            className='cursor-pointer bg-green-500 text-white rounded px-4 py-1'
+          >
+            <h6 className='text-white'>View Statement</h6>
+          </Link>
           {/* <button className='bg-green-500 text-white rounded px-4 py-1'>
             Download PDF
           </button> */}

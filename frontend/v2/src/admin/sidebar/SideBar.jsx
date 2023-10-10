@@ -21,7 +21,7 @@ const SideBar = () => {
         <ul>
           <li>
             <Link to='/admin' className='side-link'>
-              <i className='fa fa-home' aria-hidden='true'></i>
+              <i className='fa fa-bars' aria-hidden='true'></i>
               <h6 className='link-text'>Dashboard</h6>
             </Link>
           </li>
@@ -41,6 +41,12 @@ const SideBar = () => {
             <Link to='/admin/questions' className='side-link'>
               <i className='fa fa-pencil-square-o' aria-hidden='true'></i>
               <h6 className='link-text'>Questions</h6>
+            </Link>
+          </li>
+          <li>
+            <Link to='/' className='side-link'>
+              <i className='fa fa-home' aria-hidden='true'></i>
+              <h6 className='link-text'>Home</h6>
             </Link>
           </li>
         </ul>
