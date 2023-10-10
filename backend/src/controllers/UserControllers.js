@@ -44,6 +44,7 @@ const login = async (req, res) => {
         email: user.email,
         token: generateToken(user._id),
         account_type: user.account_type,
+        isAdmin: user.isAdmin,
       });
     } else {
       res.status(401).json({ message: "Invalid Password!" });

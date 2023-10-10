@@ -36,7 +36,7 @@ const Dashboard = () => {
                 <div className='card-icon'>
                   <i className='fa fa-users' aria-hidden='true'></i>
                 </div>
-                <p className='text-warning'>50 Users</p>
+                <p className='text-warning'>{users?.length} Users</p>
               </div>
             </div>
             <div className='col-lg-3 col-md-3 col-sm-6'>
