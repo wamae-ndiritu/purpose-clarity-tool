@@ -24,7 +24,7 @@ const PurposeStatement = () => {
     <div className='container mx-auto grid grid-cols-1 md:grid-cols-5 p-4 gap-5'>
       {/* Question Guide Card (1st Column) */}
       <div className='col-span-2 bg-white rounded-lg shadow p-6 w-full mb-4'>
-        <h5 className='text-2xl font-bold mb-4 text-gray-600'>
+        <h5 className='text-2xl font-bold mb-4 text-maroon-red'>
           Here are your answers to the 7Qs. You can click to edit.
         </h5>
         <div className='mb-2'>
@@ -32,7 +32,7 @@ const PurposeStatement = () => {
             to='/questions/purpose?page=1'
             className='text-lg text-gray-600 font-semibold hover:text-green-500 hover:underline'
           >
-            <h6>1. Who are you?</h6>
+            <h6 className='text-maroon-red'>1. Who are you?</h6>
           </Link>
           <p className='text-sm text-gray-600'>{identity}</p>
         </div>
@@ -41,7 +41,7 @@ const PurposeStatement = () => {
             to='/questions/purpose?page=2'
             className='text-lg text-gray-600 font-semibold hover:text-green-500 hover:underline'
           >
-            <h6>2. What do you do well?</h6>
+            <h6 className='text-maroon-red'>2. What do you do well?</h6>
           </Link>
           <p className='text-sm text-gray-600'>{strengths}</p>
         </div>
@@ -50,7 +50,7 @@ const PurposeStatement = () => {
             to='/questions/purpose?page=3'
             className='text-lg text-gray-600 font-semibold hover:text-green-500 hover:underline'
           >
-            <h6>3. What do you love to do?</h6>
+            <h6 className='text-maroon-red'>3. What do you love to do?</h6>
           </Link>
           <p className='text-sm text-gray-600'>{passions}</p>
         </div>
@@ -59,7 +59,7 @@ const PurposeStatement = () => {
             to='/questions/purpose?page=4'
             className='text-lg text-gray-600 font-semibold hover:text-green-500 hover:underline'
           >
-            <h6>4. Whom do you intend to serve?</h6>
+            <h6 className='text-maroon-red'>4. Whom do you intend to serve?</h6>
           </Link>
           <p className='text-sm text-gray-600'>{target_audience}</p>
         </div>
@@ -68,7 +68,9 @@ const PurposeStatement = () => {
             to='/questions/purpose?page=5'
             className='text-lg text-gray-600 font-semibold hover:text-green-500 hover:underline'
           >
-            <h6>5. What do your beneficiaries need?</h6>
+            <h6 className='text-maroon-red'>
+              5. What do your beneficiaries need?
+            </h6>
           </Link>
           <p className='text-sm text-gray-600'>{beneficiary_needs}</p>
         </div>
@@ -77,7 +79,9 @@ const PurposeStatement = () => {
             to='/questions/purpose?page=6'
             className='text-lg text-gray-600 font-semibold hover:text-green-500 hover:underline'
           >
-            <h6>6. How do your offerings transform your beneficiaries?</h6>
+            <h6 className='text-maroon-red'>
+              6. How do your offerings transform your beneficiaries?
+            </h6>
           </Link>
           <p className='text-sm text-gray-600'>{impact}</p>
         </div>
@@ -86,14 +90,16 @@ const PurposeStatement = () => {
             to='/questions/purpose?page=7'
             className='text-lg text-gray-600 font-semibold hover:text-green-500 hover:underline'
           >
-            <h6>7. What activities can generate income for you?</h6>
+            <h6 className='text-maroon-red'>
+              7. What activities can generate income for you?
+            </h6>
           </Link>
           <p className='text-sm text-gray-600'>{revenue_sources}</p>
         </div>
       </div>
       {/* Question Description and Answer Input (2nd Column) */}
       <div className='col-span-3 flex flex-col justify-start items-start'>
-        <h2 className='text-2xl md:text-2xl font-bold mb-4 mt-3 text-gray-600'>
+        <h2 className='text-2xl md:text-2xl font-bold mb-4 mt-3 text-maroon-red'>
           8. The Purpose Statement
         </h2>
         <p className='text-sm text-gray-600 mb-2'>

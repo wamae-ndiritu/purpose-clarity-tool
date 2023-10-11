@@ -21,7 +21,7 @@ const Pagination = ({ page, totalPages, changePage }) => {
     <div className='flex items-center justify-center my-3 px-4'>
       <button
         onClick={() => changePage(page - 1)}
-        className={`bg-gray-700 hover:bg-gray-800 text-white font-semibold py-2 px-4 rounded md:mr-2 ${
+        className={`bg-maroon-red hover:bg-red-700 text-white font-semibold py-2 px-4 rounded md:mr-2 ${
           page === 1 ? "opacity-50 cursor-not-allowed" : ""
         }`}
         disabled={page === 1}
@@ -50,7 +50,7 @@ const Pagination = ({ page, totalPages, changePage }) => {
             changePage(page + 1);
           }
         }}
-        className={`bg-gray-700 hover:bg-gray-800 text-white font-semibold py-2 px-4 rounded ml-2 `}
+        className={`bg-maroon-red hover:bg-red-700 text-white font-semibold py-2 px-4 rounded ml-2 `}
       >
         {page === 8 ? "Submit" : "Next"}
       </button>

@@ -13,7 +13,7 @@ const QuestionFour = () => {
     <div className='container mx-auto grid grid-cols-1 md:grid-cols-5 p-4 gap-5'>
       {/* Question Guide Card (1st Column) */}
       <div className='col-span-2 bg-white rounded-lg shadow p-6 w-full mb-4'>
-        <h2 className='text-2xl font-bold mb-4 text-gray-600'>
+        <h2 className='text-2xl font-bold mb-4 text-maroon-red'>
           Guide Questions
         </h2>
         <ul className='list-disc pl-6 mb-6 text-gray-600'>
@@ -30,7 +30,7 @@ const QuestionFour = () => {
       </div>
       {/* Question Description and Answer Input (2nd Column) */}
       <div className='col-span-3 flex flex-col justify-start items-start'>
-        <h2 className='text-2xl md:text-2xl font-bold mb-4 mt-3 text-gray-600'>
+        <h2 className='text-2xl md:text-2xl font-bold mb-4 mt-3 text-maroon-red'>
           4. Whom do you intend to serve?
         </h2>
         <p className='text-sm text-gray-600'>

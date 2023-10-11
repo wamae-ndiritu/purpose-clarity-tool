@@ -5,7 +5,7 @@ const IntroSection = () => {
   return (
     <section className='bg-gray-100 py-16 text-gray-600'>
       <div className='container mx-auto md:text-center px-8 md:px-4'>
-        <h1 className='text-3xl md:text-4xl font-bold mb-4'>
+        <h1 className='text-3xl md:text-4xl text-maroon-red font-bold mb-4'>
           Guided Purpose Clarification Journey
         </h1>
         <p className='text-lg mb-8'>
@@ -23,9 +23,9 @@ const IntroSection = () => {
         </p>
         <Link
           to='/questions/purpose'
-          className='bg-white  border text-gray-800 hover:bg-gray-800 hover:text-white py-2 px-6 rounded-full text-lg font-semibold inline-block transition duration-300'
+          className='border text-white bg-yellow-gold hover:bg-white hover:text-white py-2 px-6 rounded-full text-lg font-semibold inline-block transition duration-300'
         >
-          Get Started
+          <h6 className='text-white hover:text-gray-600'>Get Started</h6>
         </Link>
       </div>
     </section>

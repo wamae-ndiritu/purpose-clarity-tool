@@ -68,15 +68,17 @@ const ViewAnswers = () => {
     <div className='w-full flex flex-col items-center gap-5 justify-center py-12'>
       {isModalOpen && <ShareModal closeModal={closeModal} />}
       <div className='mx-4 md:mx-0 md:w-3/5 bg-white p-4 md:p-8'>
-        <h5 className='text-2xl text-center font-bold mb-4 text-gray-600'>
+        <h5 className='text-2xl text-center font-bold mb-4 text-maroon-red'>
           Here are your answers. You can click the title to edit.
         </h5>
         <div className='mb-2'>
           <Link
             to='/questions/purpose?page=1'
-            className='text-lg text-gray-600 font-semibold hover:text-green-500 hover:underline'
+            className='text-lg text-gray-600 font-semibold hover:text-maroon-red hover:underline'
           >
-            <h6>1. Who are you?</h6>
+            <h6 className='text-maroon-red hover:text-yellow-gold hover-underline'>
+              1. Who are you?
+            </h6>
           </Link>
           <p className='text-sm text-gray-600'>{identity}</p>
         </div>
@@ -85,7 +87,7 @@ const ViewAnswers = () => {
             to='/questions/purpose?page=2'
             className='text-lg text-gray-600 font-semibold hover:text-green-500 hover:underline'
           >
-            <h6>2. What do you do well?</h6>
+            <h6 className='text-maroon-red'>2. What do you do well?</h6>
           </Link>
           <p className='text-sm text-gray-600'>{strengths}</p>
         </div>
@@ -94,7 +96,7 @@ const ViewAnswers = () => {
             to='/questions/purpose?page=3'
             className='text-lg text-gray-600 font-semibold hover:text-green-500 hover:underline'
           >
-            <h6>3. What do you love to do?</h6>
+            <h6 className='text-maroon-red'>3. What do you love to do?</h6>
           </Link>
           <p className='text-sm text-gray-600'>{passions}</p>
         </div>
@@ -103,7 +105,7 @@ const ViewAnswers = () => {
             to='/questions/purpose?page=4'
             className='text-lg text-gray-600 font-semibold hover:text-green-500 hover:underline'
           >
-            <h6>4. Whom do you intend to serve?</h6>
+            <h6 className='text-maroon-red'>4. Whom do you intend to serve?</h6>
           </Link>
           <p className='text-sm text-gray-600'>{target_audience}</p>
         </div>
@@ -112,7 +114,9 @@ const ViewAnswers = () => {
             to='/questions/purpose?page=5'
             className='text-lg text-gray-600 font-semibold hover:text-green-500 hover:underline'
           >
-            <h6>5. What do your beneficiaries need?</h6>
+            <h6 className='text-maroon-red'>
+              5. What do your beneficiaries need?
+            </h6>
           </Link>
           <p className='text-sm text-gray-600'>{beneficiary_needs}</p>
         </div>
@@ -121,7 +125,9 @@ const ViewAnswers = () => {
             to='/questions/purpose?page=6'
             className='text-lg text-gray-600 font-semibold hover:text-green-500 hover:underline'
           >
-            <h6>6. How do your offerings transform your beneficiaries?</h6>
+            <h6 className='text-maroon-red'>
+              6. How do your offerings transform your beneficiaries?
+            </h6>
           </Link>
           <p className='text-sm text-gray-600'>{impact}</p>
         </div>
@@ -130,7 +136,9 @@ const ViewAnswers = () => {
             to='/questions/purpose?page=7'
             className='text-lg text-gray-600 font-semibold hover:text-green-500 hover:underline'
           >
-            <h6>7. What activities can generate income for you?</h6>
+            <h6 className='text-maroon-red'>
+              7. What activities can generate income for you?
+            </h6>
           </Link>
           <p className='text-sm text-gray-600'>{revenue_sources}</p>
         </div>
@@ -139,14 +147,14 @@ const ViewAnswers = () => {
             to='/questions/purpose?page=8'
             className='text-lg text-gray-600 font-semibold hover:text-green-500 hover:underline'
           >
-            <h6>8. The purpose statement</h6>
+            <h6 className='text-maroon-red'>8. The purpose statement</h6>
           </Link>
           <p className='text-sm text-gray-600'>{purpose_statement}</p>
         </div>
       </div>
       <div className='w-full px-4 md:px-0 md:w-3/5 flex justify-between'>
         <button
-          className='bg-red-500 text-white rounded px-4 py-1'
+          className='bg-maroon-red text-white rounded px-4 py-1'
           onClick={() => navigate("/questions/purpose?page=8")}
         >
           Go Back to Form
@@ -157,7 +165,7 @@ const ViewAnswers = () => {
           </div>
           <Link
             to='/view/purpose-statement'
-            className='cursor-pointer bg-green-500 text-white rounded px-4 py-1'
+            className='cursor-pointer bg-maroon-red text-white rounded px-4 py-1'
           >
             <h6 className='text-white'>View Statement</h6>
           </Link>
