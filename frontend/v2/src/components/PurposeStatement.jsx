@@ -14,7 +14,6 @@ const PurposeStatement = () => {
     beneficiary_needs,
     impact,
     revenue_sources,
-    purpose_statement,
   } = form;
   const handleState = (e) => {
     dispatch(addState({ name: e.target.name, value: e.target.value }));
