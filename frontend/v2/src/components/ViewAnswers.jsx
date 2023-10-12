@@ -160,8 +160,11 @@ const ViewAnswers = () => {
           Go Back to Form
         </button>
         <div className='flex items-center gap-3'>
-          <div className='cursor-pointer' onClick={openModal}>
-            🔄
+          <div
+            className='cursor-pointer bg-maroon-red px-2 py-1 text-white'
+            onClick={openModal}
+          >
+            Share with Coach
           </div>
           <Link
             to='/view/purpose-statement'

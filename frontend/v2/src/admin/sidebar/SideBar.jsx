@@ -34,7 +34,7 @@ const SideBar = () => {
           <li>
             <Link to='/admin/responses' className='side-link'>
               <i className='fa fa-sticky-note' aria-hidden='true'></i>
-              <h6 className='link-text'>Rensponses</h6>
+              <h6 className='link-text'>Responses</h6>
             </Link>
           </li>
           <li>

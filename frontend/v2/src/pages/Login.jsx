@@ -197,7 +197,9 @@ const Login = () => {
           )
         ) : (
           <>
-            <h2 className='text-2xl text-center font-semibold mb-6'>Login</h2>
+            <h2 className='text-2xl text-center font-semibold mb-6 text-maroon-red'>
+              Login
+            </h2>
             {loginErr && <Message>{loginErr}</Message>}
             {loading ? <Loading /> : error && <Message>{error}</Message>}
             <div className='mb-4'>
@@ -236,7 +238,7 @@ const Login = () => {
             </div>
             <button
               type='submit'
-              className='w-full bg-gray-800 text-white py-2 px-4 rounded hover:bg-gray-600'
+              className='w-full bg-maroon-red text-white py-2 px-4 rounded hover:bg-red-700'
             >
               Login
             </button>
