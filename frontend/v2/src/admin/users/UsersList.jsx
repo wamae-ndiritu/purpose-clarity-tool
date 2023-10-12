@@ -1,12 +1,7 @@
-import { useSelector } from "react-redux";
 import { DataGrid } from "@mui/x-data-grid";
 import moment from "moment";
 
 export default function UserssList({ data }) {
-  const handleDelete = (id) => {
-    console.log("deleting soon...");
-  };
-
   const columns = [
     {
       field: "id",
