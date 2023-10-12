@@ -10,7 +10,6 @@ import Answers from "./pages/Answers";
 import Register from "./pages/Register";
 import { Dashboard, Responses, User, Questions } from "./admin";
 import Statement from "./components/Statement";
-import LoginPage from "./pages/loginPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -34,7 +33,6 @@ function App() {
     <Routes>
       <Route exact path='/account/login' element={<Login />} />
       <Route exact path='/account/register' element={<Register />} />
-      <Route exact path='/login' element={<LoginPage />} />
       <Route element={<AuthLayout />}>
         <Route exact path='/' element={<Home />} />
         <Route exact path='/questions/purpose' element={<PurposeQuestion />} />

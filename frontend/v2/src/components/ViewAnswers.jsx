@@ -1,14 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { getPurposeStory } from "../redux/actions/purposeActions";
-import { useDispatch, useSelector } from "react-redux";
-import Loading from "../utils/Loading";
-import Message from "../utils/Message";
+import { useSelector } from "react-redux";
 import ShareModal from "./ShareModal";
 
 const ViewAnswers = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
   const form = useSelector((state) => state.form);
   const {
     identity,
@@ -29,39 +25,6 @@ const ViewAnswers = () => {
 
   const openModal = () => {
     setIsModalOpen(true);
-  };
-
-  const downloadPDF = () => {
-    const element = document.getElementById("printable");
-
-    if (!element) {
-      console.error("Element not found");
-      return;
-    }
-
-    const printWindow = window.open("", "", "width=600,height=600");
-    printWindow.document.open();
-    printWindow.document.write(`
-    <html>
-      <head>
-        <title>My Purpose Story</title>
-        <style>
-          body { font-family: Arial, sans-serif; color: rgb(75 85 99); }
-          h2 {font-size: 14px, margin: 0, padding: 0; color: #000000;}
-          p {font-size: 14px, color: #000000; padding: 3px;}
-        </style>
-      </head>
-      <body>
-        ${element.innerHTML}
-      </body>
-    </html>
-  `);
-    printWindow.document.close();
-
-    printWindow.print();
-    printWindow.onafterprint = () => {
-      printWindow.close();
-    };
   };
 
   return (
@@ -161,7 +124,7 @@ const ViewAnswers = () => {
         </button>
         <div className='flex items-center gap-3'>
           <div
-            className='cursor-pointer bg-maroon-red px-2 py-1 text-white'
+            className='cursor-pointer bg-maroon-red rounded shadow px-2 py-1 text-white'
             onClick={openModal}
           >
             Share with Coach
@@ -172,9 +135,6 @@ const ViewAnswers = () => {
           >
             <h6 className='text-white'>View Statement</h6>
           </Link>
-          {/* <button className='bg-green-500 text-white rounded px-4 py-1'>
-            Download PDF
-          </button> */}
         </div>
       </div>
     </div>

@@ -102,7 +102,7 @@ const Login = () => {
     if (userInfo?.token) {
       navigate("/");
     }
-  }, [userInfo]);
+  }, [userInfo, navigate]);
 
   return (
     <div

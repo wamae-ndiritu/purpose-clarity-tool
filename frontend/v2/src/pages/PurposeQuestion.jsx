@@ -10,20 +10,12 @@ import Pagination from "../components/Pagination";
 import QuestionViewWrapper from "../components/QuestionViewWrapper";
 import QuestionSeven from "../components/QuestionSeven";
 import PurposeStatement from "../components/PurposeStatement";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  createItem,
-  getItem,
-  updateItem,
-} from "../redux/actions/purposeActions";
+import { useSelector } from "react-redux";
 import Loading from "../utils/Loading";
-import Message from "../utils/Message";
 
 const PurposeQuestion = () => {
-  const dispatch = useDispatch();
-  const form = useSelector((state) => state.form);
   const purpose = useSelector((state) => state.purpose);
-  const { loading, error, item, success } = purpose;
+  const { loading, item } = purpose;
   const location = useLocation();
   const [page, setPage] = useState(1);
 
