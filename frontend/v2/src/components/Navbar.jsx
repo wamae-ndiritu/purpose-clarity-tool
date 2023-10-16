@@ -24,7 +24,9 @@ const Navbar = () => {
             <Link to='/questions/purpose'>Get Started</Link>
           </li>
           <li className='text-lg hover:underline hover:cursor-pointer text-gray-500'>
-            Purpose Clarification Tool
+            <a href='http://my-purpose-story.netlify.app/' target='_blank'>
+              My Purpose Story
+            </a>
           </li>
         </ul>
         <div className='flex flex-col items-center'>

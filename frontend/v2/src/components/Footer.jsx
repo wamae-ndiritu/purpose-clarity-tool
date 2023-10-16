@@ -13,7 +13,13 @@ const Footer = () => {
             <Link to='/questions/purpose'>Get Started</Link>
           </li>
           <li className='text-sm hover:text-gray-400 transition duration-300'>
-            Purpose Clarification Tool
+            <a
+              href='https://my-purpose-story.netlify.app/'
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              My Purpose Story
+            </a>
           </li>
           {userInfo.isAdmin && (
             <li>
@@ -26,7 +32,7 @@ const Footer = () => {
             </li>
           )}
         </ul>
-        <p className='mt-2 text-sm'>© 2023 KOMEBC. All rights reserved.</p>
+        <p className='mt-2 text-sm'>© 2023 Dr. Mango. All rights reserved.</p>
       </div>
     </div>
   );

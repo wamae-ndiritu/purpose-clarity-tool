@@ -21,3 +21,9 @@
 .bg-maroon-red{
     background-color: #931A1D;
 }
+
+input,
+textarea {
+    color: rgb(75 85 99);
+    ;
+}

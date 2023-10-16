@@ -24,7 +24,6 @@ const QuestionOne = () => {
           <li className='mb-2'>
             What are your psychological or growth needs and motivations?
           </li>
-          <li className='mb-2'>What are your natural or innate abilities?</li>
           <li className='mb-2'>
             What are your learned abilities (skills and knowledge)?
           </li>

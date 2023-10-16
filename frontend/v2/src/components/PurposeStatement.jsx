@@ -105,7 +105,7 @@ const PurposeStatement = () => {
           Turn your responses to the 7 questions above into a purpose statement
           using the structure below.
         </p>
-        <p className='text-sm text-gray-600'>
+        <p className='text-sm text-gray-600 pb-3'>
           The purpose statement must be a concise, memorable and inspiring
           declaration. I will use my purpose,{" "}
           <i className='text-purple-500'>
@@ -118,7 +118,7 @@ const PurposeStatement = () => {
           motivational.
           <ul className='list-decimal ml-8'>
             <li className='mb-2'>
-              Directional
+              <span className='font-bold text-gray-800'>Directional</span>
               <p>
                 The directional dimension includes two aspects
                 <ul className='list-disc ml-8'>
@@ -134,7 +134,7 @@ const PurposeStatement = () => {
               </p>
             </li>
             <li className='mb-2'>
-              Transformational
+              <span className='font-bold text-gray-800'>Transformational</span>
               <p>
                 The transformational dimension includes the benefits your
                 beneficiaries accrue from your actions. This dimension captures
@@ -145,7 +145,7 @@ const PurposeStatement = () => {
               </p>
             </li>
             <li className='mb-2'>
-              Motivational
+              <span className='font-bold text-gray-800'>Motivational</span>
               <p>
                 The motivational dimension is derived from the language and
                 worthiness of the cause as captured through the directional and
