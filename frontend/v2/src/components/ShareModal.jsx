@@ -26,7 +26,8 @@ const ShareModal = ({ closeModal }) => {
     question_7: "What activities can generate income for you?",
     question_8: "The Purpose Statement",
   };
-
+  const user = useSelector((state) => state.user);
+  const { userInfo } = user;
   const answers = {
     answer_1: identity,
     answer_2: strengths,
@@ -39,8 +40,9 @@ const ShareModal = ({ closeModal }) => {
   };
 
   const templateParams = {
-    user_name: "Ndiritu Wa Wamai",
-    user_email: "nelitetech@gmail.com",
+    user_name: userInfo.fullName,
+    user_email: userInfo.email,
+    app_name: "Purpose Clarity Tool",
     ...answers,
     ...questions,
   };
@@ -62,6 +64,7 @@ const ShareModal = ({ closeModal }) => {
         closeModal();
       })
       .catch((error) => {
+        setLoading(false);
         console.log("FAILED...", error);
         closeModal();
       });
