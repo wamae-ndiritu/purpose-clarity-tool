@@ -108,7 +108,7 @@ const PurposeStatement = () => {
         <p className='text-sm text-gray-600 pb-3'>
           The purpose statement must be a concise, memorable and inspiring
           declaration. I will use my purpose,{" "}
-          <i className='text-purple-500'>
+          <i className='text-maroon-red'>
             “I inspire individuals and organisations to live meaningful lives,”
           </i>{" "}
           to provide a structure for the purpose statement.
@@ -128,7 +128,7 @@ const PurposeStatement = () => {
                   <li>for whom you do it.</li>
                 </ul>
                 For example, based on my purpose, the directional dimension is
-                <i className='text-purple-500'>
+                <i className='text-maroon-red'>
                   “I inspire individuals and organisations”.
                 </i>
               </p>
@@ -141,7 +141,7 @@ const PurposeStatement = () => {
                 the intended impact on the recipients. It focuses on the
                 difference one makes in people’s lives and society: the impact.
                 For example, the transformational dimension of my purpose is{" "}
-                <i className='text-purple-500'>“to live meaningful lives”</i>.
+                <i className='text-maroon-red'>“to live meaningful lives”</i>.
               </p>
             </li>
             <li className='mb-2'>

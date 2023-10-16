@@ -52,7 +52,7 @@ const Pagination = ({ page, totalPages, changePage }) => {
         }}
         className={`bg-maroon-red hover:bg-red-700 text-white font-semibold py-2 px-4 rounded ml-2 `}
       >
-        {page === 8 ? "Submit" : "Next"}
+        {page === 8 ? "View Responses" : "Next"}
       </button>
     </div>
   );
