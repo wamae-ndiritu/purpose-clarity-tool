@@ -53,7 +53,6 @@ const User = () => {
     setList(formattedUsers);
   };
 
-  console.log(list);
   return (
     <div className='dashboard-container'>
       <SideBar />
