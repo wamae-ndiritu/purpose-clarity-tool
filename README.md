@@ -5,7 +5,7 @@
 Clone the repository to your local machine
 
 ```
-git clone https://github.com/wamae-ndiritu/purpose-story.git
+git clone https://github.com/wamae-ndiritu/purpose-clarity-tool.git
 ```
 
 ### Backend application
