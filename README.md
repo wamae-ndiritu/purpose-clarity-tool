@@ -1,6 +1,6 @@
 # Purpose Clarity Tool
 
-![Purpose Story landing page](./frontend/public/assets/images/purpose-clarity-app.png)
+![Purpose Story landing page](./frontend/v2/public/assets/images/purpose-clarity-app.png)
 
 ## Getting Started
 
