@@ -5,10 +5,16 @@ const User = require("../models/User");
 const AUTH_EMAIL = process.env.AUTH_EMAIL;
 const AUTH_PASS = process.env.AUTH_PASS;
 const CLIENT_URL = process.env.CLIENT_URL;
+const MAIL_HOST = process.env.MAIL_HOST;
 
 // create mail transporter
 let transporter = nodemailer.createTransport({
-  service: "gmail",
+  host: MAIL_HOST,
+  secureConnection: false,
+  tls: {
+    rejectUnauthorized: false,
+  },
+  port: 587,
   auth: {
     user: AUTH_EMAIL,
     pass: AUTH_PASS,
