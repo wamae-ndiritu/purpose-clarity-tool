@@ -1,5 +1,7 @@
 # Purpose Clarity Tool
 
+![Purpose Story landing page](./frontend/public/assets/images/purpose-clarity-app.png)
+
 ## Getting Started
 
 Clone the repository to your local machine
