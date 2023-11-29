@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { logout } from "../redux/actions/userActions";
-import { PCT_LINK } from "../Url";
+import { MPS_LINK } from "../Url";
 
 const Navbar = () => {
   const dispatch = useDispatch();
@@ -14,9 +14,13 @@ const Navbar = () => {
   };
   return (
     <div className='sticky z-20 top-0 w-full bg-white text-white flex md:flex-row items-center justify-end px-3 py-2'>
-      <div className='bg-white p-2 w-38 absolute top-1 left-0 bottom-1'>
+      <div className='bg-white p-2 md:w-38 absolute top-1 left-0 bottom-1'>
         <Link to='/'>
-          <img src='/assets/images/logo.png' className='h-12' alt='...' />
+          <img
+            src='/assets/images/logo.png'
+            alt='...'
+            className='h-12 w-32 md:w-full object-contain'
+          />
         </Link>
       </div>
       <div className='flex md:flex-row md:items-center gap-3 float-right'>
@@ -28,7 +32,7 @@ const Navbar = () => {
             <Link to='/questions/purpose'>Get Started</Link>
           </li>
           <li className='text-lg hover:underline hover:cursor-pointer text-gray-500'>
-            <a href={`${PCT_LINK}`} target='_blank' rel='noopener noreferrer'>
+            <a href={`${MPS_LINK}`} target='_blank' rel='noopener noreferrer'>
               My Purpose Story
             </a>
           </li>

@@ -42,3 +42,22 @@ textarea {
     right: 0;
     left: 0;
 }
+
+.mobile-pagination {
+    display: none;
+}
+
+.pagination-margin {
+    /* margin-top: -50px; */
+}
+
+@media (max-width: 438.5px) {
+    .mobile-pagination {
+        display: flex;
+    }
+
+    .big-pagination {
+        display: none;
+    }
+
+}

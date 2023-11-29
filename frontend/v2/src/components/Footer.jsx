@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { MPS_LINK } from "../Url";
 
 const Footer = () => {
   const user = useSelector((state) => state.user);
@@ -13,11 +14,7 @@ const Footer = () => {
             <Link to='/questions/purpose'>Get Started</Link>
           </li>
           <li className='text-sm hover:text-gray-400 transition duration-300'>
-            <a
-              href='https://my-purpose-story.netlify.app/'
-              target='_blank'
-              rel='noopener noreferrer'
-            >
+            <a href={`${MPS_LINK}`} target='_blank' rel='noopener noreferrer'>
               My Purpose Story
             </a>
           </li>

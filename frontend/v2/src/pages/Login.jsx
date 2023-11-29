@@ -156,7 +156,7 @@ const Login = () => {
             </section>
           ) : (
             <section className='user'>
-              <h2 className='text-2xl text-center font-semibold mb-6'>
+              <h2 className='text-2xl text-center font-semibold mb-6 text-maroon-red'>
                 Reset Password
               </h2>
               {loginErr && <Message>{loginErr}</Message>}
@@ -187,19 +187,29 @@ const Login = () => {
               </div>
               <div className='mb-3 d-flex flex-column justify-content-center align-items-center'>
                 <button
-                  className='w-full bg-gray-800 text-white py-2 px-4 rounded hover:bg-gray-600'
+                  className='w-full bg-maroon-red text-white py-2 px-4 rounded hover:bg-red-700'
                   onClick={handleResetPass}
                 >
                   Reset Password
                 </button>
+                <p
+                  className='text-sm text-maroon-red underline cursor-pointer'
+                  onClick={() => setForgotPass(false)}
+                >
+                  Go Back
+                </p>
               </div>
             </section>
           )
         ) : (
           <>
-            <h2 className='text-2xl text-center font-semibold mb-6 text-maroon-red'>
+            <h2 className='text-2xl text-center font-semibold mb-6 text-maroon-red my-auto'>
+              <span className='font-bold'>Purpose Clarity Tool</span> <br />{" "}
               Login
             </h2>
+            <p className='text-gray-600 text-sm mb-3'>
+              Please use your Purpose Clarity Tool account!
+            </p>
             {loginErr && <Message>{loginErr}</Message>}
             {loading ? <Loading /> : error && <Message>{error}</Message>}
             <div className='mb-4'>
@@ -242,17 +252,16 @@ const Login = () => {
             >
               Login
             </button>
-            <p className='text-sm py-1'>
+            <p className='flex gap-1 text-sm py-1'>
               Don't have an account?{" "}
-              <Link
-                to='/account/register'
-                className='text-green-500 cursor-pointer underline'
-              >
-                Sign Up
+              <Link to='/account/register'>
+                <p className='text-maroon-red cursor-pointer underline'>
+                  Sign Up
+                </p>
               </Link>
             </p>
             <p
-              className='text-sm text-purple-800 underline cursor-pointer'
+              className='text-sm text-maroon-red underline cursor-pointer'
               onClick={() => setForgotPass(true)}
             >
               Forgot password?

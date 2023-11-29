@@ -30,7 +30,7 @@ const Statement = () => {
   return (
     <div className='bg-slate-100'>
       <Navbar />
-      <div className='w-full flex flex-col items-center gap-5 justify-center py-12'>
+      <div className='main-children w-full flex flex-col items-center gap-5 justify-center py-12'>
         <div
           className='mx-4 md:mx-0 md:w-3/5 bg-white p-4 md:p-8'
           ref={contentRef}
