@@ -19,6 +19,13 @@ app.use("/api/v1/user", userRouter);
 app.use("/api/v1/purpose-clarity", purposeRouter);
 app.use("/api/v1/purpose-story", purposeStoryRouter);
 
+app.get("/api/v1/test", (req, res) => {
+  res.json({
+    name: "MPS & PCT tools",
+    version: "1",
+  });
+});
+
 app.listen(PORT, () => {
   console.log(`Backend running on port ${PORT}`);
 });

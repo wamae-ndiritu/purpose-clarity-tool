@@ -15,11 +15,9 @@ import Loading from "../utils/Loading";
 
 const PurposeQuestion = () => {
   const purpose = useSelector((state) => state.purpose);
-  const { loading, item } = purpose;
+  const { loading } = purpose;
   const location = useLocation();
   const [page, setPage] = useState(1);
-
-  console.log(item);
 
   const changePage = (newPage) => {
     setPage(newPage);

@@ -4,10 +4,12 @@ import Footer from "./Footer";
 
 const QuestionViewWrapper = ({ children }) => {
   return (
-    <div className='bg-slate-100'>
+    <div className='bg-slate-100 main-container'>
       <Navbar />
-      {children}
-      <Footer />
+      <div className='main-children'>{children}</div>
+      <div className='footer-container'>
+        <Footer />
+      </div>
     </div>
   );
 };

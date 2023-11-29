@@ -25,5 +25,20 @@
 input,
 textarea {
     color: rgb(75 85 99);
-    ;
+}
+
+.main-container{
+    position: relative;
+    min-height: 100vh;
+}
+
+.main-children{
+    min-height: 80vh;
+}
+
+.footer-container{
+    /* position: ; */
+    bottom: 0;
+    right: 0;
+    left: 0;
 }
