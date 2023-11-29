@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { createItem } from "../redux/actions/purposeActions";
 
@@ -19,6 +19,12 @@ const Pagination = ({ page, totalPages, changePage }) => {
 
   return (
     <div className='flex items-center justify-center my-3 px-4'>
+      <Link
+        to='/'
+        className={`bg-maroon-red hover:bg-red-700 font-semibold py-2 px-4 rounded md:mr-2`}
+      >
+        <p className='text-white'>Home</p>
+      </Link>
       <button
         onClick={() => changePage(page - 1)}
         className={`bg-maroon-red hover:bg-red-700 text-white font-semibold py-2 px-4 rounded md:mr-2 ${

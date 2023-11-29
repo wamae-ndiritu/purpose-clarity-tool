@@ -43,7 +43,9 @@ const ViewAnswers = () => {
               1. Who are you?
             </h6>
           </Link>
-          <p className='text-sm text-gray-600'>{identity}</p>
+          <p className='text-sm text-gray-600'>
+            {identity === "" ? "Please fill this input..." : identity}
+          </p>
         </div>
         <div className='mb-2'>
           <Link
@@ -52,7 +54,9 @@ const ViewAnswers = () => {
           >
             <h6 className='text-maroon-red'>2. What do you do well?</h6>
           </Link>
-          <p className='text-sm text-gray-600'>{strengths}</p>
+          <p className='text-sm text-gray-600'>
+            {strengths === "" ? "Please fill this input..." : strengths}
+          </p>
         </div>
         <div className='mb-2'>
           <Link
@@ -61,7 +65,9 @@ const ViewAnswers = () => {
           >
             <h6 className='text-maroon-red'>3. What do you love to do?</h6>
           </Link>
-          <p className='text-sm text-gray-600'>{passions}</p>
+          <p className='text-sm text-gray-600'>
+            {passions === "" ? "Please fill this input..." : passions}
+          </p>
         </div>
         <div className='mb-2'>
           <Link
@@ -70,7 +76,11 @@ const ViewAnswers = () => {
           >
             <h6 className='text-maroon-red'>4. Whom do you intend to serve?</h6>
           </Link>
-          <p className='text-sm text-gray-600'>{target_audience}</p>
+          <p className='text-sm text-gray-600'>
+            {target_audience === ""
+              ? "Please fill this input..."
+              : target_audience}
+          </p>
         </div>
         <div className='mb-2'>
           <Link
@@ -81,7 +91,11 @@ const ViewAnswers = () => {
               5. What do your beneficiaries need?
             </h6>
           </Link>
-          <p className='text-sm text-gray-600'>{beneficiary_needs}</p>
+          <p className='text-sm text-gray-600'>
+            {beneficiary_needs === ""
+              ? "Please fill this input..."
+              : beneficiary_needs}
+          </p>
         </div>
         <div className='mb-2'>
           <Link
@@ -92,7 +106,9 @@ const ViewAnswers = () => {
               6. How do your offerings transform your beneficiaries?
             </h6>
           </Link>
-          <p className='text-sm text-gray-600'>{impact}</p>
+          <p className='text-sm text-gray-600'>
+            {impact === "" ? "Please fill this input..." : impact}
+          </p>
         </div>
         <div className='mb-2'>
           <Link
@@ -103,7 +119,11 @@ const ViewAnswers = () => {
               7. What activities can generate income for you?
             </h6>
           </Link>
-          <p className='text-sm text-gray-600'>{revenue_sources}</p>
+          <p className='text-sm text-gray-600'>
+            {revenue_sources === ""
+              ? "Please fill this input..."
+              : revenue_sources}
+          </p>
         </div>
         <div className='mb-2'>
           <Link
@@ -112,7 +132,11 @@ const ViewAnswers = () => {
           >
             <h6 className='text-maroon-red'>8. The purpose statement</h6>
           </Link>
-          <p className='text-sm text-gray-600'>{purpose_statement}</p>
+          <p className='text-sm text-gray-600'>
+            {purpose_statement === ""
+              ? "Please fill this input..."
+              : purpose_statement}
+          </p>
         </div>
       </div>
       <div className='w-full px-4 md:px-0 md:w-3/5 flex justify-between'>

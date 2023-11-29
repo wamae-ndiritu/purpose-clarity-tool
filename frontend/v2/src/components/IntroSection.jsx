@@ -23,9 +23,9 @@ const IntroSection = () => {
         </p>
         <Link
           to='/questions/purpose'
-          className='border text-white bg-yellow-gold hover:bg-white hover:text-white py-2 px-6 rounded-full text-lg font-semibold inline-block transition duration-300'
+          className='border text-white bg-maroon-red hover:bg-white hover:text-gray-700 py-2 px-6 rounded-full text-lg font-semibold inline-block transition duration-300'
         >
-          <h6 className='text-white hover:text-gray-600'>Get Started</h6>
+          <h6 className='text-white hover:text-gray-700'>Get Started</h6>
         </Link>
       </div>
     </section>
