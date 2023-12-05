@@ -13,6 +13,7 @@ export const userSlice = createSlice({
     resetPass: false,
     updatePass: false,
     users: [],
+    mpsUsers: [],
   },
   reducers: {
     loginStart: (state) => {
@@ -76,9 +77,16 @@ export const userSlice = createSlice({
       state.loading = false;
       state.users = action.payload;
     },
+    getMpsUsersSuccess: (state, action) => {
+      state.loading = false;
+      state.mpsUsers = action.payload;
+    },
     getUsersFail: (state, action) => {
       state.loading = false;
       state.error = action.payload;
+    },
+    hideError: (state) => {
+      state.error = null;
     },
   },
 });
@@ -99,6 +107,8 @@ export const {
   updatePasswordFail,
   getUsersStart,
   getUsersSuccess,
+  getMpsUsersSuccess,
   getUsersFail,
+  hideError,
 } = userSlice.actions;
 export default userSlice.reducer;

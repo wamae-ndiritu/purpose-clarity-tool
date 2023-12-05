@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  hideValidationError,
   login,
   resetPassword,
   updatePassword,
@@ -103,6 +104,25 @@ const Login = () => {
       navigate("/");
     }
   }, [userInfo, navigate]);
+
+  useEffect(() => {
+    if (error) {
+      setEmail("");
+      setPassword("");
+    }
+  }, [error]);
+
+  useEffect(() => {
+    if (error) {
+      // Set a timeout to dispatch hideValidationError after 2s
+      const timeoutId = setTimeout(() => {
+        dispatch(hideValidationError());
+      }, 2000);
+
+      // Cleanup the timeout if the component unmounts or if error changes before the timeout
+      return () => clearTimeout(timeoutId);
+    }
+  }, [error, dispatch]);
 
   return (
     <div

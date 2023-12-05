@@ -1,5 +1,5 @@
 const express = require("express");
-const { verify } = require("../middleware/AuthMiddleware");
+const { verifyMPSUser } = require("../middleware/AuthMiddleware");
 const {
   createPurposeStory,
   getPurposeStory,
@@ -10,10 +10,10 @@ const {
 
 const purposeStoryRouter = express.Router();
 
-purposeStoryRouter.post("/create", verify, createPurposeStory);
-purposeStoryRouter.get("/", verify, getPurposeStories);
-purposeStoryRouter.get("/:id", verify, getPurposeStory);
-purposeStoryRouter.put("/:id", verify, updatePurposeStory);
-purposeStoryRouter.delete("/:id", verify, deletePurposeStory);
+purposeStoryRouter.post("/create", verifyMPSUser, createPurposeStory);
+purposeStoryRouter.get("/", verifyMPSUser, getPurposeStories);
+purposeStoryRouter.get("/:id", verifyMPSUser, getPurposeStory);
+purposeStoryRouter.put("/:id", verifyMPSUser, updatePurposeStory);
+purposeStoryRouter.delete("/:id", verifyMPSUser, deletePurposeStory);
 
 module.exports = purposeStoryRouter;

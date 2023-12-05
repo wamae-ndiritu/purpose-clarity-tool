@@ -9,6 +9,7 @@ const userSchema = new mongoose.Schema(
     email: {
       type: String,
       required: true,
+      unique: true,
     },
     isAdmin: {
       type: Boolean,
@@ -18,15 +19,9 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    account_type: {
-      type: String,
-    },
   },
   { timestamps: true }
 );
 
-// Create a compound index on "email" and "account_type"
-userSchema.index({ email: 1, account_type: 1 }, { unique: true });
-
-const User = mongoose.model("User", userSchema);
-module.exports = User;
+const PCTUser = mongoose.model("PCTUser", userSchema);
+module.exports = PCTUser;

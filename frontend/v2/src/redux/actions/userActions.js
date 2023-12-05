@@ -1,7 +1,9 @@
 import {
+  getMpsUsersSuccess,
   getUsersFail,
   getUsersStart,
   getUsersSuccess,
+  hideError,
   loginFail,
   loginStart,
   loginSuccess,
@@ -22,7 +24,10 @@ import { API_ENDPOINT } from "../../Url";
 export const register = (details) => async (dispatch) => {
   dispatch(registerStart());
   try {
-    const { data } = await axios.post(`${API_ENDPOINT}/user/register`, details);
+    const { data } = await axios.post(
+      `${API_ENDPOINT}/user/pct/register`,
+      details
+    );
     dispatch(registerSuccess(data));
   } catch (err) {
     dispatch(
@@ -34,7 +39,10 @@ export const register = (details) => async (dispatch) => {
 export const login = (details) => async (dispatch) => {
   dispatch(loginStart());
   try {
-    const { data } = await axios.post(`${API_ENDPOINT}/user/login`, details);
+    const { data } = await axios.post(
+      `${API_ENDPOINT}/user/pct/login`,
+      details
+    );
     dispatch(loginSuccess(data));
     localStorage.setItem("userInfo", JSON.stringify(data));
   } catch (err) {
@@ -47,7 +55,7 @@ export const resetPassword = (details) => async (dispatch) => {
   try {
     dispatch(resetPasswordStart());
 
-    await axios.post(`${API_ENDPOINT}/user/forgot/password`, details);
+    await axios.post(`${API_ENDPOINT}/user/pct/forgot/password`, details);
 
     dispatch(resetPasswordSuccess());
   } catch (err) {
@@ -61,7 +69,7 @@ export const updatePassword = (id, data) => async (dispatch) => {
   try {
     dispatch(updatePasswordStart());
 
-    await axios.put(`${API_ENDPOINT}/user/update/${id}/password`, data);
+    await axios.put(`${API_ENDPOINT}/user/pct/update/${id}/password`, data);
 
     dispatch(updatePasswordSuccess());
   } catch (err) {
@@ -82,13 +90,9 @@ export const verifySession = () => async (dispatch, getState) => {
       user: { userInfo },
     } = getState();
 
-    const { data } = await axios.post(
-      `${API_ENDPOINT}/user/auth/verification`,
-      {
-        token: userInfo.token,
-      }
-    );
-    console.log(data);
+    await axios.post(`${API_ENDPOINT}/user/auth/verification`, {
+      token: userInfo.token,
+    });
   } catch (err) {
     let error = err.response ? err.response.data.message : err.message;
     if (error === "Not authorized, token failed!") {
@@ -113,7 +117,7 @@ export const listUsers = () => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.get(`${API_ENDPOINT}/user/`, config);
+    const { data } = await axios.get(`${API_ENDPOINT}/user/pct`, config);
 
     dispatch(getUsersSuccess(data));
   } catch (err) {
@@ -127,4 +131,39 @@ export const listUsers = () => async (dispatch, getState) => {
     }
     dispatch(getUsersFail(error));
   }
+};
+
+export const listMPSUsers = () => async (dispatch, getState) => {
+  try {
+    dispatch(getUsersStart());
+
+    const {
+      user: { userInfo },
+    } = getState();
+
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    };
+
+    const { data } = await axios.get(`${API_ENDPOINT}/user/mps`, config);
+
+    dispatch(getMpsUsersSuccess(data));
+  } catch (err) {
+    let error = err.response ? err.response.data.message : err.message;
+    if (
+      error === "Not authorized, token failed!" ||
+      error === "Not authorized, no token!" ||
+      error === "Not authorized as an Admin!"
+    ) {
+      dispatch(logout());
+    }
+    dispatch(getUsersFail(error));
+  }
+};
+
+export const hideValidationError = () => (dispatch) => {
+  dispatch(hideError());
 };

@@ -1,11 +1,14 @@
 const nodemailer = require("nodemailer");
 const smtpTranspoter = require("nodemailer-smtp-transport");
 const User = require("../models/User");
+const PCTUser = require("../models/PCTUser");
+const MPSUser = require("../models/MPSUser");
 
 const AUTH_EMAIL = process.env.AUTH_EMAIL;
 const AUTH_PASS = process.env.AUTH_PASS;
-const CLIENT_URL = process.env.CLIENT_URL;
 const MAIL_HOST = process.env.MAIL_HOST;
+const MPS_URL = process.env.MPS_URL;
+const PCT_URL = process.env.PCT_URL;
 
 // create mail transporter
 let transporter = nodemailer.createTransport({
@@ -107,7 +110,7 @@ exports.submitForFeadback = async (req, res) => {
   }
 };
 
-const sendPasswordResetMail = async ({ id, fullName, email }) => {
+const sendPasswordResetMail = async ({ id, fullName, email }, CLIENT_URL) => {
   const mailOptions = {
     from: AUTH_EMAIL,
     to: email,
@@ -119,15 +122,26 @@ const sendPasswordResetMail = async ({ id, fullName, email }) => {
 };
 
 // FORGOT PASSWORD
-exports.resetPassword = async (req, res) => {
+exports.resetPasswordPCTUser = async (req, res) => {
   const email = req.body.email;
 
-  console.log(email);
-
-  const user = await User.findOne({ email });
+  const user = await PCTUser.findOne({ email });
 
   if (user) {
-    sendPasswordResetMail(user);
+    sendPasswordResetMail(user, MPS_URL);
+    res.status(201).json({ message: "Reset Email sent" });
+  } else {
+    res.status(404).json({ message: "Account does not exist!" });
+  }
+};
+
+exports.resetPasswordMPSUser = async (req, res) => {
+  const email = req.body.email;
+
+  const user = await MPSUser.findOne({ email });
+
+  if (user) {
+    sendPasswordResetMail(user, MPS_URL);
     res.status(201).json({ message: "Reset Email sent" });
   } else {
     res.status(404).json({ message: "Account does not exist!" });

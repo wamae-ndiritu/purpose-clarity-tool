@@ -1,5 +1,5 @@
 const express = require("express");
-const { verify } = require("../middleware/AuthMiddleware");
+const { verifyPCTUser } = require("../middleware/AuthMiddleware");
 const {
   createPurposeItem,
   getUserPurposeItem,
@@ -10,10 +10,10 @@ const { submitForFeadback } = require("../controllers/EmailControllers");
 
 const purposeRouter = express.Router();
 
-purposeRouter.post("/create", verify, createPurposeItem);
-purposeRouter.get("/:id", verify, getUserPurposeItem);
-purposeRouter.put("/:id", verify, updatePuposeItem);
-purposeRouter.delete("/:id", verify, deletePuposeItem);
-purposeRouter.post("/send-feedback-email", verify, submitForFeadback);
+purposeRouter.post("/create", verifyPCTUser, createPurposeItem);
+purposeRouter.get("/:id", verifyPCTUser, getUserPurposeItem);
+purposeRouter.put("/:id", verifyPCTUser, updatePuposeItem);
+purposeRouter.delete("/:id", verifyPCTUser, deletePuposeItem);
+purposeRouter.post("/send-feedback-email", verifyPCTUser, submitForFeadback);
 
 module.exports = purposeRouter;

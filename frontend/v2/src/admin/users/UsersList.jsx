@@ -72,7 +72,9 @@ export default function UserssList({ data }) {
           disableSelectionOnClick
           columns={columns}
           pageSize={4}
-          checkboxSelection
+          // checkboxSelection
+          showColumnVerticalBorder
+          showCellVerticalBorder
         />
       </div>
     </>

@@ -50,24 +50,36 @@ const ShareModal = ({ closeModal }) => {
   const [loading, setLoading] = useState(false);
 
   const shareResponses = () => {
-    setLoading(true);
-    emailjs
-      .send(
-        "service_iz21rs6",
-        "template_niqb61f",
-        templateParams,
-        "KehPQQgwKRR6ja30g"
-      )
-      .then((response) => {
-        setLoading(false);
-        console.log(response.text);
-        closeModal();
-      })
-      .catch((error) => {
-        setLoading(false);
-        console.log("FAILED...", error);
-        closeModal();
-      });
+    if (
+      answers.answer_1 !== "" ||
+      answers.answer_2 !== "" ||
+      answers.answer_3 !== "" ||
+      answers.answer_4 !== "" ||
+      answers.answer_5 !== "" ||
+      answers.answer_6 !== "" ||
+      answers.answer_7 !== "" ||
+      answers.answer_8 !== ""
+    ) {
+      setLoading(true);
+      emailjs
+        .send(
+          "service_iz21rs6",
+          "template_niqb61f",
+          templateParams,
+          "KehPQQgwKRR6ja30g"
+        )
+        .then((response) => {
+          setLoading(false);
+          console.log(response.text);
+          closeModal();
+        })
+        .catch((error) => {
+          setLoading(false);
+          console.log("FAILED...", error);
+          closeModal();
+        });
+    }
+    return;
   };
   return (
     <div class='fixed inset-0 flex items-center justify-center z-50'>

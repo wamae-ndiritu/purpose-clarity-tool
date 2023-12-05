@@ -1,25 +1,39 @@
 const express = require("express");
 const {
-  register,
-  login,
-  updatePassword,
-  getUsers,
+  verifyToken,
+  admin,
+  verifyPCTUser,
+  verifyMPSUser,
+} = require("../middleware/AuthMiddleware");
+const {
+  resetPasswordMPSUser,
+  resetPasswordPCTUser,
+} = require("../controllers/EmailControllers");
+const {
+  registerPCTUser,
+  loginPCTUser,
+  updatePasswordPCTUser,
+  getPCTUsers,
+  registerMPSUser,
+  loginMPSUser,
+  updatePasswordMPSUser,
+  getMPSUsers,
 } = require("../controllers/UserControllers");
-const { verifyToken, admin, verify } = require("../middleware/AuthMiddleware");
-const { resetPassword } = require("../controllers/EmailControllers");
-const User = require("../models/User");
 
 const userRouter = express.Router();
 
-userRouter.post("/register", register);
-userRouter.post("/login", login);
-userRouter.post("/forgot/password", resetPassword);
-userRouter.put("/update/:id/password", updatePassword);
+// PCT ROUTES
+userRouter.post("/pct/register", registerPCTUser);
+userRouter.post("/pct/login", loginPCTUser);
+userRouter.put("/pct/update/:id/password", updatePasswordPCTUser);
+userRouter.get("/pct", verifyPCTUser, admin, getPCTUsers);
+userRouter.post("/pct/forgot/password", resetPasswordPCTUser);
+// MPS ROUTES
+userRouter.post("/mps/register", registerMPSUser);
+userRouter.post("/mps/login", loginMPSUser);
+userRouter.put("/mps/update/:id/password", updatePasswordMPSUser);
+userRouter.get("/mps", verifyPCTUser, admin, getMPSUsers);
+userRouter.post("/mps/forgot/password", resetPasswordMPSUser);
 userRouter.post("/auth/verification", verifyToken);
-userRouter.get("/", verify, admin, getUsers);
-userRouter.delete("/", async (req, res) => {
-  await User.deleteMany();
-  res.status(200).json({ message: "All users deleted" });
-});
 
 module.exports = userRouter;

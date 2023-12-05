@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import SideBar from "../sidebar/SideBar";
 import TopBar from "../topbar/TopBar";
-import { listUsers } from "../../redux/actions/userActions";
+import { listMPSUsers, listUsers } from "../../redux/actions/userActions";
 import { useDispatch, useSelector } from "react-redux";
 import UserssList from "./UsersList";
 import Loading from "../../utils/Loading";
@@ -9,7 +9,7 @@ import Message from "../../utils/Message";
 
 const User = () => {
   const user = useSelector((state) => state.user);
-  const { loading, error, users } = user;
+  const { loading, error, users, mpsUsers } = user;
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -18,6 +18,12 @@ const User = () => {
     }
   }, [users, dispatch]);
 
+  useEffect(() => {
+    if (mpsUsers.length === 0) {
+      dispatch(listMPSUsers());
+    }
+  }, [mpsUsers, dispatch]);
+
   const formattedUsers = users?.map((user, index) => {
     return {
       ...user,
@@ -25,33 +31,15 @@ const User = () => {
     };
   });
 
-  const getAllUsers = () => {
-    setList(formattedUsers);
-  };
-
+  const formattedMPSUsers = mpsUsers?.map((user, index) => {
+    return {
+      ...user,
+      id: index + 1,
+    };
+  });
   const [list, setList] = useState(formattedUsers);
 
-  const getMPSUsers = () => {
-    const newUsers = users.filter((item) => item.account_type === "MPS");
-    const formattedUsers = newUsers?.map((user, index) => {
-      return {
-        ...user,
-        id: index + 1,
-      };
-    });
-    setList(formattedUsers);
-  };
-
-  const getPCTUsers = () => {
-    const newUsers = users.filter((item) => item.account_type !== "MPS");
-    const formattedUsers = newUsers?.map((user, index) => {
-      return {
-        ...user,
-        id: index + 1,
-      };
-    });
-    setList(formattedUsers);
-  };
+  console.log(users, mpsUsers);
 
   return (
     <div className='dashboard-container'>
@@ -66,17 +54,14 @@ const User = () => {
                 <div className='users-btn-cont'>
                   <button
                     className='btn user-btn-toggle active'
-                    onClick={getAllUsers}
-                  >
-                    ALL
-                  </button>
-                  <button
-                    className='btn user-btn-toggle active'
-                    onClick={getPCTUsers}
+                    onClick={() => setList(formattedUsers)}
                   >
                     PCT USERS
                   </button>
-                  <button className='btn user-btn-toggle' onClick={getMPSUsers}>
+                  <button
+                    className='btn user-btn-toggle'
+                    onClick={() => setList(formattedMPSUsers)}
+                  >
                     MPS USERS
                   </button>
                 </div>
