@@ -1,6 +1,5 @@
 const nodemailer = require("nodemailer");
 const smtpTranspoter = require("nodemailer-smtp-transport");
-const User = require("../models/User");
 const PCTUser = require("../models/PCTUser");
 const MPSUser = require("../models/MPSUser");
 
@@ -12,12 +11,7 @@ const PCT_URL = process.env.PCT_URL;
 
 // create mail transporter
 let transporter = nodemailer.createTransport({
-  host: MAIL_HOST,
-  secureConnection: false,
-  tls: {
-    rejectUnauthorized: false,
-  },
-  port: 587,
+  service: "gmail",
   auth: {
     user: AUTH_EMAIL,
     pass: AUTH_PASS,
@@ -128,7 +122,7 @@ exports.resetPasswordPCTUser = async (req, res) => {
   const user = await PCTUser.findOne({ email });
 
   if (user) {
-    sendPasswordResetMail(user, MPS_URL);
+    sendPasswordResetMail(user, PCT_URL);
     res.status(201).json({ message: "Reset Email sent" });
   } else {
     res.status(404).json({ message: "Account does not exist!" });
