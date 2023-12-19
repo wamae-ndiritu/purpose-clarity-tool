@@ -44,7 +44,7 @@ exports.submitForFeadback = async (req, res) => {
   const { firstName, lastName, email } = req.user;
 
   const mailOptions = {
-    from: process.env.AUTH_EMAIL,
+    from: `The Good Success <${AUTH_EMAIL}>`,
     to: email,
     subject: "Answers to 7 Questions Purpose Clarification Tool",
     html: `
@@ -107,7 +107,7 @@ exports.submitForFeadback = async (req, res) => {
 const sendPasswordResetMail = async ({ id, fullName, email }, CLIENT_URL) => {
   const app_name = CLIENT_URL.split("/")[2].split(".")[0];
   const mailOptions = {
-    from: AUTH_EMAIL,
+    from: `The Good Success <${AUTH_EMAIL}>`,
     to: email,
     subject: `${
       app_name === "mps"
