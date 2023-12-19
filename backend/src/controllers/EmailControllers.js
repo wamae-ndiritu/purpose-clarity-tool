@@ -105,11 +105,31 @@ exports.submitForFeadback = async (req, res) => {
 };
 
 const sendPasswordResetMail = async ({ id, fullName, email }, CLIENT_URL) => {
+  const app_name = CLIENT_URL.split("/")[2].split(".")[0];
   const mailOptions = {
     from: AUTH_EMAIL,
     to: email,
-    subject: "Reset Password",
-    html: `<p>Hi <h5>${fullName}</h5>, A request to reset your password was made. Please <a href="${CLIENT_URL}/account/login?user=${id}&action=reset-password">Click here</a> to reset. If it wasn't you, you can ignore this </p> `,
+    subject: `${
+      app_name === "mps"
+        ? "Reset Password - My Purpose Story"
+        : "Reset Password - Purpose Clarity Tool"
+    }`,
+    html: `
+    <p style="font-family: Arial, sans-serif; font-size: 16px; line-height: 1.6; color: #333;">
+    Hi <span style="font-weight: bold; color: #931A1D;">${fullName},</span>
+    <br>
+    A request to reset your password was made. Please
+    <a href="${CLIENT_URL}/account/login?user=${id}&action=reset-password" style="display: inline-block; margin-top: 10px; padding: 8px 16px; background-color: #931A1D; color: #fff; text-decoration: none; border-radius: 4px; font-weight: bold;">
+        Click here to reset
+    </a>.
+    If it wasn't you, you can ignore this.
+</p>
+<p style="font-family: Arial, sans-serif; font-size: 14px; color: #931A1D; margin-top: 20px;">
+    Best regards,
+    <br>
+    ${app_name === "mps" ? "My Purpose Story" : "Purpose Clarity Tool"}
+</p>
+`,
   };
 
   await transporter.sendMail(mailOptions);
